@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/16 22:25:57 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/16 22:33:10 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,6 @@ void    dump_map(s_cube *file, char **argv)
     int readed;
 
     file->fdcontent = calloc(10000, 1);
-
     fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
 		return ;
@@ -64,7 +63,6 @@ int main(int argc, char **argv)
     else    
         printf("\nOK: Extensión soportada.\n\n");
     dump_map(&file, argv);
-	//print_infile(&file);
 	file.dumpcontent = ft_split(file.fdcontent, '\n');
 	print_split(&file);
     return 0;
