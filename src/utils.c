@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 21:35:10 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/17 01:30:15 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/17 13:32:22 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,11 @@ void    *ft_checkfinal (s_cube *file)
 {
 	char *str;
 
-	str = file->fdcontent;
     int i = 0;
     int n = 1;
-
-    while (str[i] != '\0')
+	str = file->fdcontent;
+	while (str[i] != '\0')
         i++;
-
     while (str[i - n] != '1')
     {
         str[i - n] = str[i];
@@ -55,4 +53,18 @@ char	*ft_check_spaces(char *str)
 	while(str[c] == ' ')
 		c++;
 	return (str + c);
+}
+
+int	ft_check_map(char *str)
+{
+	int c;
+
+	c = 0;
+	while(str[c])
+	{
+		if(str[c] == '1')
+			return 1;
+		c++;
+	}
+	return 0;
 }

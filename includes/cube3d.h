@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/17 01:02:58 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 00:02:59 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct cube
 	
     char        *fdcontent;
     char        **dumpcontent;
+	char		**map;
 	char		*pathtexturenorth;
 	char		*pathtexturesouth;
 	char		*pathtexturewest;
@@ -34,12 +35,20 @@ typedef struct cube
 void    *ft_checkfinal (s_cube *file);
 char    *ft_checkfinal_str(char *str);
 char	*ft_check_spaces(char *str);
+int		ft_check_map(char *str);
 
 	
 
 //Pruebas------------------>debug.c
 void	print_infile(s_cube *file);
 void	print_split(s_cube *file);
+
+int		extract_textures(s_cube *file);
+int		no_texture_path(s_cube *file);
+int		so_texture_path(s_cube *file);
+int		we_texture_path(s_cube *file);
+int		ea_texture_path(s_cube *file);
+
 
 
 

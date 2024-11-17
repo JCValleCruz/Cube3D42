@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/17 01:41:20 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 00:03:57 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	purge(s_cube *file)
 	int i;
 	int c;
 	int len;
-	char	*temp;
 
 	i = 0;
 	while(file->dumpcontent[i])
@@ -26,7 +25,8 @@ void	purge(s_cube *file)
 		len = ft_strlen(file->dumpcontent[i]);
 		while(file->dumpcontent[i][c] == ' ' || file->dumpcontent[i][c] == '\t')
 			c++;
-		file->dumpcontent[i] = ft_substr(file->dumpcontent[i], c, len);
+		if(!ft_check_map(file->dumpcontent[i]))	
+			file->dumpcontent[i] = ft_substr(file->dumpcontent[i], c, len);
 		i++;	
 	}
 }
@@ -85,6 +85,12 @@ int main(int argc, char **argv)
 	file.dumpcontent = ft_split(file.fdcontent, '\n');
 	//print_split(&file);
 	purge(&file);
-	print_split(&file);
-    return 0;
+	//print_split(&file);
+	if(!extract_textures(&file))
+		printf("Todas las texturas se cargaron correctamente.\n");		
+	printf("%s\n", file.pathtexturenorth);
+	printf("%s\n", file.pathtexturesouth);
+	printf("%s\n", file.pathtexturewest);
+    printf("%s\n", file.pathtextureeast);
+	return 0;
 }
