@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/16 22:25:17 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/17 01:02:58 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,12 +21,19 @@
 
 typedef struct cube
 {
+	
     char        *fdcontent;
     char        **dumpcontent;
+	char		*pathtexturenorth;
+	char		*pathtexturesouth;
+	char		*pathtexturewest;
+	char		*pathtextureeast;
 }   s_cube;
 
 //Utilidades--------------->utils.c
 void    *ft_checkfinal (s_cube *file);
+char    *ft_checkfinal_str(char *str);
+char	*ft_check_spaces(char *str);
 
 	
 

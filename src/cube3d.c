@@ -6,11 +6,30 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/16 22:33:10 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/17 01:41:20 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube3d.h"
+void	purge(s_cube *file)
+{
+	int i;
+	int c;
+	int len;
+	char	*temp;
+
+	i = 0;
+	while(file->dumpcontent[i])
+	{
+		c = 0;
+		file->dumpcontent[1] = ft_checkfinal_str(file->dumpcontent[1]);
+		len = ft_strlen(file->dumpcontent[i]);
+		while(file->dumpcontent[i][c] == ' ' || file->dumpcontent[i][c] == '\t')
+			c++;
+		file->dumpcontent[i] = ft_substr(file->dumpcontent[i], c, len);
+		i++;	
+	}
+}
 
 void    dump_map(s_cube *file, char **argv)
 {
@@ -64,6 +83,8 @@ int main(int argc, char **argv)
         printf("\nOK: Extensión soportada.\n\n");
     dump_map(&file, argv);
 	file.dumpcontent = ft_split(file.fdcontent, '\n');
+	//print_split(&file);
+	purge(&file);
 	print_split(&file);
     return 0;
 }
