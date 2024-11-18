@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/18 20:03:20 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 22:23:38 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,9 @@ typedef struct cube
     char        **dumpcontent;
 	char		**map;
 	char		*pathtexturenorth;
-	int			no_flag;
 	char		*pathtexturesouth;
-	int			so_flag;
 	char		*pathtexturewest;
-	int			we_flag;
 	char		*pathtextureeast;
-	int			ea_flag;
 	int			texture_flag;
 	char		*textfloorcolour;
 	char		**colourfloorsplit;
@@ -53,6 +49,7 @@ int		ft_check_map(char *str);
 int		ft_rgb_atoi(const char *str);
 void	purge(s_cube *file);
 void	init_textures_flag(s_cube *file);
+int		check_param_dup(s_cube *file);
 //int		dp_count(char **content);
 //Pruebas----------------------->debug.c
 void	print_infile(s_cube *file);

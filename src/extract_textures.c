@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 13:35:20 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/18 20:12:56 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 22:17:31 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int no_texture_path(s_cube *file)
     int     line;
 
     line = -1;
-	file->no_flag = 0;
     while (file->dumpcontent[++line])
     {
         str = file->dumpcontent[line];
@@ -50,11 +49,7 @@ int no_texture_path(s_cube *file)
                 i += 2;
                 while (str[i] && (str[i] == ' ' || str[i] == '\t'))
                     i++;
-               if(!file->pathtexturenorth && file->no_flag == 0)
-			   {
-					file->no_flag = 1;
-                    return file->pathtexturenorth = ft_substr(str, i, ft_strlen(str) - i), 1;
-			   }
+            	return file->pathtexturenorth = ft_substr(str, i, ft_strlen(str) - i), 1;		
             }
         }
     }
@@ -66,7 +61,6 @@ int so_texture_path(s_cube *file)
     int     line;
 
     line = -1;
-	file->so_flag = 0;
     while (file->dumpcontent[++line])
     {
         str = file->dumpcontent[line];
@@ -78,11 +72,7 @@ int so_texture_path(s_cube *file)
                 i += 2;
                 while (str[i] && (str[i] == ' ' || str[i] == '\t'))
                     i++;
-               if(!file->pathtexturesouth && file->so_flag == 0)
-			   {
-					file->so_flag = 1;
-                    return file->pathtexturesouth = ft_substr(str, i, ft_strlen(str) - i), 1;
-			   }
+            	return file->pathtexturesouth = ft_substr(str, i, ft_strlen(str) - i), 1;		
             }
         }
     }
@@ -94,7 +84,6 @@ int we_texture_path(s_cube *file)
     int     line;
 
     line = -1;
-	file->we_flag = 0;
     while (file->dumpcontent[++line])
     {
         str = file->dumpcontent[line];
@@ -106,11 +95,7 @@ int we_texture_path(s_cube *file)
                 i += 2;
                 while (str[i] && (str[i] == ' ' || str[i] == '\t'))
                     i++;
-               if(!file->pathtexturewest && file->we_flag == 0)
-			   {
-					file->we_flag = 1;
-                    return file->pathtexturewest = ft_substr(str, i, ft_strlen(str) - i), 1;
-			   }
+            	return file->pathtexturewest = ft_substr(str, i, ft_strlen(str) - i), 1;		
             }
         }
     }
@@ -122,7 +107,6 @@ int ea_texture_path(s_cube *file)
     int     line;
 
     line = -1;
-	file->ea_flag = 0;
     while (file->dumpcontent[++line])
     {
         str = file->dumpcontent[line];
@@ -134,11 +118,7 @@ int ea_texture_path(s_cube *file)
                 i += 2;
                 while (str[i] && (str[i] == ' ' || str[i] == '\t'))
                     i++;
-               if(!file->pathtextureeast && file->ea_flag == 0)
-			   {
-					file->ea_flag = 1;
-                    return file->pathtextureeast = ft_substr(str, i, ft_strlen(str) - i), 1;
-			   }
+            	return file->pathtextureeast = ft_substr(str, i, ft_strlen(str) - i), 1;		
             }
         }
     }

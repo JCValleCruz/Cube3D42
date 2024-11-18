@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 21:25:37 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/18 19:37:26 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 22:12:05 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ void 	print_textures_path(s_cube *file)
 		printf("RGB CEILING: R:%d G:%d B:%d\n",file->rgbceilingcolour[0], file->rgbceilingcolour[1], file->rgbceilingcolour[2]);
 	}		
 	if(file->pathtexturenorth != NULL)
-		printf("\n%s\n", file->pathtexturenorth);
+		printf("\n%p\n", file->pathtexturenorth);
 	else
 		printf("NULL");
 	if(file->pathtexturesouth != NULL)	
