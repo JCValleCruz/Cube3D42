@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/18 00:03:57 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 02:32:29 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,10 +85,9 @@ int main(int argc, char **argv)
 	file.dumpcontent = ft_split(file.fdcontent, '\n');
 	//print_split(&file);
 	purge(&file);
-	//print_split(&file);
-	if(!extract_textures(&file))
-		printf("Todas las texturas se cargaron correctamente.\n");		
-	printf("%s\n", file.pathtexturenorth);
+	print_split(&file);
+	extract_textures(&file);
+	printf("\n%s\n", file.pathtexturenorth);
 	printf("%s\n", file.pathtexturesouth);
 	printf("%s\n", file.pathtexturewest);
     printf("%s\n", file.pathtextureeast);

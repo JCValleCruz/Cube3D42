@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/18 00:02:59 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 02:13:28 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include <stdlib.h>
 # include <fcntl.h>
 # include <stdio.h>
+# include <string.h>
 # include "../Lib/libft.h"
 
 typedef struct cube
@@ -36,6 +37,7 @@ void    *ft_checkfinal (s_cube *file);
 char    *ft_checkfinal_str(char *str);
 char	*ft_check_spaces(char *str);
 int		ft_check_map(char *str);
+int		dp_count(char **content);
 
 	
 

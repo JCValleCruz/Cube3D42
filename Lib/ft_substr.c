@@ -6,46 +6,39 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/23 18:49:40 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/05/02 18:06:56 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 02:02:25 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+char *ft_substr(char const *s, unsigned int start, size_t len)
 {
-	char			*sub;
-	size_t			c;
+    char *str;
+    size_t s_len;
+    size_t i;
 
-	c = 0;
-	if (start > ft_strlen(s))
-		len = 0;
-	if (len > ft_strlen(s) - start)
-		len = (ft_strlen(s) - start);
-	sub = (char *) malloc(len + 1);
-	if (!s || !sub)
-		return (NULL);
-	while (s[c] != '\0' && c < len)
-	{
-		sub[c] = s[start];
-		start++;
-		c++;
-	}
-	sub[c] = '\0';
-	return (sub);
+    if (!s) // Verifica si la cadena es NULL
+        return NULL;
+
+    s_len = strlen(s);
+    
+    // Si 'start' es mayor que la longitud de 's', retorna una cadena vacía
+    if (start >= s_len)
+        return strdup(""); // strdup crea una copia de la cadena vacía
+
+    // Ajusta 'len' si es necesario
+    if (len > s_len - start)
+        len = s_len - start;
+
+    str = (char *)malloc(sizeof(char) * (len + 1));
+    if (!str) // Verifica si la asignación fue exitosa
+        return NULL;
+
+    for (i = 0; i < len; i++)
+        str[i] = s[start + i];
+
+    str[len] = '\0'; // Asegúrate de terminar la cadena con un null
+
+    return str;
 }
-/*int main(void)
-{
-    const char str[] = "Se copia o no??";
-    unsigned int begin = 3;
-    size_t max = 8;
-    printf("\n%s", ft_substr(str, begin, max));
-    return (0);
-}
-if (start >= ft_strlen(s))
-	{
-		sub[0] = '\0';
-		return (sub);
-	}
-	^sobra
-*/

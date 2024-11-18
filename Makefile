@@ -16,6 +16,7 @@ FLAGS    	:= #-Wall -Wextra -Werror
 SRCS        :=      src/cube3d.c \
                           src/debug.c \
 						  src/utils.c \
+						  src/utils2.c \
 						  src/extract.c \
                           Lib/ft_atoi.c \
                           Lib/ft_bzero.c \
