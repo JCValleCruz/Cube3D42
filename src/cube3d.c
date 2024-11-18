@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/18 13:30:12 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 14:52:18 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,8 +88,8 @@ int main(int argc, char **argv)
 	extract_textures(&file);
 	//print_textures_path(&file);
 	colourtotext(&file);
-	printf("CEILING SIN COMAS:%s\n", file.textceilingcolour);
-	printf("FLOOR SIN COMAS:%s\n", file.textfloorcolour);
+	//printf("CEILING SIN COMAS:%s\n", file.textceilingcolour);
+	//printf("FLOOR SIN COMAS:%s\n", file.textfloorcolour);
 	//free_split(file.dumpcontent);
 	//free_path(&file);
 	return 0;

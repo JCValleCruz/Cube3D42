@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/18 13:23:48 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 14:41:39 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,7 @@ int		so_texture_path(s_cube *file);
 int		we_texture_path(s_cube *file);
 int		ea_texture_path(s_cube *file);
 //Extract Colours				extract_colours.c
+char	*iscleanrgbtxt(char *str);
 int		colourtotext(s_cube *file);
 int		fextract_rgb(s_cube *file);
 int		cextract_rgb(s_cube *file);

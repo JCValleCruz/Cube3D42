@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:40:10 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/18 13:45:03 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 16:46:21 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,43 @@ int	colourtotext(s_cube *file)
 	return flag;	
 }
 
+char	*iscleanrgbtxt(char *str)
+{
+	int i;
+	int count;
+	
+	i = 0;
+	count = 0;
+	while(str[i])
+	{
+		if(str[i] == ',')
+		{
+			if(str[i + 1] == ',')
+			{
+				return NULL;
+			}
+			count++;
+		}
+		i++;		
+	}
+	return (str);
+}
+
 int cextract_rgb(s_cube *file)
 {
 	char	*str;
 	int		line;
+	int		i;
 	
 	line = -1;
 	while(file->dumpcontent[++line])
 	{
-		str = file->dumpcontent[line];
-		int i = 0;
+		printf("1AQUISTR:%s\n\n", str);
+		str = iscleanrgbtxt(file->dumpcontent[line]);
+		printf("2AQUISTR:%s\n\n", str);
+		if(!str)
+			return 0;
+		i = 0;
 		if(str[0] == 'C')
 		{
 			i++;
@@ -45,10 +72,7 @@ int cextract_rgb(s_cube *file)
 				if(str[i] == ',')
 					str[i] = ' ';
 				if(str[i] == '\0')
-				{
-					file->textceilingcolour = str + 2;
-					return 1;	
-				}
+					return file->textceilingcolour = str + 2, 1;	
 			}
 		}
 	}
