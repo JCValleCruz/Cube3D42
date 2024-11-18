@@ -8,16 +8,18 @@
 
 NAME        := cube3d
 CC        	:= gcc
-FLAGS    	:= #-Wall -Wextra -Werror 
+FLAGS    	:= -Wall -Wextra -Werror -g #-fsanitize=address
 ################################################################################
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
 SRCS        :=      src/cube3d.c \
                           src/debug.c \
+						  src/frees.c \
 						  src/utils.c \
 						  src/utils2.c \
-						  src/extract.c \
+						  src/extract_textures.c \
+						  src/extract_colours.c \
                           Lib/ft_atoi.c \
                           Lib/ft_bzero.c \
                           Lib/ft_calloc.c \

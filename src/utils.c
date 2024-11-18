@@ -6,13 +6,13 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 21:35:10 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/17 13:32:22 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 11:13:14 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube3d.h"
 
-void    *ft_checkfinal (s_cube *file)
+void    ft_checkfinal (s_cube *file)
 {
 	char *str;
 
@@ -46,8 +46,6 @@ char    *ft_checkfinal_str(char *str)
 char	*ft_check_spaces(char *str)
 {
 	int 	c;
-	int 	len;
-	char	*result;
 	
 	c = 0;
 	while(str[c] == ' ')

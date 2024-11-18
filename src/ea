@@ -1,7 +1,7 @@
-SO src/north.png
-NO src/south.png
+SO src/south.png                  
 WE src/west.png
-EA src/east.png
+EA                                                                                       src/east.png
+NO src/north.png
 F 220,100,0
 C 225,30,0
         1111111111111111111111111

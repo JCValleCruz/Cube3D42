@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 21:25:37 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/16 22:02:01 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 12:35:08 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,24 @@ void	print_split(s_cube *file)
 		printf("%s\n", file->dumpcontent[i]);
 		i++;
 	}	
+}
+
+void 	print_textures_path(s_cube *file)
+{
+	if(file->pathtexturenorth != NULL)
+		printf("\n%s\n", file->pathtexturenorth);
+	else
+		printf("NULL");
+	if(file->pathtexturesouth != NULL)	
+		printf("%s\n", file->pathtexturesouth);
+	else
+		printf("NULL");
+	if(file->pathtexturewest != NULL)
+		printf("%s\n", file->pathtexturewest);
+	else
+		printf("NULL");
+	if(file->pathtextureeast != NULL)
+		printf("%s\n", file->pathtextureeast);
+	else
+		printf("NULL");	
 }

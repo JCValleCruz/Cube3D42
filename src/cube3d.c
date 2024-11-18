@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/18 02:32:29 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 13:30:12 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,20 +76,21 @@ int	check_extension(char *str)
 int main(int argc, char **argv)
 {
     s_cube file;
-    
+	(void)argc;    
     if(!check_extension(argv[1]))
         printf("\nError: Extensión no válida.\n\n");
     else    
         printf("\nOK: Extensión soportada.\n\n");
     dump_map(&file, argv);
 	file.dumpcontent = ft_split(file.fdcontent, '\n');
-	//print_split(&file);
 	purge(&file);
 	print_split(&file);
 	extract_textures(&file);
-	printf("\n%s\n", file.pathtexturenorth);
-	printf("%s\n", file.pathtexturesouth);
-	printf("%s\n", file.pathtexturewest);
-    printf("%s\n", file.pathtextureeast);
+	//print_textures_path(&file);
+	colourtotext(&file);
+	printf("CEILING SIN COMAS:%s\n", file.textceilingcolour);
+	printf("FLOOR SIN COMAS:%s\n", file.textfloorcolour);
+	//free_split(file.dumpcontent);
+	//free_path(&file);
 	return 0;
 }
