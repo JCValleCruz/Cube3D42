@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/18 19:14:21 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 20:08:17 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,14 @@ int main(int argc, char **argv)
         printf("\nOK: Extensión soportada.\n\n");
     dump_map(&file, argv);
 	file.dumpcontent = ft_split(file.fdcontent, '\n');
-	purge(&file);
+	
+
+/* 	purge(&file);
 	print_split(&file);
 	extract_textures(&file);
 	colourtotext(&file);
-	print_textures_path(&file);
+	print_textures_path(&file); */
+
+	all_params(&file);
 	return 0;
 }

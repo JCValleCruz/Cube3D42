@@ -1,9 +1,11 @@
+F 220,    100,     2
+C 225, 120, 120           
+NO src/north.png  
 SO src/south.png                  
                               WE src/west.png			
-EA											 src/east.png
-                                                          NO src/north.png
-F 220,    100,     2
-C 225, 120, 120             
+EA											 src/east.png 
+EA											 src/east.png                                                   
+
 
         1111111111111111111111111
         1000000000110000000000001

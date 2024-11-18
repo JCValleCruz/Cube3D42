@@ -6,14 +6,14 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:40:10 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/18 19:02:07 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 19:29:34 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/cube3d.h"
 
 
-int	colourtotext(s_cube *file)
+int	extract_rgb(s_cube *file)
 {
 	int flag;
 	

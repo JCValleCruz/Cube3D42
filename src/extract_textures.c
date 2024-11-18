@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   extract.c                                          :+:      :+:    :+:   */
+/*   extract_textures.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 13:35:20 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/18 12:27:11 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 20:00:45 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,11 @@ int no_texture_path(s_cube *file)
                 i += 2;
                 while (str[i] && (str[i] == ' ' || str[i] == '\t'))
                     i++;
-               if(!file->pathtexturenorth)
+               if(!file->pathtexturenorth && file->no_flag == 0)
+			   {
+					file->no_flag = 1;
                     return file->pathtexturenorth = ft_substr(str, i, ft_strlen(str) - i), 1;
-				else if(file->pathtexturenorth)
-					return printf("Error: Duplicate.\n"), 0;
+			   }
             }
         }
     }
@@ -75,10 +76,11 @@ int so_texture_path(s_cube *file)
                 i += 2;
                 while (str[i] && (str[i] == ' ' || str[i] == '\t'))
                     i++;
-               if(!file->pathtexturesouth)
+               if(!file->pathtexturesouth && file->so_flag == 0)
+			   {
+					file->so_flag = 1;
                     return file->pathtexturesouth = ft_substr(str, i, ft_strlen(str) - i), 1;
-				else if(file->pathtexturesouth)
-					return printf("Error: Duplicate.\n"), 0;
+			   }
             }
         }
     }
@@ -101,10 +103,11 @@ int we_texture_path(s_cube *file)
                 i += 2;
                 while (str[i] && (str[i] == ' ' || str[i] == '\t'))
                     i++;
-               if(!file->pathtexturewest)
+               if(!file->pathtexturewest && file->we_flag == 0)
+			   {
+					file->we_flag = 1;
                     return file->pathtexturewest = ft_substr(str, i, ft_strlen(str) - i), 1;
-				else if(file->pathtexturewest)
-					return printf("Error: Duplicate.\n"), 0;
+			   }
             }
         }
     }
@@ -127,10 +130,11 @@ int ea_texture_path(s_cube *file)
                 i += 2;
                 while (str[i] && (str[i] == ' ' || str[i] == '\t'))
                     i++;
-               if(!file->pathtextureeast)
+               if(!file->pathtextureeast && file->ea_flag == 0)
+			   {
+					file->ea_flag = 1;
                     return file->pathtextureeast = ft_substr(str, i, ft_strlen(str) - i), 1;
-				else if(file->pathtextureeast)
-					return printf("Error: Duplicate.\n"), 0;
+			   }
             }
         }
     }
