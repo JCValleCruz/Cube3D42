@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 21:25:37 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/18 17:46:49 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 19:14:07 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,13 @@ void	print_split2(char	**str)
 
 void 	print_textures_path(s_cube *file)
 {
+	if (colourtotext(file))
+		printf("\nError al cargar RGB.\n");
+	else
+	{
+		printf("\nRGB FLOOR: R:%d G:%d B:%d\n",file->rgbfloorcolour[0], file->rgbfloorcolour[1], file->rgbfloorcolour[2]);
+		printf("RGB CEILING: R:%d G:%d B:%d\n",file->rgbceilingcolour[0], file->rgbceilingcolour[1], file->rgbceilingcolour[2]);
+	}		
 	if(file->pathtexturenorth != NULL)
 		printf("\n%s\n", file->pathtexturenorth);
 	else
@@ -56,7 +63,7 @@ void 	print_textures_path(s_cube *file)
 	else
 		printf("NULL");
 	if(file->pathtextureeast != NULL)
-		printf("%s\n", file->pathtextureeast);
+		printf("%s\n\n", file->pathtextureeast);
 	else
 		printf("NULL");	
 }

@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:40:10 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/18 18:26:44 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 19:02:07 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,15 @@ int	colourtotext(s_cube *file)
 	{
 		file->colourfloorsplit = ft_split(file->textfloorcolour, ' ');
 		file->colourceilingsplit = ft_split(file->textceilingcolour, ' ');
-		split_to_rgb(file);
+		if(split_to_rgb(file))
+			flag = 1;
 	}
+	if(file->rgbceilingcolour[0] == 0 && file->colourceilingsplit[1] == 0 
+		&& file->rgbceilingcolour == 0)
+	flag = 1;	
+	if(file->rgbfloorcolour[0] == 0 && file->rgbfloorcolour[1] == 0 
+		&& file->rgbfloorcolour == 0)	
+	flag = 1;	
 	return flag;	
 }
 
@@ -116,7 +123,7 @@ int fextract_rgb(s_cube *file)
 	return 0;
 }
 
-void	split_to_rgb(s_cube *file)
+int	split_to_rgb(s_cube *file)
 {
 	int		c;
 	char	**txt_rgb;
@@ -125,16 +132,21 @@ void	split_to_rgb(s_cube *file)
 	txt_rgb = file->colourfloorsplit;
 	while(c < 3)
 	{
-		file->rgbfloorcolour[c] = ft_atoi(txt_rgb[c]);
+		file->rgbfloorcolour[c] = ft_rgb_atoi(txt_rgb[c]);
+		if(file->rgbfloorcolour[c] > 255)
+			return 1;
 		c++;
 	}
 	c = 0;
 	txt_rgb = file->colourceilingsplit;
 	while(c < 3)
 	{
-		file->rgbceilingcolour[c] = ft_atoi(txt_rgb[c]);
+		file->rgbceilingcolour[c] = ft_rgb_atoi(txt_rgb[c]);
+		if(file->rgbceilingcolour[c] > 255)
+			return 1;
 		c++;
 	}
+	return 0;
 }
 
 

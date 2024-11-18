@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/18 18:22:18 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 19:14:21 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,11 +84,9 @@ int main(int argc, char **argv)
     dump_map(&file, argv);
 	file.dumpcontent = ft_split(file.fdcontent, '\n');
 	purge(&file);
-	//print_split(&file);
+	print_split(&file);
 	extract_textures(&file);
 	colourtotext(&file);
-	printf("RGB FLOOR: R:%d G:%d B:%d\n",file.rgbfloorcolour[0], file.rgbfloorcolour[1], file.rgbfloorcolour[2]);
-	//free_split(file.dumpcontent);
-	//free_path(&file);
+	print_textures_path(&file);
 	return 0;
 }

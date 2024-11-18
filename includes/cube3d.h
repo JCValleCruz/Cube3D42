@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/18 18:17:09 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 19:02:34 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ void    ft_checkfinal (s_cube *file);
 char    *ft_checkfinal_str(char *str);
 char	*ft_check_spaces(char *str);
 int		ft_check_map(char *str);
+int		ft_rgb_atoi(const char *str);
 //int		dp_count(char **content);
 //Pruebas----------------------->debug.c
 void	print_infile(s_cube *file);
@@ -60,7 +61,7 @@ char	*iscleanrgbtxt(char *str);
 int		colourtotext(s_cube *file);
 int		fextract_rgb(s_cube *file);
 int		cextract_rgb(s_cube *file);
-void	split_to_rgb(s_cube *file);
+int		split_to_rgb(s_cube *file);
 
 //Frees-------------------------->frees.c
 void	free_split(char **split);
