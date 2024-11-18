@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 19:18:57 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/18 20:09:00 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 20:11:24 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int		all_params(s_cube *file)
 {
 	purge(file);
-	init_textures_flag(file);
+	//init_textures_flag(file);
 	if(extract_textures(file))
 		printf("Error: Cannot load path textures.\n");
 	else

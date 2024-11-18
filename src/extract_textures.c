@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 13:35:20 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/18 20:00:45 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 20:12:56 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int no_texture_path(s_cube *file)
     int     line;
 
     line = -1;
+	file->no_flag = 0;
     while (file->dumpcontent[++line])
     {
         str = file->dumpcontent[line];
@@ -65,6 +66,7 @@ int so_texture_path(s_cube *file)
     int     line;
 
     line = -1;
+	file->so_flag = 0;
     while (file->dumpcontent[++line])
     {
         str = file->dumpcontent[line];
@@ -92,6 +94,7 @@ int we_texture_path(s_cube *file)
     int     line;
 
     line = -1;
+	file->we_flag = 0;
     while (file->dumpcontent[++line])
     {
         str = file->dumpcontent[line];
@@ -119,6 +122,7 @@ int ea_texture_path(s_cube *file)
     int     line;
 
     line = -1;
+	file->ea_flag = 0;
     while (file->dumpcontent[++line])
     {
         str = file->dumpcontent[line];
