@@ -6,33 +6,46 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 19:18:57 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/18 22:43:25 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 23:57:25 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/cube3d.h"
 
-int		all_params(s_cube *file)
+void	extract_map(s_cube	*file)
 {
-	file->rgb_flag = 0;
-	file->texture_flag = 0;
-	file->all_params_flag = 0;
-	
-	purge(file);
-	if(check_param_dup(file))
+	int		line;
+	int		mapsize;
+	char	*str;
+	int		i;
+	int		n;
+
+	line = 0;
+	i = 0;
+	n = 0;
+	file->map = NULL;
+	while(file->dumpcontent[line])
 	{
-		printf("Error: CUB file does not have the correct parameters.\n");
-		exit(1);
+		str = file->dumpcontent[line];
+		while(str[i])
+		{
+			if (str[i] && str[i] == '1' && str[i + 1] == '1' && str[i + 2] == '1' 
+				&& file->all_params_flag == 1)
+			{
+				mapsize =  dp_count(file->dumpcontent + 1) - line;
+				file->map = (char **)malloc(sizeof(char *) * mapsize);
+				while(n < (dp_count(file->dumpcontent) - line))
+				{
+					str = ft_strdup(file->dumpcontent[line]);
+					file->map[n] = str;
+					n++;
+					line++;
+					free(str);
+				}
+			}	
+			i++;
+		}
+		line++;
 	}
-	if(extract_textures(file))
-		printf("Error: Cannot load path textures.\n");
-	else
-		file->texture_flag = 1;		
-	if(extract_rgb(file))
-		printf("Error Cannot load rgb values.\n");
-	else
-		file->rgb_flag = 1;	
-	if(file->texture_flag == 1 && file->rgb_flag == 1)
-		file->all_params_flag = 1;
-	return(file->all_params_flag);		
+	file->map[n] = NULL;
 }

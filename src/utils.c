@@ -6,13 +6,13 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 21:35:10 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/18 11:13:14 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 23:37:33 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube3d.h"
 
-void    ft_checkfinal (s_cube *file)
+void    ft_checkfinal(s_cube *file)
 {
 	char *str;
 
@@ -65,4 +65,14 @@ int	ft_check_map(char *str)
 		c++;
 	}
 	return 0;
+}
+
+int	dp_count(char **str)
+{
+	int line;
+
+	line = 0;
+	while(str[line])
+		line++;
+	return (line);	
 }

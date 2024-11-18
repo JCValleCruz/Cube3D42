@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/18 22:23:38 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 23:43:10 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int		ft_rgb_atoi(const char *str);
 void	purge(s_cube *file);
 void	init_textures_flag(s_cube *file);
 int		check_param_dup(s_cube *file);
-//int		dp_count(char **content);
+int		dp_count(char **content);
 //Pruebas----------------------->debug.c
 void	print_infile(s_cube *file);
 void	print_split(s_cube *file);
@@ -70,6 +70,7 @@ int		cextract_rgb(s_cube *file);
 int		split_to_rgb(s_cube *file);
 //Extract Map
 int		all_params(s_cube *file);
+void	extract_map(s_cube	*file);
 
 //Frees-------------------------->frees.c
 void	free_split(char **split);
