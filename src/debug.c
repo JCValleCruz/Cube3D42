@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 21:25:37 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/18 12:35:08 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 17:46:49 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,17 @@ void	print_split(s_cube *file)
 	while(file->dumpcontent[i])
 	{
 		printf("%s\n", file->dumpcontent[i]);
+		i++;
+	}	
+}
+void	print_split2(char	**str)
+{
+	int i;
+
+	i = 0;
+	while(str[i])
+	{
+		printf("%s\n", str[i]);
 		i++;
 	}	
 }

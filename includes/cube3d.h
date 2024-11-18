@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/18 14:41:39 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 18:17:09 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,15 @@ typedef struct cube
 	
     char        *fdcontent;
     char        **dumpcontent;
-	//char		**map;
+	char		**map;
 	char		*pathtexturenorth;
 	char		*pathtexturesouth;
 	char		*pathtexturewest;
 	char		*pathtextureeast;
 	char		*textfloorcolour;
+	char		**colourfloorsplit;
 	char		*textceilingcolour;
+	char		**colourceilingsplit;
 	int			*rgbfloorcolour;
 	int			*rgbceilingcolour;
 }   s_cube;
@@ -45,6 +47,7 @@ int		ft_check_map(char *str);
 //Pruebas----------------------->debug.c
 void	print_infile(s_cube *file);
 void	print_split(s_cube *file);
+void	print_split2(char **str);
 void 	print_textures_path(s_cube *file);
 //Extract Texturs Path---------->extract_textures.c
 int		extract_textures(s_cube *file);
@@ -57,6 +60,8 @@ char	*iscleanrgbtxt(char *str);
 int		colourtotext(s_cube *file);
 int		fextract_rgb(s_cube *file);
 int		cextract_rgb(s_cube *file);
+void	split_to_rgb(s_cube *file);
+
 //Frees-------------------------->frees.c
 void	free_split(char **split);
 void	free_path(s_cube *file);

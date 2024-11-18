@@ -6,11 +6,12 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:40:10 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/18 16:46:21 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/18 18:26:44 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/cube3d.h"
+
 
 int	colourtotext(s_cube *file)
 {
@@ -19,11 +20,18 @@ int	colourtotext(s_cube *file)
 	flag = 0;
 	file->textfloorcolour = NULL;
 	file->textceilingcolour = NULL;
-	
+	file->rgbceilingcolour = (int *)malloc(sizeof(int) * 3);
+	file->rgbfloorcolour = (int *)malloc(sizeof(int) * 3);
 	if(!fextract_rgb(file))
 		flag = 1;
 	if(!cextract_rgb(file))
 		flag = 1;
+	if(flag == 0)
+	{
+		file->colourfloorsplit = ft_split(file->textfloorcolour, ' ');
+		file->colourceilingsplit = ft_split(file->textceilingcolour, ' ');
+		split_to_rgb(file);
+	}
 	return flag;	
 }
 
@@ -46,6 +54,8 @@ char	*iscleanrgbtxt(char *str)
 		}
 		i++;		
 	}
+	if(count > 2)
+		return NULL;
 	return (str);
 }
 
@@ -58,9 +68,7 @@ int cextract_rgb(s_cube *file)
 	line = -1;
 	while(file->dumpcontent[++line])
 	{
-		printf("1AQUISTR:%s\n\n", str);
 		str = iscleanrgbtxt(file->dumpcontent[line]);
-		printf("2AQUISTR:%s\n\n", str);
 		if(!str)
 			return 0;
 		i = 0;
@@ -106,6 +114,27 @@ int fextract_rgb(s_cube *file)
 	}
 	free(str);
 	return 0;
+}
+
+void	split_to_rgb(s_cube *file)
+{
+	int		c;
+	char	**txt_rgb;
+	
+	c = 0;
+	txt_rgb = file->colourfloorsplit;
+	while(c < 3)
+	{
+		file->rgbfloorcolour[c] = ft_atoi(txt_rgb[c]);
+		c++;
+	}
+	c = 0;
+	txt_rgb = file->colourceilingsplit;
+	while(c < 3)
+	{
+		file->rgbceilingcolour[c] = ft_atoi(txt_rgb[c]);
+		c++;
+	}
 }
 
 
