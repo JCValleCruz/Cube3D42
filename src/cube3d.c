@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/18 23:53:15 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/19 13:44:14 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,9 +84,9 @@ int main(int argc, char **argv)
     dump_map(&file, argv);
 	file.dumpcontent = ft_split(file.fdcontent, '\n');
 	all_params(&file);
-	extract_map(&file);
-	printf("%d\n", dp_count(file.dumpcontent));
-	printf("%s\n", file.map[3]);
+	print_infile(&file);
+	print_split(&file);
+
 
 	//printf("RGB FLAG:%d TXT FLAG:%d ALL:%d\n", file.rgb_flag, file.texture_flag, file.all_params_flag);
 	return 0;

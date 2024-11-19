@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 21:25:37 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/18 22:12:05 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/19 13:45:11 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ void	print_infile(s_cube *file)
 	char *forprint = file->fdcontent;
 	printf("Este es el contenido de CUBE:file.fdcontent:\n\n%s", forprint);
 }
-
 void	print_split(s_cube *file)
 {
 	int i;
@@ -40,7 +39,6 @@ void	print_split2(char	**str)
 		i++;
 	}	
 }
-
 void 	print_textures_path(s_cube *file)
 {
 	if (extract_rgb(file))

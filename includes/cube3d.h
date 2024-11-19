@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/18 23:43:10 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/19 13:40:57 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,8 @@ int		split_to_rgb(s_cube *file);
 //Extract Map
 int		all_params(s_cube *file);
 void	extract_map(s_cube	*file);
+//Errors
+int     exit_error(char *str, int i);
 
 //Frees-------------------------->frees.c
 void	free_split(char **split);
