@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/19 13:40:57 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/19 17:10:59 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ typedef struct cube
 	
     char        *fdcontent;
     char        **dumpcontent;
+	int			dumpsize;
 	char		**map;
 	char		*pathtexturenorth;
 	char		*pathtexturesouth;

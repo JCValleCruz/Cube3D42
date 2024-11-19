@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 02:09:50 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/19 13:51:33 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/19 17:48:24 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,6 @@ int		all_params(s_cube *file)
 	file->rgb_flag = 0;
 	file->texture_flag = 0;
 	file->all_params_flag = 0;
-	
 	purge(file);
 	if(check_param_dup(file))
 		exit_error("Error: CUB file does not have the correct parameters.\n", 1);
@@ -57,24 +56,37 @@ int		all_params(s_cube *file)
 
 void	purge_lines(s_cube *file)
 {
-	int	i;
-	int	line;
-	char *str;
-	int	flag;
+	int		i;
+	int		line;
+	char	*str;
+	int		n;
+
 	
 	i = -1;
 	line = -1;
-	while(file->dumpcontent[++line])
+	n = 0;
+	file->dumpsize = dp_count(file->dumpcontent);
+	while(file->dumpcontent[line])
 	{
-		str = file->dumpcontent[line];
+		str = ft_strdup(file->dumpcontent[line]);
 		i = -1;
-		while(str[++i])
+		while(str[i])
 		{
-			if(str[i] == '1' && str[i + 1] == '1' && file->all_params_flag == 1)
-				flag =
+			if(str[i] == '1' && str[i + 1] == '1' && file->all_params_flag == 0)
+			{			
+				file->map = (char **)malloc(dp_count(file->dumpcontent) - 7);
+				while(n < file->dumpsize - 7)
+				{
+					file->map[n] = file->dumpcontent[line];
+					n++;
+					line++;					
+				}	
+			}
+			else
+				i++;
 		}
-		
+		line++;
 	}
-
-	
+	print_split2(file->map);
+	file->map[n] = NULL;
 }

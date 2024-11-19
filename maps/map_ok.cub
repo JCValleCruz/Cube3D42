@@ -1,12 +1,26 @@
 F 220,    100,     2
-C 225, 120, 120
+C 225, 120, 12
+
+
+
+
+
+
+
         
 NO src/north.png  
 SO src/south.png                  
                               WE src/west.png			
 EA											 src/east.png
 
-                                           
+
+
+
+
+
+
+
+
 
 
         1111111111111111111111111

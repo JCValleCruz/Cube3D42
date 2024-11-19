@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 21:25:37 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/19 13:45:11 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/19 18:46:42 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,8 @@ void	print_split2(char	**str)
 
 	i = 0;
 	while(str[i])
-	{
-		printf("%s\n", str[i]);
-		i++;
-	}	
+		printf("%s\n", str[i++]);
+	
 }
 void 	print_textures_path(s_cube *file)
 {
