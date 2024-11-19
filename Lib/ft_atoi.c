@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/17 13:59:29 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/18 19:07:48 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/19 22:38:09 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,26 +35,3 @@ int	ft_atoi(const char *str)
 	return (result * sign);
 }
 
-int	ft_rgb_atoi(const char *str)
-{
-	int	result;
-	int	c;
-	
-	result = 0;
-	c = 0;
-	while(str[c])
-	{
-	 	if(str[c] < '0' || str[c] > '9')
-			return 256;
-		c++;	
-	}
-	c = 0;
-	while (*str == ' ' || (*str >= 9 && *str <= 13))
-		str++;
-	while (*str >= '0' && *str <= '9')
-	{
-		result = result * 10 + (*str - '0');
-		str++;
-	}
-	return (result);
-}

@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:40:10 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/18 19:29:34 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/19 22:35:31 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,13 @@ char	*iscleanrgbtxt(char *str)
 		if(str[i] == ',')
 		{
 			if(str[i + 1] == ',')
-			{
-				return NULL;
-			}
+				exit_error("Error: Cannot load rgb values.\n", 1);
 			count++;
+		if(count > 2)
+			exit_error("Error: Cannot load rgb values.\n", 1);
 		}
 		i++;		
 	}
-	if(count > 2)
-		return NULL;
 	return (str);
 }
 
@@ -98,12 +96,15 @@ int fextract_rgb(s_cube *file)
 {
 	char	*str;
 	int		line;
+	int		i;
 	
 	line = -1;
 	while(file->dumpcontent[++line])
 	{
-		str = file->dumpcontent[line];
-		int i = 0;
+		str = iscleanrgbtxt(file->dumpcontent[line]);
+		if(!str)
+			return 0;
+		i = 0;
 		if(str[0] == 'F')
 		{
 			i++;
@@ -112,14 +113,10 @@ int fextract_rgb(s_cube *file)
 				if(str[i] == ',')
 					str[i] = ' ';
 				if(str[i] == '\0')
-				{
-					file->textfloorcolour = str + 2;
-					return 1;	
-				}
+					return file->textfloorcolour = str + 2, 1;	
 			}
 		}
 	}
-	free(str);
 	return 0;
 }
 

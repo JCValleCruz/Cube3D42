@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 02:09:50 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/19 17:48:24 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/19 22:34:09 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,7 @@ int	check_param_dup(s_cube *file)
 
 int		all_params(s_cube *file)
 {
-	file->rgb_flag = 0;
-	file->texture_flag = 0;
-	file->all_params_flag = 0;
+	init_params(file);
 	purge(file);
 	if(check_param_dup(file))
 		exit_error("Error: CUB file does not have the correct parameters.\n", 1);
@@ -46,47 +44,37 @@ int		all_params(s_cube *file)
 	else
 		file->texture_flag = 1;		
 	if(extract_rgb(file))
-		exit_error("Error Cannot load rgb values.\n", 1);
+		exit_error("Error: Cannot load rgb values.\n", 1);
 	else
 		file->rgb_flag = 1;	
 	if(file->texture_flag == 1 && file->rgb_flag == 1)
 		file->all_params_flag = 1;
+	extract_map(file);
 	return(file->all_params_flag);		
 }
 
-void	purge_lines(s_cube *file)
+int	ft_rgb_atoi(const char *str)
 {
-	int		i;
-	int		line;
-	char	*str;
-	int		n;
-
+	int	result;
+	int	c;
 	
-	i = -1;
-	line = -1;
-	n = 0;
-	file->dumpsize = dp_count(file->dumpcontent);
-	while(file->dumpcontent[line])
+	result = 0;
+	c = 0;
+ 	if(!str)
+		exit_error("Error: Cannot load rgb values.\n", 1);
+	while(str[c])
 	{
-		str = ft_strdup(file->dumpcontent[line]);
-		i = -1;
-		while(str[i])
-		{
-			if(str[i] == '1' && str[i + 1] == '1' && file->all_params_flag == 0)
-			{			
-				file->map = (char **)malloc(dp_count(file->dumpcontent) - 7);
-				while(n < file->dumpsize - 7)
-				{
-					file->map[n] = file->dumpcontent[line];
-					n++;
-					line++;					
-				}	
-			}
-			else
-				i++;
-		}
-		line++;
+	 	if(str[c] < '0' || str[c] > '9')
+			return 256;
+		c++;	
 	}
-	print_split2(file->map);
-	file->map[n] = NULL;
+	c = 0;
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	while (*str >= '0' && *str <= '9')
+	{
+		result = result * 10 + (*str - '0');
+		str++;
+	}
+	return (result);
 }

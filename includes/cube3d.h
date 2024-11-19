@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/19 17:10:59 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/19 22:34:40 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct cube
 
 //Utilidades-------------------->utils.c
 void    ft_checkfinal (s_cube *file);
+int		check_extension(char *str);
 char    *ft_checkfinal_str(char *str);
 char	*ft_check_spaces(char *str);
 int		ft_check_map(char *str);
@@ -78,6 +79,9 @@ int     exit_error(char *str, int i);
 //Frees-------------------------->frees.c
 void	free_split(char **split);
 void	free_path(s_cube *file);
+
+
+void	init_params(s_cube *file);
 
 
 

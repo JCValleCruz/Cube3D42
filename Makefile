@@ -19,6 +19,7 @@ SRCS        :=      src/cube3d.c \
 						  src/utils.c \
 						  src/utils2.c \
 						  src/errors.c \
+						  src/init.c \
 						  src/extract_textures.c \
 						  src/extract_colours.c \
 						  src/extract_map.c \

@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/19 18:50:10 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/19 22:35:15 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,9 @@ void    dump_map(s_cube *file, char **argv)
 {
     int fd;
     int readed;
-
+	
+	if(!check_extension(argv[1]))
+        exit_error("\nError: Invalid extension.\n", 1);
     file->fdcontent = calloc(10000, 1);
     fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
@@ -77,19 +79,15 @@ int main(int argc, char **argv)
 {
     s_cube file;
 	(void)argc;    
-    dump_map(&file, argv);
-	file.dumpcontent = ft_split(file.fdcontent, '\n');
-	if(!check_extension(argv[1]))
-        exit_error("\nError: Invalid extension.", 1);
+    dump_map(&file, argv);	
 	all_params(&file);
-	extract_map(&file);
-	
 	print_split2(file.map);
+	print_textures_path(&file);
 	//printf("%s\n",file.map[3]);
 	//print_infile(&file);
 	//print_split(&file);
 
 
-	//printf("RGB FLAG:%d TXT FLAG:%d ALL:%d\n", file.rgb_flag, file.texture_flag, file.all_params_flag);
+	printf("RGB FLAG:%d TXT FLAG:%d ALL:%d\n", file.rgb_flag, file.texture_flag, file.all_params_flag);
 	return 0;
 }
