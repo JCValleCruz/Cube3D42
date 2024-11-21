@@ -9,6 +9,8 @@
 NAME        := cube3d
 CC        	:= gcc
 FLAGS    	:= -Wall -Wextra -Werror -g  #-fsanitize=address
+MLX42   	:= MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm -fsanitize=address
+LIBMLX		:= MLX42/
 ################################################################################
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
@@ -18,6 +20,7 @@ SRCS        :=      src/cube3d.c \
 						  src/frees.c \
 						  src/utils.c \
 						  src/utils2.c \
+						  src/utils3.c \
 						  src/errors.c \
 						  src/init.c \
 						  src/extract_textures.c \

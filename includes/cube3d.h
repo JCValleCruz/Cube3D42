@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/19 22:34:40 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:49:11 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,13 @@
 # include <stdio.h>
 # include <string.h>
 # include "../Lib/libft.h"
+# include "../MLX42/include/MLX42/MLX42.h"
+
+typedef struct unitsize
+{
+	int			x;
+	int			y;
+}	t_point;
 
 typedef struct cube
 {
@@ -27,6 +34,7 @@ typedef struct cube
     char        **dumpcontent;
 	int			dumpsize;
 	char		**map;
+	char		**map_copy;
 	char		*pathtexturenorth;
 	char		*pathtexturesouth;
 	char		*pathtexturewest;
@@ -40,6 +48,10 @@ typedef struct cube
 	int			*rgbceilingcolour;
 	int			rgb_flag;
 	int			all_params_flag;
+	//int			map_spaces;
+	//int			c_map_spaces;
+	t_point		player_pos;
+	
 }   s_cube;
 
 //Utilidades-------------------->utils.c
@@ -53,6 +65,8 @@ void	purge(s_cube *file);
 void	init_textures_flag(s_cube *file);
 int		check_param_dup(s_cube *file);
 int		dp_count(char **content);
+int		dp_count_space(char **dp);
+char	**clone_map(char **map);
 //Pruebas----------------------->debug.c
 void	print_infile(s_cube *file);
 void	print_split(s_cube *file);
@@ -75,12 +89,12 @@ int		all_params(s_cube *file);
 void	extract_map(s_cube	*file);
 //Errors
 int     exit_error(char *str, int i);
-
+//Flood Fill
+/* void	flood_fill(char **tab, t_point size, t_point begin);
+void	fill(char **tab, t_point size, t_point cur, char to_fill); */
 //Frees-------------------------->frees.c
 void	free_split(char **split);
 void	free_path(s_cube *file);
-
-
 void	init_params(s_cube *file);
 
 

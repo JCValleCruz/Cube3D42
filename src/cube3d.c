@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/19 22:35:15 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/21 13:23:27 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,12 +82,7 @@ int main(int argc, char **argv)
     dump_map(&file, argv);	
 	all_params(&file);
 	print_split2(file.map);
-	print_textures_path(&file);
-	//printf("%s\n",file.map[3]);
-	//print_infile(&file);
-	//print_split(&file);
-
-
-	printf("RGB FLAG:%d TXT FLAG:%d ALL:%d\n", file.rgb_flag, file.texture_flag, file.all_params_flag);
+	printf("\n");
+	clone_map(file.map);
 	return 0;
 }
