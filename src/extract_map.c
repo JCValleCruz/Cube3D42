@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 19:18:57 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/19 22:34:23 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/26 17:11:13 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	extract_map(s_cube *file)
 	n = 0;
 	while(file->dumpcontent[++line])
 	{
-		i = 0;
+		i = -1;
 		while(file->dumpcontent[line][++i])
 		{
 			if(file->dumpcontent[line][i] == '1' && file->dumpcontent[line][i + 1] == '1' 

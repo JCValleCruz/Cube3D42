@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 09:48:16 by jormoral          #+#    #+#             */
-/*   Updated: 2024/11/26 13:36:05 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/26 17:06:37 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,4 @@ double	initial_orientation(s_cube *file)
 	return (0);
 }
 
-int	check_clonemap(s_cube *file)
-{
-	while()
-}
+

@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/26 13:18:37 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/26 19:02:02 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,17 @@ int main(int argc, char **argv)
 	(void)argc;    
     dump_map(&file, argv);	
 	all_params(&file);
+	if(check_x(&file))
+		exit_error("Error: map is invalid.", 1);
+	if(check_y(&file))
+		exit_error("Error: map is invalid.", 1);
+	if(check_zero(&file))
+		exit_error("Error: map is invalid." ,1);	
+
 	init_raycasting(&file);
-	print_split2(file.map);
-	printf("\n\n\n\n\n");
-	print_split2(file.clone_map);
+	//print_split2(file.map);
+	//printf("\n\n\n\n\n");
+	//print_split2(file.clone_map); 
 
 	return 0;
 }

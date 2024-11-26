@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:51:09 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/26 13:34:00 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/26 17:13:11 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,16 +65,18 @@ void clone_map(s_cube *file)
 	line = -1;
 	while(file->map[++line])
 		file->clone_map[line] = ft_strdup(file->map[line]);
-	line = -1;
-	while(file->clone_map[++line])
+	line = 0;
+	while(file->map[line])
 	{
-		i = -1;
-		while(file->clone_map[line][++i])
+		i = 0;
+		while(file->clone_map[line][i])
 		{
 			if(file->clone_map[line][i] == 'N' || file->clone_map[line][i] == 'S' 
 				|| file->clone_map[line][i] == 'W' || file->clone_map[line][i] == 'E')
 			file->clone_map[line][i] = '0';	
+			i++;
 		}
+		line++;
 	}			
 }
 

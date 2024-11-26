@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/26 13:17:23 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/26 18:47:36 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,6 +87,12 @@ int		extract_rgb(s_cube *file);
 int		fextract_rgb(s_cube *file);
 int		cextract_rgb(s_cube *file);
 int		split_to_rgb(s_cube *file);
+//Check_map
+
+int		check_x(s_cube *file);
+int		check_y(s_cube *file);
+int		check_dby(s_cube *file);
+int		check_zero(s_cube *file);
 //Extract Map
 int		all_params(s_cube *file);
 void	extract_map(s_cube	*file);

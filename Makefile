@@ -9,7 +9,7 @@
 NAME        := cube3d
 CC        	:= clang
 FLAGS    	:= -Wall -Wextra -Werror -g  #-fsanitize=address
-MLX42   	:= MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm -fsanitize=address
+MLX42   	:= MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm 
 LIBMLX		:= MLX42/
 
 ################################################################################
@@ -25,6 +25,7 @@ SRCS        :=      src/cube3d.c \
 						  src/utils3.c \
 						  src/errors.c \
 						  src/init.c \
+						  src/check_map.c \
 						  src/extract_textures.c \
 						  src/extract_colours.c \
 						  src/extract_map.c \
