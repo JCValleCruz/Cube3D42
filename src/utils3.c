@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:51:09 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/21 13:28:52 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/26 12:01:04 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,8 +65,26 @@ char	**clone_map(char **map)
 	line = -1;
 	while(map[++line])
 		result[line] = ft_strdup(map[line]);
-	print_split2(result);
 	return (result);
+}
+
+int	ft_strchrplayer(const char *s, int c, s_cube *file)
+{
+	const char	*str;
+	int			i;
+	
+	str = s;
+	i = 0;
+	while (str[i])
+	{
+		if (str[i] == (unsigned char)c)
+		{
+			file->orientation = (char)c;	
+			return (1);
+		}
+		i++;
+	}
+	return (0);
 }
 
 

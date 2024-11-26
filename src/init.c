@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 21:32:03 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/19 22:36:54 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:53:36 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,4 +28,17 @@ void	init_params(s_cube *file)
 	file->rgb_flag = 0;
 	file->texture_flag = 0;
 	file->all_params_flag = 0;
+}
+
+void	init_raycasting(s_cube *file)
+{
+	file->position_player.x = 0;
+	file->position_player.y = 0;
+	file->orientation = '\0';
+	file->alpha = initial_orientation(file); // initial_orientation checkear funcion
+	file->v_dir.x = cos(file->alpha);	// coseno alpha
+	file->v_dir.y = sin(file->alpha);
+	//printf("%f\n", file->v_dir.x);
+
+	
 }

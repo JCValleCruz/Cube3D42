@@ -7,15 +7,17 @@
 ################################################################################
 
 NAME        := cube3d
-CC        	:= gcc
+CC        	:= clang
 FLAGS    	:= -Wall -Wextra -Werror -g  #-fsanitize=address
 MLX42   	:= MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm -fsanitize=address
 LIBMLX		:= MLX42/
+
 ################################################################################
 #                                 PROGRAM'S SRCS                               #
 ################################################################################
 
 SRCS        :=      src/cube3d.c \
+						  src/player.c \
                           src/debug.c \
 						  src/frees.c \
 						  src/utils.c \
@@ -72,8 +74,8 @@ SRCS        :=      src/cube3d.c \
                           
 OBJS        := $(SRCS:.c=.o)
 
-.c.o:
-	${CC} ${FLAGS} -c $< -o ${<:.c=.o}
+%.o: %.c
+	@$(CC) $(FLAGS) -c $< -o $@
 
 ################################################################################
 #                                  Makefile  objs                              #
@@ -88,25 +90,36 @@ BLUE		:= \033[1;34m
 CYAN 		:= \033[1;36m
 RM		    := rm -f
 
-${NAME}:	${OBJS}
-			@echo "$(GREEN)Compilation ${CLR_RMV}of ${YELLOW}$(NAME) ${CLR_RMV}..."
-			${CC} ${FLAGS} -o ${NAME} ${OBJS}
-			@echo "$(GREEN)$(NAME) created[0m ✔️"
+$(NAME) :    $(OBJS)
+	@echo "$(GREEN)Compiling $(CLR_RMV)$(YELLOW)$(NAME) $(CLR_RMV)..."
+	@$(CC) $(FLAGS) $(DEBUG_FLAGS) -lm $(OBJS) -o $(NAME)
+	@echo "$(GREEN)$(NAME) created $(CLR_RMV)✔️"
 
-all:		${NAME}
+# Default target
+all :        $(NAME)
 
-bonus:		all
+# Bonus target
+bonus :      all
 
-clean:
-			@ ${RM} *.o */*.o */*/*.o
-			@ echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)objs ✔️"
+# Clean object files
+clean :
+	@$(RM) $(OBJS)
+	@$(RM) $(SRC_DIR)/*.o $(LIB_DIR)/*.o
+	@echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)objects ✔️"
 
-fclean:		clean
-			@ ${RM} ${NAME}
-			@ echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)binary ✔️"
+# Clean everything (binary and objects)
+fclean :     clean
+	@$(RM) $(NAME)
+	@echo "$(RED)Deleting $(CYAN)$(NAME) $(CLR_RMV)binary ✔️"
 
-re:			fclean all
+# Rebuild everything
+re :         fclean all
 
-.PHONY:		all clean fclean re
+################################################################################
+#                                PHONY TARGETS                               #
+################################################################################
+
+.PHONY :     all clean fclean re bonus
+
 
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/21 13:49:11 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/26 11:56:49 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,17 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <string.h>
+# include <math.h>
 # include "../Lib/libft.h"
-# include "../MLX42/include/MLX42/MLX42.h"
 
-typedef struct unitsize
+# define PI 3.14159265
+
+typedef struct	s_point
 {
-	int			x;
-	int			y;
+	double	x;
+	double	y;
 }	t_point;
+
 
 typedef struct cube
 {
@@ -34,7 +37,6 @@ typedef struct cube
     char        **dumpcontent;
 	int			dumpsize;
 	char		**map;
-	char		**map_copy;
 	char		*pathtexturenorth;
 	char		*pathtexturesouth;
 	char		*pathtexturewest;
@@ -48,10 +50,11 @@ typedef struct cube
 	int			*rgbceilingcolour;
 	int			rgb_flag;
 	int			all_params_flag;
-	//int			map_spaces;
-	//int			c_map_spaces;
-	t_point		player_pos;
-	
+	/// añadido para Ray casting
+	char		orientation;
+	t_point 	position_player;
+	double		alpha;		
+	t_point		v_dir; // inizializar , hablas con jc si es mejor hacer un array
 }   s_cube;
 
 //Utilidades-------------------->utils.c
@@ -62,10 +65,8 @@ char	*ft_check_spaces(char *str);
 int		ft_check_map(char *str);
 int		ft_rgb_atoi(const char *str);
 void	purge(s_cube *file);
-void	init_textures_flag(s_cube *file);
 int		check_param_dup(s_cube *file);
 int		dp_count(char **content);
-int		dp_count_space(char **dp);
 char	**clone_map(char **map);
 //Pruebas----------------------->debug.c
 void	print_infile(s_cube *file);
@@ -89,14 +90,18 @@ int		all_params(s_cube *file);
 void	extract_map(s_cube	*file);
 //Errors
 int     exit_error(char *str, int i);
-//Flood Fill
-/* void	flood_fill(char **tab, t_point size, t_point begin);
-void	fill(char **tab, t_point size, t_point cur, char to_fill); */
+
 //Frees-------------------------->frees.c
 void	free_split(char **split);
 void	free_path(s_cube *file);
-void	init_params(s_cube *file);
 
+
+void	init_params(s_cube *file);
+// Ray Casting
+int		player_position(s_cube *file);
+double	initial_orientation(s_cube *file);
+void	init_raycasting(s_cube *file);
+int		ft_strchrplayer(const char *s, int c, s_cube *file);
 
 
 #endif
