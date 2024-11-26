@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/26 12:23:24 by jormoral         ###   ########.fr       */
+/*   Updated: 2024/11/26 13:18:37 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,9 @@ int main(int argc, char **argv)
     dump_map(&file, argv);	
 	all_params(&file);
 	init_raycasting(&file);
+	print_split2(file.map);
+	printf("\n\n\n\n\n");
+	print_split2(file.clone_map);
 
 	return 0;
 }

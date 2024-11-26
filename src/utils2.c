@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 02:09:50 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/26 12:00:44 by jormoral         ###   ########.fr       */
+/*   Updated: 2024/11/26 13:17:48 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ int		all_params(s_cube *file)
 	if(file->texture_flag == 1 && file->rgb_flag == 1)
 		file->all_params_flag = 1;
 	extract_map(file);
-	clone_map(file->map);
+	clone_map(file);
+	check_player(file);
 	return(file->all_params_flag);		
 }
 

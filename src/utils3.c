@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:51:09 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/26 12:01:04 by jormoral         ###   ########.fr       */
+/*   Updated: 2024/11/26 13:34:00 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,18 +54,28 @@ void	flood_fill(char **tab, t_point size, t_point begin)
 	fill(tab, size, begin, tab[begin.y][begin.x]);
 } */
 
-char	**clone_map(char **map)
+void clone_map(s_cube *file)
 {
 	int		line;
 	int 	size;
-	char	**result;
-
-	size = dp_count(map);
-	result = (char **)malloc(sizeof(char *) * size + 1);
+	int		i;
+	
+	size = dp_count(file->map);
+	file->clone_map = (char **)malloc(sizeof(char *) * size + 1);
 	line = -1;
-	while(map[++line])
-		result[line] = ft_strdup(map[line]);
-	return (result);
+	while(file->map[++line])
+		file->clone_map[line] = ft_strdup(file->map[line]);
+	line = -1;
+	while(file->clone_map[++line])
+	{
+		i = -1;
+		while(file->clone_map[line][++i])
+		{
+			if(file->clone_map[line][i] == 'N' || file->clone_map[line][i] == 'S' 
+				|| file->clone_map[line][i] == 'W' || file->clone_map[line][i] == 'E')
+			file->clone_map[line][i] = '0';	
+		}
+	}			
 }
 
 int	ft_strchrplayer(const char *s, int c, s_cube *file)

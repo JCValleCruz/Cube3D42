@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/26 11:56:49 by jormoral         ###   ########.fr       */
+/*   Updated: 2024/11/26 13:17:23 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,7 @@ typedef struct cube
     char        **dumpcontent;
 	int			dumpsize;
 	char		**map;
+	char		**clone_map;
 	char		*pathtexturenorth;
 	char		*pathtexturesouth;
 	char		*pathtexturewest;
@@ -67,7 +68,8 @@ int		ft_rgb_atoi(const char *str);
 void	purge(s_cube *file);
 int		check_param_dup(s_cube *file);
 int		dp_count(char **content);
-char	**clone_map(char **map);
+void	clone_map(s_cube *file);
+int		check_player(s_cube *file);
 //Pruebas----------------------->debug.c
 void	print_infile(s_cube *file);
 void	print_split(s_cube *file);
