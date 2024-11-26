@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 09:48:16 by jormoral          #+#    #+#             */
-/*   Updated: 2024/11/26 11:58:47 by jormoral         ###   ########.fr       */
+/*   Updated: 2024/11/26 12:02:28 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,8 @@ int	player_position(s_cube *file)
 		{
 			if (ft_strchrplayer("NSWE", file->map[(int)x][(int)y], file))
 			{
-				printf("%c\n", file->orientation);
 				file->position_player.x = x;
 				file->position_player.y = y;
-				printf("%f\n", file->position_player.x);
-				printf("%f\n", file->position_player.y);
 				return (0);
 			}
 			y++;

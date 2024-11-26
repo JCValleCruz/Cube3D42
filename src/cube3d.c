@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/26 12:00:18 by jormoral         ###   ########.fr       */
+/*   Updated: 2024/11/26 12:23:24 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,10 +81,7 @@ int main(int argc, char **argv)
 	(void)argc;    
     dump_map(&file, argv);	
 	all_params(&file);
-	//print_split2(file.map);
-	//printf("\n");
+	init_raycasting(&file);
 
-	player_position(&file);
-	initial_orientation(&file);
 	return 0;
 }
