@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/26 19:02:02 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/26 19:49:39 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,12 @@ int main(int argc, char **argv)
 	//print_split2(file.map);
 	//printf("\n\n\n\n\n");
 	//print_split2(file.clone_map); 
+/* 	printf("%c\n", file.orientation);
+	printf("%f\n", file.position_player.x);
+	printf("%f\n", file.position_player.y);
+	printf("%f\n", file.alpha);
+	printf("%f\n", file.v_dir.x);
+	printf("%f\n", file.v_dir.y); */
 
 	return 0;
 }

@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 21:32:03 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/26 12:23:36 by jormoral         ###   ########.fr       */
+/*   Updated: 2024/11/26 19:48:40 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,11 +34,12 @@ void	init_raycasting(s_cube *file)
 {
 	player_position(file);
 	initial_orientation(file);
-	file->position_player.x = 0;
-	file->position_player.y = 0;
-	file->orientation = '\0';
 	file->alpha = initial_orientation(file); // initial_orientation checkear funcion
-	file->v_dir.x = cos(file->alpha);	// coseno alpha
+	file->v_dir.x = cos(file->alpha);
 	file->v_dir.y = sin(file->alpha);
+	if (file->v_dir.x < 0.0 && file->orientation != 'W')
+    	file->v_dir.x = -file->v_dir.x;	 
+	if (file->v_dir.y < 0.0 && file->orientation != 'S')
+		file->v_dir.y = -file->v_dir.y; 
 
 }
