@@ -6,11 +6,35 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:55:20 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/26 19:44:12 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:55:32 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube3d.h"
+
+int	check_characters(s_cube *file)
+{
+	int line;
+	int	i;
+	char	*str;
+
+	line = 0;
+	while(file->map[line])
+	{
+		i = 0;
+		str = file->map[line];
+		while(str[i])
+		{
+			if(str[i] != '0' && str[i] != '1' && str[i] != 'N' && str[i] != 'S' 
+				&& str[i] != 'W' && str[i] != 'E' && str[i] != ' ' 
+					&& str[i] != '\t')
+				return (1);
+			i++;	
+		}
+		line++;
+	}
+	return (0);	
+}
 
 int	check_x(s_cube *file)
 {
@@ -74,18 +98,36 @@ int	check_zero(s_cube *file)
 		i = 1;
 		while(file->map[line][i])
 		{
+			printf("%c", file->map[line][i]);
+			printf("%d", i);
 			if((file->map[line][i] == '0') && (file->map[line - 1][i] == ' ' 
 				|| file->map[line + 1][i] == ' ' 
 					|| file->map[line][i - 1] == ' ' 
 						|| file->map[line][i + 1] == ' '
 							|| (size_t)i > ft_strlen(file->map[line - 1])
-								|| (size_t)i > ft_strlen(file->map[line + 1])))
-				return (1);
+								|| (size_t)i >= ft_strlen(file->map[line + 1 ])))
+								{
+									
+									return (1);
+								}
 			i++;	
 		}
 		line++;
 	}
 	return(0);
+}
+
+int	check_map(s_cube *file)
+{
+	if(check_x(file))
+		exit_error("Error: Map is invalid1.", 1);
+	if(check_y(file))
+		exit_error("Error: Map is invalid2.", 1);
+	if(check_zero(file))
+		exit_error("Error: Map is invalid3.", 1);
+	if(check_characters(file))
+		exit_error("Error: Map is invalid4.", 1);
+	return (0);		
 }
 
 

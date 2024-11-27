@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/26 19:49:39 by jormoral         ###   ########.fr       */
+/*   Updated: 2024/11/27 13:21:38 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void    dump_map(s_cube *file, char **argv)
     int readed;
 	
 	if(!check_extension(argv[1]))
-        exit_error("\nError: Invalid extension.\n", 1);
+        exit_error("Error: cannot load file.\n", 1);
     file->fdcontent = calloc(10000, 1);
     fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
@@ -81,13 +81,7 @@ int main(int argc, char **argv)
 	(void)argc;    
     dump_map(&file, argv);	
 	all_params(&file);
-	if(check_x(&file))
-		exit_error("Error: map is invalid.", 1);
-	if(check_y(&file))
-		exit_error("Error: map is invalid.", 1);
-	if(check_zero(&file))
-		exit_error("Error: map is invalid." ,1);	
-
+	check_map(&file);
 	init_raycasting(&file);
 	//print_split2(file.map);
 	//printf("\n\n\n\n\n");
