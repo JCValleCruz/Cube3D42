@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/27 13:24:27 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/12/05 13:33:27 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,11 @@
 # include <string.h>
 # include <math.h>
 # include "../Lib/libft.h"
+# include "../MLX42/include/MLX42/MLX42.h"
 
 # define PI 3.14159265
+# define WIDTH 1024
+# define HEIGHT 768
 
 typedef struct	s_point
 {
@@ -32,7 +35,6 @@ typedef struct	s_point
 
 typedef struct cube
 {
-	
     char        *fdcontent;
     char        **dumpcontent;
 	int			dumpsize;
@@ -56,6 +58,12 @@ typedef struct cube
 	t_point 	position_player;
 	double		alpha;		
 	t_point		v_dir; // inizializar , hablas con jc si es mejor hacer un array
+	mlx_t			*mlx;
+	mlx_image_t		*img;
+	mlx_texture_t 	*north;
+	mlx_texture_t	*south;
+	mlx_texture_t	*west;
+	mlx_texture_t	*east;
 }   s_cube;
 
 //Utilidades-------------------->utils.c
@@ -88,7 +96,7 @@ int		fextract_rgb(s_cube *file);
 int		cextract_rgb(s_cube *file);
 int		split_to_rgb(s_cube *file);
 //Check_map
-int		check_characters(s_cube *file);
+
 int		check_x(s_cube *file);
 int		check_y(s_cube *file);
 int		check_map(s_cube *file);
@@ -110,6 +118,6 @@ int		player_position(s_cube *file);
 double	initial_orientation(s_cube *file);
 void	init_raycasting(s_cube *file);
 int		ft_strchrplayer(const char *s, int c, s_cube *file);
-
-
+void	init_mlx(char *str1, s_cube *file);
+void	init_texture(s_cube	*file);
 #endif

@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 21:32:03 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/26 19:48:40 by jormoral         ###   ########.fr       */
+/*   Updated: 2024/12/05 13:31:42 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,11 @@ void	init_raycasting(s_cube *file)
 	if (file->v_dir.y < 0.0 && file->orientation != 'S')
 		file->v_dir.y = -file->v_dir.y; 
 
+}
+void	init_texture(s_cube	*file)
+{
+	file->north = mlx_load_png(file->pathtexturenorth);
+	file->south = mlx_load_png(file->pathtexturesouth);
+	file->east = mlx_load_png(file->pathtextureeast);
+	file->west = mlx_load_png(file->pathtexturewest);
 }

@@ -17,6 +17,7 @@ LIBMLX		:= MLX42/
 ################################################################################
 
 SRCS        :=      src/cube3d.c \
+						  src/init_mlx.c \
 						  src/player.c \
                           src/debug.c \
 						  src/frees.c \
@@ -93,7 +94,7 @@ RM		    := rm -f
 
 $(NAME) :    $(OBJS)
 	@echo "$(GREEN)Compiling $(CLR_RMV)$(YELLOW)$(NAME) $(CLR_RMV)..."
-	@$(CC) $(FLAGS) $(DEBUG_FLAGS) -lm $(OBJS) -o $(NAME)
+	@$(CC) $(FLAGS) $(DEBUG_FLAGS) $(OBJS) $(MLX42) -o $(NAME)
 	@echo "$(GREEN)$(NAME) created $(CLR_RMV)✔️"
 
 # Default target

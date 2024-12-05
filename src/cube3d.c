@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2024/11/27 13:21:38 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/12/05 13:31:06 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,8 @@ int main(int argc, char **argv)
 	all_params(&file);
 	check_map(&file);
 	init_raycasting(&file);
+	init_mlx(argv[1], &file);
+	mlx_image_to_window(file.mlx, file.img, 0, 0);
 	//print_split2(file.map);
 	//printf("\n\n\n\n\n");
 	//print_split2(file.clone_map); 
