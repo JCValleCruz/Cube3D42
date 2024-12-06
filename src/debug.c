@@ -3,21 +3,21 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 21:25:37 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/19 22:36:02 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/12/05 18:28:27 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube3d.h"
 
-void	print_infile(s_cube *file)
+void	print_infile(t_cube *file)
 {
 	char *forprint = file->fdcontent;
 	printf("Este es el contenido de CUBE:file.fdcontent:\n\n%s", forprint);
 }
-void	print_split(s_cube *file)
+void	print_split(t_cube *file)
 {
 	int i;
 
@@ -37,7 +37,7 @@ void	print_split2(char	**str)
 		printf("%s\n", str[i++]);
 	
 }
-void 	print_textures_path(s_cube *file)
+void 	print_textures_path(t_cube *file)
 {
 	if (extract_rgb(file))
 		printf("\nError al cargar RGB.\n");

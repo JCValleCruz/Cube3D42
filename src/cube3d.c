@@ -6,12 +6,12 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2024/12/05 13:31:06 by jormoral         ###   ########.fr       */
+/*   Updated: 2024/12/06 16:59:17 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube3d.h"
-void	purge(s_cube *file)
+void	purge(t_cube *file)
 {
 	int i;
 	int c;
@@ -31,7 +31,7 @@ void	purge(s_cube *file)
 	}
 }
 
-void    dump_map(s_cube *file, char **argv)
+void    dump_map(t_cube *file, char **argv)
 {
     int fd;
     int readed;
@@ -75,16 +75,33 @@ int	check_extension(char *str)
 	return (1);
 }
 
+void raycasting(t_cube *file)
+{
+	(void)file;
+}
+
+
+void handle_move(void *param)
+{
+	t_cube *file;
+	file = (t_cube *)param;
+	raycasting(file);
+}
+
+
 int main(int argc, char **argv)
 {
-    s_cube file;
+    t_cube file;
 	(void)argc;    
     dump_map(&file, argv);	
 	all_params(&file);
 	check_map(&file);
 	init_raycasting(&file);
 	init_mlx(argv[1], &file);
-	mlx_image_to_window(file.mlx, file.img, 0, 0);
+	mlx_image_to_window(file.mlx, file.img, 100, 0);
+	mlx_loop_hook(file.mlx, handle_move, &file);
+	mlx_loop(file.mlx);
+	
 	//print_split2(file.map);
 	//printf("\n\n\n\n\n");
 	//print_split2(file.clone_map); 

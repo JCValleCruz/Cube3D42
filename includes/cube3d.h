@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2024/12/05 13:33:27 by jormoral         ###   ########.fr       */
+/*   Updated: 2024/12/05 18:28:39 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ typedef struct	s_point
 }	t_point;
 
 
-typedef struct cube
+typedef struct s_cube
 {
     char        *fdcontent;
     char        **dumpcontent;
@@ -60,64 +60,64 @@ typedef struct cube
 	t_point		v_dir; // inizializar , hablas con jc si es mejor hacer un array
 	mlx_t			*mlx;
 	mlx_image_t		*img;
+	mlx_texture_t	*east;
 	mlx_texture_t 	*north;
 	mlx_texture_t	*south;
 	mlx_texture_t	*west;
-	mlx_texture_t	*east;
-}   s_cube;
+}   t_cube;
 
 //Utilidades-------------------->utils.c
-void    ft_checkfinal (s_cube *file);
+void    ft_checkfinal (t_cube *file);
 int		check_extension(char *str);
 char    *ft_checkfinal_str(char *str);
 char	*ft_check_spaces(char *str);
 int		ft_check_map(char *str);
 int		ft_rgb_atoi(const char *str);
-void	purge(s_cube *file);
-int		check_param_dup(s_cube *file);
+void	purge(t_cube *file);
+int		check_param_dup(t_cube *file);
 int		dp_count(char **content);
-void	clone_map(s_cube *file);
-int		check_player(s_cube *file);
+void	clone_map(t_cube *file);
+int		check_player(t_cube *file);
 //Pruebas----------------------->debug.c
-void	print_infile(s_cube *file);
-void	print_split(s_cube *file);
+void	print_infile(t_cube *file);
+void	print_split(t_cube *file);
 void	print_split2(char **str);
-void 	print_textures_path(s_cube *file);
+void 	print_textures_path(t_cube *file);
 //Extract Texturs Path---------->extract_textures.c
-int		extract_textures(s_cube *file);
-int		no_texture_path(s_cube *file);
-int		so_texture_path(s_cube *file);
-int		we_texture_path(s_cube *file);
-int		ea_texture_path(s_cube *file);
+int		extract_textures(t_cube *file);
+int		no_texture_path(t_cube *file);
+int		so_texture_path(t_cube *file);
+int		we_texture_path(t_cube *file);
+int		ea_texture_path(t_cube *file);
 //Extract Colours				extract_colours.c
 char	*iscleanrgbtxt(char *str);
-int		extract_rgb(s_cube *file);
-int		fextract_rgb(s_cube *file);
-int		cextract_rgb(s_cube *file);
-int		split_to_rgb(s_cube *file);
+int		extract_rgb(t_cube *file);
+int		fextract_rgb(t_cube *file);
+int		cextract_rgb(t_cube *file);
+int		split_to_rgb(t_cube *file);
 //Check_map
 
-int		check_x(s_cube *file);
-int		check_y(s_cube *file);
-int		check_map(s_cube *file);
-int		check_zero(s_cube *file);
+int		check_x(t_cube *file);
+int		check_y(t_cube *file);
+int		check_map(t_cube *file);
+int		check_zero(t_cube *file);
 //Extract Map
-int		all_params(s_cube *file);
-void	extract_map(s_cube	*file);
+int		all_params(t_cube *file);
+void	extract_map(t_cube	*file);
 //Errors
 int     exit_error(char *str, int i);
 
 //Frees-------------------------->frees.c
 void	free_split(char **split);
-void	free_path(s_cube *file);
+void	free_path(t_cube *file);
 
 
-void	init_params(s_cube *file);
+void	init_params(t_cube *file);
 // Ray Casting
-int		player_position(s_cube *file);
-double	initial_orientation(s_cube *file);
-void	init_raycasting(s_cube *file);
-int		ft_strchrplayer(const char *s, int c, s_cube *file);
-void	init_mlx(char *str1, s_cube *file);
-void	init_texture(s_cube	*file);
+int		player_position(t_cube *file);
+double	initial_orientation(t_cube *file);
+void	init_raycasting(t_cube *file);
+int		ft_strchrplayer(const char *s, int c, t_cube *file);
+void	init_mlx(char *str1, t_cube *file);
+void	init_texture(t_cube	*file);
 #endif

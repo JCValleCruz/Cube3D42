@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:55:20 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/27 13:55:32 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/12/05 18:28:27 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube3d.h"
 
-int	check_characters(s_cube *file)
+int	check_characters(t_cube *file)
 {
 	int line;
 	int	i;
@@ -36,7 +36,7 @@ int	check_characters(s_cube *file)
 	return (0);	
 }
 
-int	check_x(s_cube *file)
+int	check_x(t_cube *file)
 {
 	char	*str;
 	int		i;
@@ -61,7 +61,7 @@ int	check_x(s_cube *file)
 	return 0;
 }
 
-int	check_y(s_cube *file)
+int	check_y(t_cube *file)
 {
 	int		line;
 	int i;
@@ -87,7 +87,7 @@ int	check_y(s_cube *file)
 	return (0);
 }
 
-int	check_zero(s_cube *file)
+int	check_zero(t_cube *file)
 {
 	int	line;
 	int	i;
@@ -98,8 +98,6 @@ int	check_zero(s_cube *file)
 		i = 1;
 		while(file->map[line][i])
 		{
-			printf("%c", file->map[line][i]);
-			printf("%d", i);
 			if((file->map[line][i] == '0') && (file->map[line - 1][i] == ' ' 
 				|| file->map[line + 1][i] == ' ' 
 					|| file->map[line][i - 1] == ' ' 
@@ -107,7 +105,6 @@ int	check_zero(s_cube *file)
 							|| (size_t)i > ft_strlen(file->map[line - 1])
 								|| (size_t)i >= ft_strlen(file->map[line + 1 ])))
 								{
-									
 									return (1);
 								}
 			i++;	
@@ -117,7 +114,7 @@ int	check_zero(s_cube *file)
 	return(0);
 }
 
-int	check_map(s_cube *file)
+int	check_map(t_cube *file)
 {
 	if(check_x(file))
 		exit_error("Error: Map is invalid1.", 1);

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   extract_textures.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 13:35:20 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/18 22:17:31 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/12/05 18:28:27 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube3d.h"
 
-int		extract_textures(s_cube *file)
+int		extract_textures(t_cube *file)
 {
 	int flag;
 	
@@ -32,7 +32,7 @@ int		extract_textures(s_cube *file)
 		flag = 1;
 	return flag;	
 }
-int no_texture_path(s_cube *file)
+int no_texture_path(t_cube *file)
 {
     char    *str;
     int     line;
@@ -55,7 +55,7 @@ int no_texture_path(s_cube *file)
     }
     return 0; 
 }
-int so_texture_path(s_cube *file)
+int so_texture_path(t_cube *file)
 {
     char    *str;
     int     line;
@@ -78,7 +78,7 @@ int so_texture_path(s_cube *file)
     }
     return 0; 
 }
-int we_texture_path(s_cube *file)
+int we_texture_path(t_cube *file)
 {
     char    *str;
     int     line;
@@ -101,7 +101,7 @@ int we_texture_path(s_cube *file)
     }
     return 0; 
 }
-int ea_texture_path(s_cube *file)
+int ea_texture_path(t_cube *file)
 {
     char    *str;
     int     line;

@@ -6,13 +6,13 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 16:53:56 by jormoral          #+#    #+#             */
-/*   Updated: 2024/12/05 12:19:36 by jormoral         ###   ########.fr       */
+/*   Updated: 2024/12/05 18:28:27 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube3d.h"
 
-void init_mlx(char *str1, s_cube *file)
+void init_mlx(char *str1, t_cube *file)
 {
 	(void)str1;
 	// tengo que hacerle malloc a file??
