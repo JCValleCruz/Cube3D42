@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2024/12/05 13:31:06 by jormoral         ###   ########.fr       */
+/*   Updated: 2024/12/10 11:22:29 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ void	purge(s_cube *file)
 			file->dumpcontent[i] = ft_substr(file->dumpcontent[i], c, len);
 		i++;	
 	}
+	no_tabs(file);
 }
 
 void    dump_map(s_cube *file, char **argv)

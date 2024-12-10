@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 19:18:57 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/26 17:11:13 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/12/10 11:23:19 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,3 +41,24 @@ void	extract_map(s_cube *file)
 	}
 }
 
+void	no_tabs(s_cube *file)
+{
+	int		line;
+	int		i;
+	char	*str;
+
+	line = 0;
+	while(file->dumpcontent[line])
+	{
+		i = 0;
+		str = file->dumpcontent[line];
+		while(str[i])
+		{
+			if(str[i] == '\t')
+				exit_error("Error: infile contains tab characters.", 1);
+			i++;				
+		}
+		line++;
+	}
+	
+}

@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:55:20 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/27 13:55:32 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/12/10 11:05:52 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,8 +98,6 @@ int	check_zero(s_cube *file)
 		i = 1;
 		while(file->map[line][i])
 		{
-			printf("%c", file->map[line][i]);
-			printf("%d", i);
 			if((file->map[line][i] == '0') && (file->map[line - 1][i] == ' ' 
 				|| file->map[line + 1][i] == ' ' 
 					|| file->map[line][i - 1] == ' ' 
