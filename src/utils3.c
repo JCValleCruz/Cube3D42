@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:51:09 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/26 17:13:11 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/12/10 12:32:30 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,6 @@ int	dp_count_space(char **dp)
 	}
 	return (spaces);
 }
-
-/* void	fill(char **tab, t_point size, t_point cur, char to_fill)
-{
-	if (cur.y < 0 || cur.y >= size.y || cur.x < 0 || cur.x >= size.x
-		|| tab[cur.y][cur.x] != to_fill)
-		return ;
-	tab[cur.y][cur.x] = 'X';
-	fill(tab, size, (t_point){cur.x - 1, cur.y}, to_fill);
-	fill(tab, size, (t_point){cur.x + 1, cur.y}, to_fill);
-	fill(tab, size, (t_point){cur.x, cur.y - 1}, to_fill);
-	fill(tab, size, (t_point){cur.x, cur.y + 1}, to_fill);
-}
-
-void	flood_fill(char **tab, t_point size, t_point begin)
-{
-	fill(tab, size, begin, tab[begin.y][begin.x]);
-} */
 
 void clone_map(s_cube *file)
 {

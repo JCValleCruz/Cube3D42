@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2024/12/10 11:16:30 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/12/10 11:44:51 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct cube
 	char		*textceilingcolour;
 	char		**colourceilingsplit;
 	int			*rgbfloorcolour;
+	//int			fclean_flag;
 	int			*rgbceilingcolour;
 	int			rgb_flag;
 	int			all_params_flag;

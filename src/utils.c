@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 21:35:10 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/19 22:35:56 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/12/10 12:12:10 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,15 +16,18 @@ void    ft_checkfinal(s_cube *file)
 {
 	char *str;
 
-    int i = 0;
-    int n = 1;
+    int i;
+    int n;
+
+	i = 0;
+	n = 1;
 	str = file->fdcontent;
 	while (str[i] != '\0')
         i++;
     while (str[i - n] != '1')
     {
-        str[i - n] = str[i];
-        n++;
+		str[i - n] = str[i];
+		n++;
     }
     file->fdcontent = str;
 }
