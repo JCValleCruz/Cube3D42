@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:55:20 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/12/10 13:44:19 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/12/10 19:01:38 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ int	check_map(s_cube *file)
 		exit_error("Error: Map is invalid3.", 1);
 	if(check_characters(file))
 		exit_error("Error: Map is invalid4.", 1);
-	//pmap(file);
+
 	return (0);		
 }
 

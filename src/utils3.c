@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:51:09 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/12/10 12:32:30 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/12/10 19:44:00 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,5 +81,24 @@ int	ft_strchrplayer(const char *s, int c, s_cube *file)
 	}
 	return (0);
 }
+
+int	jclean(char *str, s_cube *file)
+{
+	int		i;
+	
+	i = 0;
+	file->map_flag = 0;
+	while(str[i])
+	{
+		if(str[i] == '1' && str[i + 1] == '1' && str[i + 2] == '1' 
+			&& (str[i + 3] == '1' || str[i + 3] == '0'))
+			file->map_flag = 1;
+		if(str[i] == '\n' && str[i + 1] == '\n' && file->map_flag == 1)
+			return 0;
+		i++;	
+	}
+	return 1;
+}
+
 
 

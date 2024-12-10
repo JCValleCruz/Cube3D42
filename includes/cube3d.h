@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2024/12/10 12:53:51 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/12/10 18:58:06 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,7 @@ typedef struct cube
 	int			*rgbceilingcolour;
 	int			rgb_flag;
 	int			all_params_flag;
+	int			map_flag;
 	/// añadido para Ray casting
 	char		orientation;
 	t_point 	position_player;
@@ -97,7 +98,7 @@ int		fextract_rgb(s_cube *file);
 int		cextract_rgb(s_cube *file);
 int		split_to_rgb(s_cube *file);
 //Check_map
-void	pmap(s_cube *file);
+
 void	no_tabs(s_cube *file);
 int		check_x(s_cube *file);
 int		check_y(s_cube *file);
@@ -106,6 +107,7 @@ int		check_zero(s_cube *file);
 //Extract Map
 int		all_params(s_cube *file);
 void	extract_map(s_cube	*file);
+int		jclean(char *str, s_cube *file);
 //Errors
 int     exit_error(char *str, int i);
 
@@ -122,4 +124,8 @@ void	init_raycasting(s_cube *file);
 int		ft_strchrplayer(const char *s, int c, s_cube *file);
 void	init_mlx(char *str1, s_cube *file);
 void	init_texture(s_cube	*file);
+
+
+
+char	**ft_split_2(const char *s, char c);
 #endif

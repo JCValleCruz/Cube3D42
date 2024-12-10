@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 19:18:57 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/12/10 13:43:19 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/12/10 19:11:31 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	extract_map(s_cube *file)
 			}
 		}
 	}
+	//file->map_flag = 1;
 }
 
 void	no_tabs(s_cube *file)
@@ -61,27 +62,4 @@ void	no_tabs(s_cube *file)
 		line++;
 	}
 	
-}
-
-void pmap(s_cube	*file)
-{
-	int 	i;
-	char	*str;
-
-	i = 0;
-	str = file->fdcontent;
-	while(str[i])
-		i++;
-	i--;	
-	while(i > 0)
-	{	
-		while(str[i] == ' ' || str[i] == '\n' || (str[i] >= 9 && str[i] <= 13))
-			i--;
-		if(str[i - 1] != '1')
-			exit_error("Error: infile incorrect.", 1);
-		printf("%s\n",file->fdcontent);
-		if(str[i - 1] == '1' && str[i - 2] == '1' && str[i - 3] == '1')
-			return ;
-		i--;		
-	}
 }

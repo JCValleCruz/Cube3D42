@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2024/12/10 13:53:38 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/12/10 19:38:57 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,9 @@ void    dump_map(s_cube *file, char **argv)
     readed = read(fd, file->fdcontent, 9999);
 	if (readed < 0)
 		return ;
-	ft_checkfinal(file);
+	if(jclean(file->fdcontent, file) == 0)
+		exit_error("HA PETADO", 1);
+	//ft_checkfinal(file);
 }
 
 int	check_extension(char *str)
@@ -83,13 +85,12 @@ int main(int argc, char **argv)
     s_cube file;
 	(void)argc;    
     dump_map(&file, argv);	
-	
 	all_params(&file);
 	check_map(&file);
-	print_split2(file.map);
 	init_raycasting(&file);
 	init_mlx(argv[1], &file);
 	mlx_image_to_window(file.mlx, file.img, 0, 0);
+	print_split2(file.map);
 	
 	//print_split2(file.dumpcontent);
 	//printf("\n\n\n\n\n");

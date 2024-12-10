@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 02:09:50 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/26 13:17:48 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/12/10 18:05:11 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ int	check_param_dup(s_cube *file)
 	while(file->dumpcontent[++line])
 	{
 		str = file->dumpcontent[line];
-		if(!ft_strncmp(str, "NO", 2) || !ft_strncmp(str, "SO", 2) 
-			|| !ft_strncmp(str, "WE", 2) || !ft_strncmp(str, "EA", 2) 
+		if(!ft_strncmp(str, "NO ", 3) || !ft_strncmp(str, "SO ", 3) 
+			|| !ft_strncmp(str, "WE ", 3) || !ft_strncmp(str, "EA ", 3) 
 				|| !ft_strncmp(str, "F ", 2) || !ft_strncmp(str, "C ", 2))
 			count++;			
 	}
