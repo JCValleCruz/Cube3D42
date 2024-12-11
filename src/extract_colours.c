@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   extract_colours.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:40:10 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/19 22:35:31 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/12/05 18:28:27 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/cube3d.h"
 
 
-int	extract_rgb(s_cube *file)
+int	extract_rgb(t_cube *file)
 {
 	int flag;
 	
@@ -64,7 +64,7 @@ char	*iscleanrgbtxt(char *str)
 	return (str);
 }
 
-int cextract_rgb(s_cube *file)
+int cextract_rgb(t_cube *file)
 {
 	char	*str;
 	int		line;
@@ -92,7 +92,7 @@ int cextract_rgb(s_cube *file)
 	return 0;
 }
 
-int fextract_rgb(s_cube *file)
+int fextract_rgb(t_cube *file)
 {
 	char	*str;
 	int		line;
@@ -120,7 +120,7 @@ int fextract_rgb(s_cube *file)
 	return 0;
 }
 
-int	split_to_rgb(s_cube *file)
+int	split_to_rgb(t_cube *file)
 {
 	int		c;
 	char	**txt_rgb;

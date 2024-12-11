@@ -6,13 +6,17 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 02:09:50 by jvalle-d          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/12/10 18:05:11 by jvalle-d         ###   ########.fr       */
+=======
+/*   Updated: 2024/12/11 13:44:40 by jvalle-d         ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/cube3d.h"
 
-int	check_param_dup(s_cube *file)
+int	check_param_dup(t_cube *file)
 {
 	char	*str;
 	int		line;
@@ -33,7 +37,7 @@ int	check_param_dup(s_cube *file)
 	return 0;
 }
 
-int		all_params(s_cube *file)
+int		all_params(t_cube *file)
 {
 	init_params(file);
 	purge(file);

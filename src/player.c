@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 09:48:16 by jormoral          #+#    #+#             */
-/*   Updated: 2024/11/26 17:06:37 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/12/11 11:39:57 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube3d.h"
 
-int	check_player(s_cube *file)
+int	check_player(t_cube *file)
 {
 	double	x;
 	double	y;
@@ -34,7 +34,7 @@ int	check_player(s_cube *file)
 	return (0);
 }
 
-int	player_position(s_cube *file)
+int	player_position(t_cube *file)
 {
 	double	x;
 	double	y;
@@ -57,9 +57,8 @@ int	player_position(s_cube *file)
 	return(printf("Error: Player not found."), 1);
 }
 
-double	initial_orientation(s_cube *file)
+double	initial_orientation(t_cube *file)
 {
-	
 	if (file->orientation == 'N')
 		return (file->alpha = PI / 2);
 	if (file->orientation == 'S')

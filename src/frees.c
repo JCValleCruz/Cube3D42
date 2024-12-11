@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   frees.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:12:33 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/11/18 12:32:11 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/12/05 18:28:27 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	free_split(char **split)
 	free(split);
 }
 
-void	free_path(s_cube *file)
+void	free_path(t_cube *file)
 {
 	free(file->pathtextureeast);
 	free(file->pathtexturenorth);

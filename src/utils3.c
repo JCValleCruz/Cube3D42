@@ -3,10 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   utils3.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:51:09 by jvalle-d          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2024/12/10 19:44:00 by jvalle-d         ###   ########.fr       */
+=======
+/*   Updated: 2024/12/05 18:28:27 by jormoral         ###   ########.fr       */
+>>>>>>> main
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +41,28 @@ int	dp_count_space(char **dp)
 	return (spaces);
 }
 
+<<<<<<< HEAD
 void clone_map(s_cube *file)
+=======
+/* void	fill(char **tab, t_point size, t_point cur, char to_fill)
+{
+	if (cur.y < 0 || cur.y >= size.y || cur.x < 0 || cur.x >= size.x
+		|| tab[cur.y][cur.x] != to_fill)
+		return ;
+	tab[cur.y][cur.x] = 'X';
+	fill(tab, size, (t_point){cur.x - 1, cur.y}, to_fill);
+	fill(tab, size, (t_point){cur.x + 1, cur.y}, to_fill);
+	fill(tab, size, (t_point){cur.x, cur.y - 1}, to_fill);
+	fill(tab, size, (t_point){cur.x, cur.y + 1}, to_fill);
+}
+
+void	flood_fill(char **tab, t_point size, t_point begin)
+{
+	fill(tab, size, begin, tab[begin.y][begin.x]);
+} */
+
+void clone_map(t_cube *file)
+>>>>>>> main
 {
 	int		line;
 	int 	size;
@@ -63,7 +88,7 @@ void clone_map(s_cube *file)
 	}			
 }
 
-int	ft_strchrplayer(const char *s, int c, s_cube *file)
+int	ft_strchrplayer(const char *s, int c, t_cube *file)
 {
 	const char	*str;
 	int			i;
