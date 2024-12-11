@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2024/12/11 12:53:07 by jormoral         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:38:18 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int	check_extension(char *str)
 		 	if (str[i + 4] != '\0')
 				return (0);
 		}
+		if(str[i + 1] == '\0' && str[i] != 'b')
+			return (0);
 		i++;
 	}
 	return (1);

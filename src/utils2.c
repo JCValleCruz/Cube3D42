@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 02:09:50 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/12/05 18:28:27 by jormoral         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:43:56 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/cube3d.h"
 
-int	check_param_dup(t_cube *file)
+int	check_param_dup(s_cube *file)
 {
 	char	*str;
 	int		line;
@@ -23,8 +23,8 @@ int	check_param_dup(t_cube *file)
 	while(file->dumpcontent[++line])
 	{
 		str = file->dumpcontent[line];
-		if(!ft_strncmp(str, "NO", 2) || !ft_strncmp(str, "SO", 2) 
-			|| !ft_strncmp(str, "WE", 2) || !ft_strncmp(str, "EA", 2) 
+		if(!ft_strncmp(str, "NO ", 3) || !ft_strncmp(str, "SO ", 3) 
+			|| !ft_strncmp(str, "WE ", 3) || !ft_strncmp(str, "EA ", 3) 
 				|| !ft_strncmp(str, "F ", 2) || !ft_strncmp(str, "C ", 2))
 			count++;			
 	}
@@ -33,7 +33,7 @@ int	check_param_dup(t_cube *file)
 	return 0;
 }
 
-int		all_params(t_cube *file)
+int		all_params(s_cube *file)
 {
 	init_params(file);
 	purge(file);
