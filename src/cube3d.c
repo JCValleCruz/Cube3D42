@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2024/12/09 14:03:29 by jormoral         ###   ########.fr       */
+/*   Updated: 2024/12/11 12:53:07 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,6 +78,7 @@ int	check_extension(char *str)
 void raycasting(t_cube *file)
 {
 	(void)file;
+	
 }
 void rotate_move(t_cube *file, double newmove)
 {
@@ -98,13 +99,17 @@ void	frontal_move(t_cube *file, double n)
 {
 	double	new_pos_x;
 	double	new_pos_y;
+	printf("posicion x: %f\n", file->position_player.x);
+	printf("posicion y: %f\n", file->position_player.y);
 	
 	new_pos_x = file->position_player.x + n * file->v_dir.x;
 	new_pos_y = file->position_player.y + n * file->v_dir.y;
-	if(file->map[(int)new_pos_x][(int)new_pos_y] == 0)
+	if(file->map[(int)new_pos_x][(int)new_pos_y] == '0')
 	{
 		file->position_player.x = new_pos_x;
 		file->position_player.y = new_pos_y;
+		printf("nueva posicion x: %f\n", file->position_player.x);
+		printf("nueva posicion y: %f\n", file->position_player.y);
 	}
 	/* cuando tengamos el mapa activo comprobar como se
 	comporta cerca de algo que no sea un '0'*/
@@ -118,11 +123,7 @@ void handle_move(void *param)
 {
 	t_cube *file;
 	file = (t_cube *)param;
-	raycasting(file);
-	/* en base al movimiento que realicemos, tenemos que calcula la direccion
-	si nos movemos hacias los lados, y si nos movemos hacia delante o atras 
-	realizamos el movimiento, esto tiene que estar activo durante
-	todo el programa*/
+	ft_draw_minimap(file);
 	if(mlx_is_key_down(file->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(file->mlx);
 	else if (mlx_is_key_down(file->mlx, MLX_KEY_A))
@@ -133,9 +134,16 @@ void handle_move(void *param)
 		frontal_move(file, 0.1);
 	else if (mlx_is_key_down(file->mlx, MLX_KEY_S))
 		frontal_move(file, -0.1);
+	//mlx_put_pixel(file->img, file->position_player.x, file->position_player.y);
+	
 	/*nuestro giros van a ser de 10 grados, lo que es igual 
 	a PI / 18 = 0.1745, si giramos hacia la izquierda es -1
 	porque estamos girando sobre el eje x */
+	raycasting(file);
+	/* en base al movimiento que realicemos, tenemos que calcula la direccion
+	si nos movemos hacias los lados, y si nos movemos hacia delante o atras 
+	realizamos el movimiento, esto tiene que estar activo durante
+	todo el programa*/
 	
 }
 
@@ -156,12 +164,13 @@ int main(int argc, char **argv)
 	//print_split2(file.map);
 	//printf("\n\n\n\n\n");
 	//print_split2(file.clone_map); 
-	/* printf("%c\n", file.orientation);
+	//mlx_put_pixel()
+	printf("%c\n", file.orientation);
 	printf("%f\n", file.position_player.x);
 	printf("%f\n", file.position_player.y);
 	printf("%f\n", file.alpha);
 	printf("%f\n", file.v_dir.x);
 	printf("%f\n", file.v_dir.y);
- */
+
 	return 0;
 }

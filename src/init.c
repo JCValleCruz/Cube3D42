@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 21:32:03 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/12/05 18:28:27 by jormoral         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:07:47 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,8 @@ void	init_params(t_cube *file)
 	file->rgb_flag = 0;
 	file->texture_flag = 0;
 	file->all_params_flag = 0;
+	file->mmap_background = load_ground();
+	file->mmap_wall = load_wall_texture();
 }
 
 void	init_raycasting(t_cube *file)

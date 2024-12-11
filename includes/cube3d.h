@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2024/12/05 18:28:39 by jormoral         ###   ########.fr       */
+/*   Updated: 2024/12/11 13:10:49 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,12 @@
 # define PI 3.14159265
 # define WIDTH 1024
 # define HEIGHT 768
+# define WHITE 0x66ffffff
+
+# define WALL '1'
+# define PLAYER 'P'
+# define GROUND '0'
+
 
 typedef struct	s_point
 {
@@ -64,6 +70,9 @@ typedef struct s_cube
 	mlx_texture_t 	*north;
 	mlx_texture_t	*south;
 	mlx_texture_t	*west;
+	mlx_texture_t	*mmap_player;
+	mlx_texture_t	*mmap_wall;
+	mlx_texture_t 	*mmap_background;
 }   t_cube;
 
 //Utilidades-------------------->utils.c
@@ -120,4 +129,12 @@ void	init_raycasting(t_cube *file);
 int		ft_strchrplayer(const char *s, int c, t_cube *file);
 void	init_mlx(char *str1, t_cube *file);
 void	init_texture(t_cube	*file);
+
+
+//Experimento Minimapa
+void	ft_draw_minimap(void *g);
+mlx_texture_t	*load_ground(void);
+mlx_texture_t	*load_wall_texture(void);
+
+
 #endif
