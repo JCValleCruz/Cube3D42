@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2024/12/11 13:38:18 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/12/11 19:47:14 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,8 @@ void	frontal_move(t_cube *file, double n)
 {
 	double	new_pos_x;
 	double	new_pos_y;
-	printf("posicion x: %f\n", file->position_player.x);
-	printf("posicion y: %f\n", file->position_player.y);
+	/* printf("posicion x: %f\n", file->position_player.x);
+	printf("posicion y: %f\n", file->position_player.y); */
 	
 	new_pos_x = file->position_player.x + n * file->v_dir.x;
 	new_pos_y = file->position_player.y + n * file->v_dir.y;
@@ -125,7 +125,8 @@ void handle_move(void *param)
 {
 	t_cube *file;
 	file = (t_cube *)param;
-	ft_draw_minimap(file);
+	int flag;
+	flag = 0;
 	if(mlx_is_key_down(file->mlx, MLX_KEY_ESCAPE))
 		mlx_close_window(file->mlx);
 	else if (mlx_is_key_down(file->mlx, MLX_KEY_A))
@@ -136,6 +137,12 @@ void handle_move(void *param)
 		frontal_move(file, 0.1);
 	else if (mlx_is_key_down(file->mlx, MLX_KEY_S))
 		frontal_move(file, -0.1);
+	else if (file->minimap_control->key == MLX_KEY_M && file->minimap_control->action == MLX_RELEASE)
+	{
+		ft_draw_minimap(file);
+	}
+
+		
 	//mlx_put_pixel(file->img, file->position_player.x, file->position_player.y);
 	
 	/*nuestro giros van a ser de 10 grados, lo que es igual 

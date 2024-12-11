@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2024/12/11 13:10:49 by jormoral         ###   ########.fr       */
+/*   Updated: 2024/12/11 19:46:40 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@
 # define WHITE 0x66ffffff
 
 # define WALL '1'
-# define PLAYER 'P'
+# define PLAYER 'N'
 # define GROUND '0'
+# define SCALE_M 32
 
 
 typedef struct	s_point
@@ -73,6 +74,11 @@ typedef struct s_cube
 	mlx_texture_t	*mmap_player;
 	mlx_texture_t	*mmap_wall;
 	mlx_texture_t 	*mmap_background;
+	mlx_image_t     *player;
+	mlx_image_t		*wall;
+	mlx_image_t		*ground;
+	mlx_key_data_t 	*minimap_control;
+	
 }   t_cube;
 
 //Utilidades-------------------->utils.c
@@ -135,6 +141,7 @@ void	init_texture(t_cube	*file);
 void	ft_draw_minimap(void *g);
 mlx_texture_t	*load_ground(void);
 mlx_texture_t	*load_wall_texture(void);
+mlx_texture_t	*load_player_texture(void);
 
 
 #endif
