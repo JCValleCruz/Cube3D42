@@ -83,7 +83,6 @@ int	check_extension(char *str)
 	}
 	return (1);
 }
-
 void raycasting(t_cube *file)
 {
 	(void)file;
