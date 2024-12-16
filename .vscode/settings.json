@@ -10,7 +10,8 @@
 		"mlx42.h": "c",
 		"lodepng.h": "c",
 		"khrplatform.h": "c",
-		"glad.h": "c"
+		"glad.h": "c",
+		"cube3d.h": "c"
 	},
 	"cmake.sourceDirectory": "/home/jormoral/Desktop/cub3d/MLX42"
 >>>>>>> main

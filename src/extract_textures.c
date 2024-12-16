@@ -7,10 +7,14 @@
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 13:35:20 by jvalle-d          #+#    #+#             */
 <<<<<<< HEAD
+<<<<<<< HEAD
 /*   Updated: 2024/12/10 18:19:57 by jvalle-d         ###   ########.fr       */
 =======
 /*   Updated: 2024/12/11 13:39:15 by jvalle-d         ###   ########.fr       */
 >>>>>>> main
+=======
+/*   Updated: 2024/12/12 18:53:08 by jvalle-d         ###   ########.fr       */
+>>>>>>> jormoral
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +59,7 @@ int no_texture_path(t_cube *file)
 					if(str[i] == '\0')
 						return 0;
 				}
-            	return file->pathtexturenorth = ft_substr(str, i, ft_strlen(str) - i), 1;		
+            	return file->pathtexturenorth = ft_checkfinal_str(ft_substr(str, i, ft_strlen(str) - i)), 1;	
             }
         }
 		
@@ -83,7 +87,7 @@ int so_texture_path(t_cube *file)
 					if(str[i] == '\0')
 						return 0;
 				}
-            	return file->pathtexturesouth = ft_substr(str, i, ft_strlen(str) - i), 1;		
+            	return file->pathtexturesouth = ft_checkfinal_str(ft_substr(str, i, ft_strlen(str) - i)), 1;
             }
         }
     }
@@ -110,7 +114,7 @@ int we_texture_path(t_cube *file)
 					if(str[i] == '\0')
 						return 0;
 				}
-            	return file->pathtexturewest = ft_substr(str, i, ft_strlen(str) - i), 1;		
+            	return file->pathtexturewest = ft_checkfinal_str(ft_substr(str, i, ft_strlen(str) - i)), 1;		
             }
         }
     }
@@ -137,7 +141,7 @@ int ea_texture_path(t_cube *file)
 					if(str[i] == '\0')
 						return 0;
 				}
-            	return file->pathtextureeast = ft_substr(str, i, ft_strlen(str) - i), 1;		
+            	return file->pathtextureeast = ft_checkfinal_str(ft_substr(str, i, ft_strlen(str) - i)), 1;		
             }
         }
     }
