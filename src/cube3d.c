@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2024/12/12 18:45:33 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/12/13 12:04:45 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -121,37 +121,31 @@ void	frontal_move(t_cube *file, double n)
 }
 
 
-void handle_move(void *param)
+void handle_move(mlx_key_data_t keydata, void *param)
 {
 	t_cube *file;
+	
 	file = (t_cube *)param;
-	
-	if(mlx_is_key_down(file->mlx, MLX_KEY_ESCAPE))
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		mlx_close_window(file->mlx);
-	else if (mlx_is_key_down(file->mlx, MLX_KEY_A))
+	else if ((keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS))
 		rotate_move(file, -1 * 0.1745);
-	else if (mlx_is_key_down(file->mlx, MLX_KEY_D))
+	else if ((keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS))
 		rotate_move(file, 0.1745);
-	else if (mlx_is_key_down(file->mlx, MLX_KEY_W))
+	else if ((keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS))
 		frontal_move(file, 0.1);
-	else if (mlx_is_key_down(file->mlx, MLX_KEY_S))
+	else if ((keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS))
 		frontal_move(file, -0.1);
-	else if (mlx_is_key_down(file->mlx, MLX_KEY_M))
+	else if((keydata.key == MLX_KEY_M && keydata.action == MLX_PRESS))
+	{
+		file->minimap_visible = 1;
 		ft_draw_minimap(file);
-	
-
-		
-	//mlx_put_pixel(file->img, file->position_player.x, file->position_player.y);
-	
-	/*nuestro giros van a ser de 10 grados, lo que es igual 
-	a PI / 18 = 0.1745, si giramos hacia la izquierda es -1
-	porque estamos girando sobre el eje x */
-	raycasting(file);
-	/* en base al movimiento que realicemos, tenemos que calcula la direccion
-	si nos movemos hacias los lados, y si nos movemos hacia delante o atras 
-	realizamos el movimiento, esto tiene que estar agictivo durante
-	todo el programa*/
-	
+	}		
+	else if((keydata.key == MLX_KEY_M && keydata.action == MLX_RELEASE))
+	{
+		file->minimap_visible = 0;
+		ft_draw_minimap(file);
+	}
 }
 
 
@@ -162,11 +156,10 @@ int main(int argc, char **argv)
     dump_map(&file, argv);	
 	all_params(&file);
 	check_map(&file);
-	printf("%s\n", file.pathtexturenorth);
-/* 	init_raycasting(&file);
+ 	init_raycasting(&file);
 	init_mlx(argv[1], &file);
 	mlx_image_to_window(file.mlx, file.img, 100, 0);
-	mlx_loop_hook(file.mlx, handle_move, &file);
+	mlx_key_hook(file.mlx, handle_move, &file);
 	mlx_loop(file.mlx);
 	// funcion que libere aqui!!
 	//print_split2(file.map);
@@ -178,7 +171,7 @@ int main(int argc, char **argv)
 	printf("%f\n", file.position_player.y);
 	printf("%f\n", file.alpha);
 	printf("%f\n", file.v_dir.x);
-	printf("%f\n", file.v_dir.y); */
+	printf("%f\n", file.v_dir.y); 
 
 	return 0;
 }

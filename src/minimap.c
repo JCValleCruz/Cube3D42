@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:33:52 by jormoral          #+#    #+#             */
-/*   Updated: 2024/12/12 14:04:27 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/12/12 22:28:14 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,13 @@ mlx_texture_t	*load_player_texture(void)
 	texture = mlx_load_png("./resources/player.png");
 	return (texture);
 }
+mlx_texture_t	*load_clean(void)
+{
+	mlx_texture_t	*texture;
+
+	texture = mlx_load_png("./resources/trans.png");
+	return (texture);
+}
 
 void	put_background(void *g, int x, int y)
 {
@@ -103,12 +110,49 @@ void	put_wall(void *g, int x, int y)
 	mlx_image_to_window(game->mlx, game->wall, (x * SCALE_M), (y * SCALE_M));
 }
 
+void	put_cleaned(void *g, int x, int y)
+{
+	t_cube      *game; 
+
+	game = (t_cube *)g;
+	game->cleaned = mlx_texture_to_image(game->mlx, game->mmap_cleaned);
+	mlx_resize_image(game->cleaned, SCALE_M, SCALE_M);
+	mlx_image_to_window(game->mlx, game->cleaned, (x * SCALE_M), (y * SCALE_M));
+}
+
 void	ft_draw_minimap(void *g)
 {
 	t_cube	*file;
 	int		x;
 	int		y;
+	
+	file = (t_cube *)g;
+	y = -1;
+	if(file->minimap_visible == 1)
+	{
+		while (++y < 14) // 
+		{
+			x = -1;
+			while ((size_t)++x < ft_strlen(file->map[y]))
+			{
+				if (file->map[y][x] == GROUND)
+					put_background(file, x, y);
+				else if (file->map[y][x] == WALL)
+					put_wall(file, x, y);
+				else if(file->map[y][x] == PLAYER)
+					put_player(file, x, y);
+			}
+		}
+	}
+	else if(file->minimap_visible == 0)
+		ft_clean_minimap(file);
+}
 
+void	ft_clean_minimap(void *g)
+{
+	t_cube	*file;
+	int		x;
+	int		y;
 	file = (t_cube *)g;
 	x = 0;
 	y = 0;
@@ -117,15 +161,12 @@ void	ft_draw_minimap(void *g)
 		x = 0;
 		while ((size_t)x < ft_strlen(file->map[y]))
 		{
-			if (file->map[y][x] == GROUND)
-				put_background(file, x, y);
-			else if (file->map[y][x] == WALL)
-				put_wall(file, x, y);
-			else if(file->map[y][x] == PLAYER)
-				put_player(file, x, y);
+			if(file->map[y][x] == GROUND || file->map[y][x] == WALL || file->map[y][x] == PLAYER)
+				put_cleaned(file, x, y);
 			x++;
 		}
 		y++;
 	}
 	//file->player->enabled = false;
 }
+

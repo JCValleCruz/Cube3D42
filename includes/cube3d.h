@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2024/12/11 19:46:40 by jormoral         ###   ########.fr       */
+/*   Updated: 2024/12/12 21:56:02 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,13 @@ typedef struct s_cube
 	mlx_texture_t	*mmap_player;
 	mlx_texture_t	*mmap_wall;
 	mlx_texture_t 	*mmap_background;
+	mlx_texture_t	*mmap_cleaned;
 	mlx_image_t     *player;
 	mlx_image_t		*wall;
 	mlx_image_t		*ground;
+	mlx_image_t		*cleaned;
 	mlx_key_data_t 	*minimap_control;
+	int				minimap_visible;
 	
 }   t_cube;
 
@@ -142,6 +145,11 @@ void	ft_draw_minimap(void *g);
 mlx_texture_t	*load_ground(void);
 mlx_texture_t	*load_wall_texture(void);
 mlx_texture_t	*load_player_texture(void);
+
+
+void	ft_clean_minimap(void *g);
+mlx_texture_t	*load_clean(void);
+void	put_cleaned(void *g, int x, int y);
 
 
 #endif

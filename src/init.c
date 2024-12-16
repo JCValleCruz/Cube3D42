@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 21:32:03 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/12/12 14:04:14 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/12/12 22:20:26 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	init_params(t_cube *file)
 	file->mmap_player = load_player_texture();
 	file->mmap_wall = load_wall_texture();
 	file->mmap_player = load_player_texture();
+	file->mmap_cleaned = load_clean();
 }
 
 void	init_raycasting(t_cube *file)
