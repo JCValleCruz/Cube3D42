@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2024/12/11 13:10:49 by jormoral         ###   ########.fr       */
+/*   Updated: 2024/12/16 11:35:31 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,8 +28,9 @@
 # define WHITE 0x66ffffff
 
 # define WALL '1'
-# define PLAYER 'P'
+# define PLAYER 'N'
 # define GROUND '0'
+# define SCALE_M 32
 
 
 typedef struct	s_point
@@ -62,8 +63,10 @@ typedef struct s_cube
 	/// añadido para Ray casting
 	char		orientation;
 	t_point 	position_player;
-	double		alpha;		
-	t_point		v_dir; // inizializar , hablas con jc si es mejor hacer un array
+	double		alpha;
+	t_point		ray;		
+	t_point		v_dir;
+	
 	mlx_t			*mlx;
 	mlx_image_t		*img;
 	mlx_texture_t	*east;
@@ -73,6 +76,14 @@ typedef struct s_cube
 	mlx_texture_t	*mmap_player;
 	mlx_texture_t	*mmap_wall;
 	mlx_texture_t 	*mmap_background;
+	mlx_texture_t	*mmap_cleaned;
+	mlx_image_t     *player;
+	mlx_image_t		*wall;
+	mlx_image_t		*ground;
+	mlx_image_t		*cleaned;
+	mlx_key_data_t 	*minimap_control;
+	int				minimap_visible;
+	
 }   t_cube;
 
 //Utilidades-------------------->utils.c
@@ -135,6 +146,12 @@ void	init_texture(t_cube	*file);
 void	ft_draw_minimap(void *g);
 mlx_texture_t	*load_ground(void);
 mlx_texture_t	*load_wall_texture(void);
+mlx_texture_t	*load_player_texture(void);
+
+
+void	ft_clean_minimap(void *g);
+mlx_texture_t	*load_clean(void);
+void	put_cleaned(void *g, int x, int y);
 
 
 #endif

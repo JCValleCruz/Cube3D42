@@ -3,14 +3,15 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2024/12/11 13:38:18 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2024/12/16 11:46:12 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube3d.h"
+
 void	purge(t_cube *file)
 {
 	int i;
@@ -79,7 +80,8 @@ int	check_extension(char *str)
 
 void raycasting(t_cube *file)
 {
-	(void)file;
+	file->ray.x = file->v_dir.x - file->v_dir.y;
+	file->ray.y = file->v_dir.y + file->v_dir.x;
 	
 }
 void rotate_move(t_cube *file, double newmove)
@@ -101,8 +103,8 @@ void	frontal_move(t_cube *file, double n)
 {
 	double	new_pos_x;
 	double	new_pos_y;
-	printf("posicion x: %f\n", file->position_player.x);
-	printf("posicion y: %f\n", file->position_player.y);
+	/* printf("posicion x: %f\n", file->position_player.x);
+	printf("posicion y: %f\n", file->position_player.y); */
 	
 	new_pos_x = file->position_player.x + n * file->v_dir.x;
 	new_pos_y = file->position_player.y + n * file->v_dir.y;
@@ -121,32 +123,31 @@ void	frontal_move(t_cube *file, double n)
 }
 
 
-void handle_move(void *param)
+void handle_move(mlx_key_data_t keydata, void *param)
 {
 	t_cube *file;
+	
 	file = (t_cube *)param;
-	ft_draw_minimap(file);
-	if(mlx_is_key_down(file->mlx, MLX_KEY_ESCAPE))
+	if (keydata.key == MLX_KEY_ESCAPE && keydata.action == MLX_PRESS)
 		mlx_close_window(file->mlx);
-	else if (mlx_is_key_down(file->mlx, MLX_KEY_A))
+	else if ((keydata.key == MLX_KEY_A && keydata.action == MLX_PRESS))
 		rotate_move(file, -1 * 0.1745);
-	else if (mlx_is_key_down(file->mlx, MLX_KEY_D))
+	else if ((keydata.key == MLX_KEY_D && keydata.action == MLX_PRESS))
 		rotate_move(file, 0.1745);
-	else if (mlx_is_key_down(file->mlx, MLX_KEY_W))
+	else if ((keydata.key == MLX_KEY_W && keydata.action == MLX_PRESS))
 		frontal_move(file, 0.1);
-	else if (mlx_is_key_down(file->mlx, MLX_KEY_S))
+	else if ((keydata.key == MLX_KEY_S && keydata.action == MLX_PRESS))
 		frontal_move(file, -0.1);
-	//mlx_put_pixel(file->img, file->position_player.x, file->position_player.y);
-	
-	/*nuestro giros van a ser de 10 grados, lo que es igual 
-	a PI / 18 = 0.1745, si giramos hacia la izquierda es -1
-	porque estamos girando sobre el eje x */
-	raycasting(file);
-	/* en base al movimiento que realicemos, tenemos que calcula la direccion
-	si nos movemos hacias los lados, y si nos movemos hacia delante o atras 
-	realizamos el movimiento, esto tiene que estar activo durante
-	todo el programa*/
-	
+	else if((keydata.key == MLX_KEY_M && keydata.action == MLX_PRESS))
+	{
+		file->minimap_visible = 1;
+		ft_draw_minimap(file);
+	}		
+	else if((keydata.key == MLX_KEY_M && keydata.action == MLX_RELEASE))
+	{
+		file->minimap_visible = 0;
+		ft_draw_minimap(file);
+	}
 }
 
 
@@ -157,22 +158,22 @@ int main(int argc, char **argv)
     dump_map(&file, argv);	
 	all_params(&file);
 	check_map(&file);
-	init_raycasting(&file);
+ 	init_raycasting(&file);
 	init_mlx(argv[1], &file);
 	mlx_image_to_window(file.mlx, file.img, 100, 0);
-	mlx_loop_hook(file.mlx, handle_move, &file);
+	mlx_key_hook(file.mlx, handle_move, &file);
 	mlx_loop(file.mlx);
 	// funcion que libere aqui!!
 	//print_split2(file.map);
 	//printf("\n\n\n\n\n");
 	//print_split2(file.clone_map); 
 	//mlx_put_pixel()
-	printf("%c\n", file.orientation);
+/* 	printf("%c\n", file.orientation);
 	printf("%f\n", file.position_player.x);
 	printf("%f\n", file.position_player.y);
 	printf("%f\n", file.alpha);
 	printf("%f\n", file.v_dir.x);
-	printf("%f\n", file.v_dir.y);
+	printf("%f\n", file.v_dir.y);  */
 
 	return 0;
 }
