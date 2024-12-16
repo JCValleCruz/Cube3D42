@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minimap.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/11 11:33:52 by jormoral          #+#    #+#             */
-/*   Updated: 2024/12/11 19:38:09 by jormoral         ###   ########.fr       */
+/*   Updated: 2024/12/12 14:04:27 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,11 +120,9 @@ void	ft_draw_minimap(void *g)
 			if (file->map[y][x] == GROUND)
 				put_background(file, x, y);
 			else if (file->map[y][x] == WALL)
-			{
 				put_wall(file, x, y);
-			}
-			/* else if(gm->map[y][x] == PLAYER)
-				put_player(gm, x, y); */
+			else if(file->map[y][x] == PLAYER)
+				put_player(file, x, y);
 			x++;
 		}
 		y++;
