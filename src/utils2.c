@@ -3,14 +3,20 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 02:09:50 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/12/11 13:44:40 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2025/01/12 09:37:30 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 # include "../includes/cube3d.h"
+
+int exit_error(char *str, int i)
+{
+	printf("%s", str);
+	exit(i);
+}
 
 int	check_param_dup(t_cube *file)
 {

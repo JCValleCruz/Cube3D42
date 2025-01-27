@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:55:20 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/12/05 18:28:27 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/27 12:13:10 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,12 +98,12 @@ int	check_zero(t_cube *file)
 		i = 1;
 		while(file->map[line][i])
 		{
-			if((file->map[line][i] == '0') && (file->map[line - 1][i] == ' ' 
+			if((file->map[line][i] == '0') && ((file->map[line - 1][i] == ' ' 
 				|| file->map[line + 1][i] == ' ' 
 					|| file->map[line][i - 1] == ' ' 
 						|| file->map[line][i + 1] == ' '
 							|| (size_t)i > ft_strlen(file->map[line - 1])
-								|| (size_t)i >= ft_strlen(file->map[line + 1 ])))
+								|| (size_t)i >= ft_strlen(file->map[line + 1 ]))))
 								{
 									return (1);
 								}
@@ -122,8 +122,12 @@ int	check_map(t_cube *file)
 		exit_error("Error: Map is invalid2.", 1);
 	if(check_zero(file))
 		exit_error("Error: Map is invalid3.", 1);
+	if(check_nullzero(file))
+		exit_error("Error: Ahora si compae.", 1);
 	if(check_characters(file))
 		exit_error("Error: Map is invalid4.", 1);
+	if(check_invalid_line(file))
+		exit_error("Error: Morralla.", 1);
 	return (0);		
 }
 

@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 09:48:16 by jormoral          #+#    #+#             */
-/*   Updated: 2024/12/11 11:39:57 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/24 11:25:53 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,16 @@ int	player_position(t_cube *file)
 	double	x;
 	double	y;
 
-	x = -1;
+	x = -1.0;
 	while(file->map[(int)++x])
 	{
-		y = -1;
+		y = -1.0;
 		while (file->map[(int)x][(int)++y])
 		{
 			if (ft_strchrplayer("NSWE", file->map[(int)x][(int)y], file))
 			{	
-				file->position_player.x = x;
-				file->position_player.y = y;
+				file->position_player.x = y + 0.5;
+				file->position_player.y = x + 0.5;
 				return (0);
 			}
 		}

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   debug.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 21:25:37 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/12/05 18:28:27 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/27 13:12:07 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,11 @@ void 	print_textures_path(t_cube *file)
 		printf("%s\n\n", file->pathtextureeast);
 	else
 		printf("NULL");	
+}
+
+void	print_colour(int *example)
+{
+	printf("Red:\t%d\n",example[0]);
+	printf("Green:\t%d\n",example[1]);
+	printf("Blue:\t%d\n\n",example[2]);
 }

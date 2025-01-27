@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2024/12/16 11:35:31 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/27 13:10:44 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,11 @@
 # define PI 3.14159265
 # define WIDTH 1024
 # define HEIGHT 768
+# define FOV 0.000976562 
 # define WHITE 0x66ffffff
 
 # define WALL '1'
-# define PLAYER 'N'
+# define PLAYER 'S'
 # define GROUND '0'
 # define SCALE_M 32
 
@@ -47,6 +48,7 @@ typedef struct s_cube
 	int			dumpsize;
 	char		**map;
 	char		**clone_map;
+	int			map_height;
 	char		*pathtexturenorth;
 	char		*pathtexturesouth;
 	char		*pathtexturewest;
@@ -66,8 +68,14 @@ typedef struct s_cube
 	double		alpha;
 	t_point		ray;		
 	t_point		v_dir;
-	
+	t_point		ph;
+	t_point 	m;
+	double		difx;
+	double		dify;
+	double		scale;
+	double 		x_img;
 	mlx_t			*mlx;
+	mlx_texture_t	*actual_t;
 	mlx_image_t		*img;
 	mlx_texture_t	*east;
 	mlx_texture_t 	*north;
@@ -83,7 +91,6 @@ typedef struct s_cube
 	mlx_image_t		*cleaned;
 	mlx_key_data_t 	*minimap_control;
 	int				minimap_visible;
-	
 }   t_cube;
 
 //Utilidades-------------------->utils.c
@@ -116,11 +123,12 @@ int		fextract_rgb(t_cube *file);
 int		cextract_rgb(t_cube *file);
 int		split_to_rgb(t_cube *file);
 //Check_map
-
+		
 int		check_x(t_cube *file);
 int		check_y(t_cube *file);
 int		check_map(t_cube *file);
 int		check_zero(t_cube *file);
+int		check_nullzero(t_cube *file);
 //Extract Map
 int		all_params(t_cube *file);
 void	extract_map(t_cube	*file);
@@ -134,24 +142,28 @@ void	free_path(t_cube *file);
 
 void	init_params(t_cube *file);
 // Ray Casting
+void	raycasting(t_cube *file);
 int		player_position(t_cube *file);
 double	initial_orientation(t_cube *file);
 void	init_raycasting(t_cube *file);
 int		ft_strchrplayer(const char *s, int c, t_cube *file);
 void	init_mlx(char *str1, t_cube *file);
 void	init_texture(t_cube	*file);
-
-
+//Display Texture
+void	draw_texture(t_cube *file, int i);
+// Player Movement
+void	handle_move(void *param);
 //Experimento Minimapa
-void	ft_draw_minimap(void *g);
 mlx_texture_t	*load_ground(void);
 mlx_texture_t	*load_wall_texture(void);
 mlx_texture_t	*load_player_texture(void);
 
 
-void	ft_clean_minimap(void *g);
 mlx_texture_t	*load_clean(void);
 void	put_cleaned(void *g, int x, int y);
+int	check_invalid_line(t_cube *file);
 
+
+void	print_colour(int *example);
 
 #endif

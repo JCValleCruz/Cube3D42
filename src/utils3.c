@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:51:09 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/12/05 18:28:27 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/12 13:21:23 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ void clone_map(t_cube *file)
 	int		i;
 	
 	size = dp_count(file->map);
+	file->map_height = size;
+	//printf("%d\n", file->map_height);
 	file->clone_map = (char **)malloc(sizeof(char *) * size + 1);
 	line = -1;
 	while(file->map[++line])

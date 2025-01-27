@@ -18,16 +18,18 @@ LIBMLX		:= MLX42/
 
 SRCS        :=      src/cube3d.c \
 						  src/init_mlx.c \
+						  src/raycasting.c\
+						  src/display_texture.c\
+						  src/player_movement.c\
 						  src/player.c \
                           src/debug.c \
 						  src/frees.c \
 						  src/utils.c \
 						  src/utils2.c \
 						  src/utils3.c \
-						  src/errors.c \
 						  src/init.c \
-						  src/minimap.c \
 						  src/check_map.c \
+						  src/check_map2.c \
 						  src/extract_textures.c \
 						  src/extract_colours.c \
 						  src/extract_map.c \

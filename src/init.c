@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 21:32:03 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/12/12 22:20:26 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2025/01/27 12:07:58 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,11 +28,11 @@ void	init_params(t_cube *file)
 	file->rgb_flag = 0;
 	file->texture_flag = 0;
 	file->all_params_flag = 0;
-	file->mmap_background = load_ground();
+/* 	file->mmap_background = load_ground();
 	file->mmap_player = load_player_texture();
 	file->mmap_wall = load_wall_texture();
 	file->mmap_player = load_player_texture();
-	file->mmap_cleaned = load_clean();
+	file->mmap_cleaned = load_clean(); */
 }
 
 void	init_raycasting(t_cube *file)
@@ -50,12 +50,9 @@ void	init_raycasting(t_cube *file)
 }
 void	init_texture(t_cube	*file)
 {
-	file->east = mlx_load_png(file->pathtextureeast);
-	printf("%s\n", file->pathtextureeast);
+	(void)file;
 	file->north = mlx_load_png(file->pathtexturenorth);
-	printf("%s\n", file->pathtexturenorth);
+	file->east = mlx_load_png(file->pathtextureeast);
 	file->south = mlx_load_png(file->pathtexturesouth);
-	printf("%s\n", file->pathtexturesouth);
 	file->west = mlx_load_png(file->pathtexturewest);
-	printf("%s\n", file->pathtexturewest);
 }

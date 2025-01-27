@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 21:35:10 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/12/05 18:28:27 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/23 19:07:34 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 void    ft_checkfinal(t_cube *file)
 {
 	char *str;
-
     int i = 0;
     int n = 1;
 	str = file->fdcontent;
 	while (str[i] != '\0')
         i++;
+	if(str[i] == '\0')
+		return ;
     while (str[i - n] != '1')
     {
         str[i - n] = str[i];
