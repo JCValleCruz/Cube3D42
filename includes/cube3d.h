@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2025/01/27 13:10:44 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2025/01/27 18:20:11 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 
 # define PI 3.14159265
-# define WIDTH 1280
-# define HEIGHT 720
+# define WIDTH 1920
+# define HEIGHT 1080
 # define FOV 0.000976562 
 # define WHITE 0x66ffffff
 
@@ -165,5 +165,6 @@ int	check_invalid_line(t_cube *file);
 
 
 void	print_colour(int *example);
+int	check_dumping(char *str, char *str2);
 
 #endif

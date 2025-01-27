@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2025/01/27 13:11:17 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2025/01/27 19:33:46 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,24 +78,55 @@ int	check_extension(char *str)
 	return (1);
 }
 
+
+
+int	broken_map(t_cube *file)
+{
+	char *str = file->fdcontent;
+	int c = dp_count(file->map);
+	int i = ft_strlen(str) - 1;
+	while(str[i] == '\n')
+		i--;
+	while(c > 0)
+	{
+		if(str[i] == '\n')
+			c--;
+		i--;	
+	}
+	while(str[i] == '\n')
+		i--;
+	while(str[i] != '\n')
+		i--;
+	i++;
+	while(str[i] == ' ')
+		i++;
+	char *temp;
+	temp = ft_substr(str, i, 3);
+	if(!ft_strncmp(temp, "NO ", 3) || !ft_strncmp(temp, "SO ", 3) 
+			|| !ft_strncmp(temp, "WE ", 3) || !ft_strncmp(temp, "EA ", 3) 
+				|| !ft_strncmp(temp, "F ", 2) || !ft_strncmp(temp, "C ", 2))
+				return(free(temp),0);
+	return(1);
+
+}
+
 int main(int argc, char **argv)
 {
     t_cube file;
-	(void)argc;    
-
+	(void)argc;
     dump_map(&file, argv);
 	all_params(&file);
 	check_map(&file);
-	print_colour(file.rgbfloorcolour);
-	print_colour(file.rgbceilingcolour);
+	printf("FDContent:%s\n", file.fdcontent);
 	//print_split2(file.map);
+	printf("Long Map:%d\n",dp_count(file.map));
+	if(broken_map(&file))
+		exit_error("Map is broken", 1);
  	init_raycasting(&file);
 	init_mlx(argv[1], &file);
 	mlx_image_to_window(file.mlx, file.img, 0, 0);
 	mlx_loop_hook(file.mlx, &handle_move, &file);
 	mlx_loop(file.mlx);
 	mlx_terminate(file.mlx);
-	
-
 	return 0;
 }

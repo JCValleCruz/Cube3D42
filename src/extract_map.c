@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 19:18:57 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/27 13:59:23 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2025/01/27 18:10:55 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,8 @@ void	extract_map(t_cube *file)
 		while(file->dumpcontent[line][++i])
 		{
 			if(file->dumpcontent[line][i] == '1' && file->dumpcontent[line][i + 1] == '1' 
-				&& file->all_params_flag == 1)
+				&& file->all_params_flag == 1 && file->dumpcontent[line][0] != 'F' && file->dumpcontent[line][0] != 'C')
 			{	
-				while(file->dumpcontent[line][0] == ' ')
-					i++;		
 				file->map = (char **)ft_calloc((dp_count(file->dumpcontent) - 5), sizeof(char *));
 				while(file->dumpcontent[line])
 				{
@@ -63,3 +61,4 @@ int	check_invalid_line(t_cube *file)
 	}
 	return 0;
 }
+

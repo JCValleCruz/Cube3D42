@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 09:26:42 by jormoral          #+#    #+#             */
-/*   Updated: 2025/01/27 13:43:27 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2025/01/27 16:39:37 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ void draw_texture(t_cube *file, int i)
 	start = (HEIGHT - file->scale * 2 * 212) / 2;
 	end = (HEIGHT + file->scale * 2 * 212) / 2;
 	while (c < start)
-		mlx_put_pixel(file->img, i, c++, floor_color);
+		mlx_put_pixel(file->img, i, c++, ceiling_color);
 	while (c < end && c < HEIGHT)
 	{	
 		pixel = 4 * ((int)(212.0 * file->x_img)
@@ -47,5 +47,5 @@ void draw_texture(t_cube *file, int i)
 		c++;
 	}
 	while (c < HEIGHT)
-		mlx_put_pixel(file->img, i, c++, ceiling_color );
+		mlx_put_pixel(file->img, i, c++, floor_color );
 }

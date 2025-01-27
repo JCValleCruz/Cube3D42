@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:55:20 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/27 12:13:10 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2025/01/27 17:16:05 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,8 @@ int	check_zero(t_cube *file)
 	int	i;
 
 	line = 1;
-	while(line < dp_count(file->map + 1))
+	print_split2(file->map);
+	while(line < dp_count(file->map))
 	{
 		i = 1;
 		while(file->map[line][i])

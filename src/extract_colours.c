@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_colours.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:40:10 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/12/05 18:28:27 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/27 16:49:10 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,11 +35,9 @@ int	extract_rgb(t_cube *file)
 		if(split_to_rgb(file))
 			flag = 1;
 	}
-	if(file->rgbceilingcolour[0] == 0 || file->colourceilingsplit[1] == 0 
-		|| file->rgbceilingcolour == 0)
-	flag = 1;	
-	if(file->rgbfloorcolour[0] == 0 || file->rgbfloorcolour[1] == 0 
-		|| file->rgbfloorcolour == 0)	
+	if(file->rgbceilingcolour[0] == 0 && file->colourceilingsplit[1] == 0 
+		&& file->rgbceilingcolour == 0 && file->rgbfloorcolour[0] == 0 
+			&& file->rgbfloorcolour[1] == 0 && file->rgbfloorcolour == 0)
 	flag = 1;	
 	return flag;	
 }

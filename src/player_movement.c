@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_movement.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 09:20:05 by jormoral          #+#    #+#             */
-/*   Updated: 2025/01/24 13:59:21 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/27 16:41:58 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	frontal_move(t_cube *file, double n)
 {
 	double	new_pos_x;
 	double	new_pos_y;
-	printf("Pos player x: [%f] y: [%f] Pos in map: [%c] \n", file->position_player.x, file->position_player.y, file->map[(int)file->position_player.y][(int)file->position_player.x]);
+	//printf("Pos player x: [%f] y: [%f] Pos in map: [%c] \n", file->position_player.x, file->position_player.y, file->map[(int)file->position_player.y][(int)file->position_player.x]);
 	new_pos_x = file->position_player.x + n * file->v_dir.x;
 	new_pos_y = file->position_player.y + n * file->v_dir.y;
 	if(new_pos_x > 0.0 && new_pos_y > 0.0 && file->map[(int)new_pos_y][(int)new_pos_x] != '1')
