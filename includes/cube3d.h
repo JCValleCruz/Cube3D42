@@ -23,8 +23,8 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 
 # define PI 3.14159265
-# define WIDTH 1024
-# define HEIGHT 768
+# define WIDTH 1280
+# define HEIGHT 720
 # define FOV 0.000976562 
 # define WHITE 0x66ffffff
 

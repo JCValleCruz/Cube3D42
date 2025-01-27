@@ -18,10 +18,12 @@ int	extract_rgb(t_cube *file)
 	int flag;
 	
 	flag = 0;
-	file->textfloorcolour = NULL;
-	file->textceilingcolour = NULL;
 	file->rgbceilingcolour = (int *)malloc(sizeof(int) * 3);
+		if (!file->rgbceilingcolour)
+    exit_error("Error: Failed to allocate memory for ceiling color.\n", 1);
 	file->rgbfloorcolour = (int *)malloc(sizeof(int) * 3);
+		if (!file->rgbfloorcolour)
+    exit_error("Error: Failed to allocate memory for floor color.\n", 1);	
 	if(!fextract_rgb(file))
 		flag = 1;
 	if(!cextract_rgb(file))
@@ -33,14 +35,15 @@ int	extract_rgb(t_cube *file)
 		if(split_to_rgb(file))
 			flag = 1;
 	}
-	if(file->rgbceilingcolour[0] == 0 && file->colourceilingsplit[1] == 0 
-		&& file->rgbceilingcolour == 0)
+	if(file->rgbceilingcolour[0] == 0 || file->colourceilingsplit[1] == 0 
+		|| file->rgbceilingcolour == 0)
 	flag = 1;	
-	if(file->rgbfloorcolour[0] == 0 && file->rgbfloorcolour[1] == 0 
-		&& file->rgbfloorcolour == 0)	
+	if(file->rgbfloorcolour[0] == 0 || file->rgbfloorcolour[1] == 0 
+		|| file->rgbfloorcolour == 0)	
 	flag = 1;	
 	return flag;	
 }
+
 
 char	*iscleanrgbtxt(char *str)
 {
@@ -127,6 +130,8 @@ int	split_to_rgb(t_cube *file)
 	
 	c = 0;
 	txt_rgb = file->colourfloorsplit;
+	if (!txt_rgb || !txt_rgb[0] || !txt_rgb[1] || !txt_rgb[2])
+    	return 1;
 	while(c < 3)
 	{
 		file->rgbfloorcolour[c] = ft_rgb_atoi(txt_rgb[c]);

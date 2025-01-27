@@ -28,6 +28,8 @@ void	init_params(t_cube *file)
 	file->rgb_flag = 0;
 	file->texture_flag = 0;
 	file->all_params_flag = 0;
+	file->textfloorcolour = NULL;
+	file->textceilingcolour = NULL;
 /* 	file->mmap_background = load_ground();
 	file->mmap_player = load_player_texture();
 	file->mmap_wall = load_wall_texture();
