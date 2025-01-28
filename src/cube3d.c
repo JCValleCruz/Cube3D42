@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2025/01/28 17:25:11 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/28 19:31:42 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,8 @@ int main(int argc, char **argv)
 {
     t_cube file;
 	(void)argc;
+	if (argc != 2)
+		exit_error("Error: invalid number of arguments.\n", 1);
     dump_map(&file, argv);
 	all_params(&file);
 	check_map(&file);

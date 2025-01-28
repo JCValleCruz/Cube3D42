@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:55:20 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/28 18:07:56 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/28 19:25:30 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,6 +96,8 @@ int	check_zero(t_cube *file)
 		i = 1;
 		while (file->map[line][i])
 		{
+			if((file->map[line][i] == '0' && (size_t)i > ft_strlen(file->map[line + 1])) || (file->map[line][i] == '0' && (size_t)i > ft_strlen(file->map[line - 1])))
+				return (1);
 			if ((file->map[line][i] == '0') && ((file->map[line - 1][i] == ' '
 				|| file->map[line + 1][i] == ' '
 					|| file->map[line][i - 1] == ' '
@@ -116,15 +118,15 @@ int	check_map(t_cube *file)
 		exit_error_game("Error: Map is invalid.", 1, file);
 	if (check_y(file))
 		exit_error_game("Error: Map is invalid.", 1, file);
-	if (check_zero(file))
-		exit_error_game("Error: Map is invalid.", 1, file);
-	if (check_nullzero(file))
-		exit_error_game("Error: Map is invalid.", 1, file);
 	if (check_characters(file))
 		exit_error_game("Error: Map is invalid.", 1, file);
 	if (check_invalid_line(file))
 		exit_error_game("Error: Map is invalid.", 1, file);
 	if (broken_map(file))
+		exit_error_game("Error: Map is invalid.", 1, file);
+	if (check_zero(file))
+		exit_error_game("Error: Map is invalid.", 1, file);
+	if (check_nullzero(file))
 		exit_error_game("Error: Map is invalid.", 1, file);
 	return (0);
 }
