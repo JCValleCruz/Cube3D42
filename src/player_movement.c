@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 09:20:05 by jormoral          #+#    #+#             */
-/*   Updated: 2025/01/27 16:41:58 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2025/01/28 12:42:59 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,13 @@ void handle_move(void *param)
 	
 	file = (t_cube *)param;
 	if (mlx_is_key_down(file->mlx, MLX_KEY_ESCAPE))
+	{
+		free_game(file);
 		mlx_close_window(file->mlx);
+		mlx_terminate(file->mlx);
+		file = NULL;
+		exit(1);
+	}
 	else if (mlx_is_key_down(file->mlx, MLX_KEY_A))
 		rotate_move(file, 0.1745);
 	else if (mlx_is_key_down(file->mlx, MLX_KEY_D))

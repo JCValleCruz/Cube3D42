@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2025/01/27 18:20:11 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2025/01/28 13:31:37 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 
 # define PI 3.14159265
-# define WIDTH 1920
-# define HEIGHT 1080
+# define WIDTH 1280
+# define HEIGHT 720
 # define FOV 0.000976562 
 # define WHITE 0x66ffffff
 
@@ -137,7 +137,7 @@ int     exit_error(char *str, int i);
 
 //Frees-------------------------->frees.c
 void	free_split(char **split);
-void	free_path(t_cube *file);
+void	free_game(t_cube *file);
 
 
 void	init_params(t_cube *file);
@@ -163,8 +163,11 @@ mlx_texture_t	*load_clean(void);
 void	put_cleaned(void *g, int x, int y);
 int	check_invalid_line(t_cube *file);
 
-
 void	print_colour(int *example);
-int	check_dumping(char *str, char *str2);
+int	broken_map(t_cube *file);
+
+int exit_error_game(char *str, int i, t_cube *file);
+
+
 
 #endif

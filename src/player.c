@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 09:48:16 by jormoral          #+#    #+#             */
-/*   Updated: 2025/01/24 11:25:53 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/28 13:27:17 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,5 +69,3 @@ double	initial_orientation(t_cube *file)
 		return (file->alpha = PI * 2);
 	return (0);
 }
-
-

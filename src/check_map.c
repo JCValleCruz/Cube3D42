@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:55:20 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/27 17:16:05 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2025/01/28 13:18:55 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,17 +118,19 @@ int	check_zero(t_cube *file)
 int	check_map(t_cube *file)
 {
 	if(check_x(file))
-		exit_error("Error: Map is invalid1.", 1);
+		exit_error_game("Error: Map is invalid.", 1, file);
 	if(check_y(file))
-		exit_error("Error: Map is invalid2.", 1);
+		exit_error_game("Error: Map is invalid.", 1, file);
 	if(check_zero(file))
-		exit_error("Error: Map is invalid3.", 1);
+		exit_error_game("Error: Map is invalid.", 1, file);
 	if(check_nullzero(file))
-		exit_error("Error: Ahora si compae.", 1);
+		exit_error_game("Error: Map is invalid.", 1, file);
 	if(check_characters(file))
-		exit_error("Error: Map is invalid4.", 1);
+		exit_error_game("Error: Map is invalid.", 1, file);
 	if(check_invalid_line(file))
-		exit_error("Error: Morralla.", 1);
+		exit_error_game("Error: Map is invalid.", 1, file);
+	if(broken_map(file))
+		exit_error_game("Error: Map is invalid.", 1, file);
 	return (0);		
 }
 

@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 02:09:50 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/27 16:59:50 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2025/01/28 13:20:28 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,13 @@
 
 int exit_error(char *str, int i)
 {
+	printf("%s", str);
+	exit(i);
+}
+
+int exit_error_game(char *str, int i, t_cube *file)
+{
+	free_game(file);
 	printf("%s", str);
 	exit(i);
 }
@@ -44,13 +51,13 @@ int		all_params(t_cube *file)
 	init_params(file);
 	purge(file);
 	if(check_param_dup(file))
-		exit_error("Error: CUB file does not have the correct parameters.\n", 1);
+		exit_error_game("Error: CUB file does not have the correct parameters.\n", 1, file);
 	if(extract_textures(file))
-		exit_error("Error: Cannot load path textures.\n", 1);
+		exit_error_game("Error: Cannot load path textures.\n", 1, file);
 	else
 		file->texture_flag = 1;		
 	if(extract_rgb(file))
-		exit_error("Error: Cannot load rgb values.\n", 1);
+		exit_error_game("Error: Cannot load rgb values.\n", 1, file);
 	else
 		file->rgb_flag = 1;	
 	if(file->texture_flag == 1 && file->rgb_flag == 1)
