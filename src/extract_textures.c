@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_textures.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 13:35:20 by jvalle-d          #+#    #+#             */
-/*   Updated: 2024/12/12 18:53:08 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2025/01/28 18:04:13 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,10 @@ int		extract_textures(t_cube *file)
 		flag = 1;
 	if(!ea_texture_path(file))
 		flag = 1;
-	if(file->pathtexturenorth == NULL || file->pathtexturesouth == NULL 
-		|| file->pathtexturewest == NULL || file->pathtextureeast == NULL)
-		exit_error("Error: Invalid texture.",1);
+	if  (!check_extension_png(file->pathtexturenorth) || !check_extension_png(file->pathtexturesouth) || !check_extension_png(file->pathtexturewest) || !check_extension_png(file->pathtextureeast))
+		exit_error_game("Error: Invalid texture.", 1, file);
+	if (access(file->pathtexturesouth, F_OK) == -1 || access(file->pathtexturenorth, F_OK) == -1 || access(file->pathtexturewest, F_OK) == -1 || access(file->pathtextureeast, F_OK) == -1)
+		exit_error_game("Error: Invalid texture.", 1, file);
 	return flag;	
 }
 int no_texture_path(t_cube *file)

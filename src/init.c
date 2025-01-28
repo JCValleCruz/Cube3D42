@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 21:32:03 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/28 13:52:55 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2025/01/28 18:11:26 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,13 +27,15 @@ void	init_params(t_cube *file)
 	file->rgbfloorcolour = (int *)malloc(sizeof(int) * 3);
 		if (!file->rgbfloorcolour)
     	exit_error_game("Error: Failed floor color.\n", 1, file);
-	file->map = NULL; //Mandar a init
+	file->map = NULL;
 	file->dumpsize = dp_count(file->dumpcontent);
 	file->rgb_flag = 0;
 	file->texture_flag = 0;
 	file->all_params_flag = 0;
 	file->textfloorcolour = NULL;
 	file->textceilingcolour = NULL;
+	file->colourceilingsplit = NULL;
+	file->colourfloorsplit = NULL;
 }
 
 void	init_raycasting(t_cube *file)

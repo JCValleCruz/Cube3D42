@@ -1,37 +1,40 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_substr.c                                        :+:      :+:    :+:   */
+/*   check_img_ext.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/04/23 18:49:40 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/28 14:45:46 by jormoral         ###   ########.fr       */
+/*   Created: 2025/01/28 17:50:21 by jormoral          #+#    #+#             */
+/*   Updated: 2025/01/28 17:56:08 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-char	*ft_substr(char const *s, unsigned int start, size_t len)
+int	check_extension_png(char *str)
 {
-	char	*sub;
-	size_t	i;
+	int	i;
 
 	i = 0;
-	if (start > ft_strlen(s))
-		len = 0;
-	if (len > ft_strlen(s) - start)
-		len = (ft_strlen(s) - start);
-	sub = malloc(len + 1);
-	if (!s || !sub)
-	{
-		return (NULL);
-	}
-	while (s[i] != '\0' && i < len)
-	{
-		sub[i] = s[start];
+	if (!str)
+		return (0);
+	if(str[0] == '.')
 		i++;
-		start++;
+	while (str[i] != '\0')
+	{
+		if (str[i] == '.' && str[i + 1] != '\0')
+		{
+			if (str[i + 1] != 'p')
+				return (0);
+			if (str[i + 2] != 'n')
+				return (0);
+			if (str[i + 3] != 'g')
+				return (0);
+		 	if (str[i + 4] != '\0')
+				return (0);
+		}
+		if(str[i + 1] == '\0' && str[i] != 'g')
+			return (0);
+		i++;
 	}
-	sub[i] = '\0';
-	return (sub);
+	return (1);
 }

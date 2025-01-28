@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 09:24:34 by jormoral          #+#    #+#             */
-/*   Updated: 2025/01/28 14:07:21 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2025/01/28 18:24:59 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ int check_collision(t_cube *file)
 		return (file->map[(int)file->ph.y - (file->ray.y < 0)][(int)file->ph.x] == '1');
 }
 
-int hacendado_point(t_cube *file)
+int next_point(t_cube *file)
 {
 	double	option_x[2];
 	double	option_y[2];
@@ -81,25 +81,23 @@ void get_collision_orientation(t_cube *file)
     if (file->ray.x > 0.0 && file->ph.x == ceil(file->ph.x))
 	{
 		file->actual_t = file->west;
-		file->x_img = file->ph.y - floor(file->ph.y); //WEST
+		file->x_img = file->ph.y - floor(file->ph.y);
 	}
     else if (file->ray.x < 0.0 && file->ph.x == floor(file->ph.x))
 	{
 		file->actual_t = file->east;
-		file->x_img = ceil(file->ph.y) - file->ph.y; //EAST
+		file->x_img = ceil(file->ph.y) - file->ph.y;
 	}
     else if (file->ray.y > 0.0)
 	{
 		file->actual_t = file->south;
-		file->x_img = ceil(file->ph.x) - file->ph.x; //SOUTH
+		file->x_img = ceil(file->ph.x) - file->ph.x;
 	}   
     else if (file->ray.y < 0.0)
     {
 		file->actual_t = file->north;
-		file->x_img = file->ph.x - floor(file->ph.x); //NORTH
+		file->x_img = file->ph.x - floor(file->ph.x);
 	}
-	/*Hay que comprobar que este funcionando correctamente, y quiero
-	cambiar la manera de identificar la textura que corresponde*/
 }
 
 void raycasting(t_cube *file)
@@ -115,9 +113,9 @@ void raycasting(t_cube *file)
 		file->ph.y = file->position_player.y;
 		file->m.x = file->ray.y / file->ray.x;
 		file->m.y = file->ray.x / file->ray.y;
-		while(!hacendado_point(file))
+		while(!next_point(file))
 			continue ;
-		file->scale =  1  / calculate_distance(file);
+		file->scale =  1  /  (cos(FOV * (512 - i)) * calculate_distance(file));
 		get_collision_orientation(file);
 		draw_texture(file, i);
 		i++;

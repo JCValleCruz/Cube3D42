@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map2.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 11:19:20 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/28 10:27:26 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2025/01/28 18:10:15 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,5 +65,5 @@ int	broken_map(t_cube *file)
 			|| !ft_strncmp(temp, "WE ", 3) || !ft_strncmp(temp, "EA ", 3) 
 				|| !ft_strncmp(temp, "F ", 2) || !ft_strncmp(temp, "C ", 2))
 				return(free(temp),0);
-	return(1);
+	return(free(temp),1);
 }

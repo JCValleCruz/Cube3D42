@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 02:09:50 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/28 14:09:43 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2025/01/28 17:18:38 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,6 @@
 
 int exit_error(char *str, int i)
 {
-	printf("%s", str);
-	exit(i);
-}
-
-int exit_error_game(char *str, int i, t_cube *file)
-{
-	free_game(file);
 	printf("%s", str);
 	exit(i);
 }

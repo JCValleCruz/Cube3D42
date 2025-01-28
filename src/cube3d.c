@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2025/01/28 13:59:00 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2025/01/28 17:25:11 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	purge(t_cube *file)
 	int i;
 	int c;
 	int len;
+	char *aux;
 
 	i = 0;
 	while(file->dumpcontent[i])
@@ -27,8 +28,13 @@ void	purge(t_cube *file)
 		len = ft_strlen(file->dumpcontent[i]);
 		while(file->dumpcontent[i][c] == ' ' || file->dumpcontent[i][c] == '\t')
 			c++;
-		if(!ft_check_map(file->dumpcontent[i]))	
-			file->dumpcontent[i] = ft_substr(file->dumpcontent[i], c, len);
+		if(!ft_check_map(file->dumpcontent[i]))
+		{
+			aux = ft_strdup(file->dumpcontent[i]);
+			free(file->dumpcontent[i]);
+			file->dumpcontent[i] = ft_substr(aux, c, len);
+			free(aux);
+		}
 		i++;	
 	}
 }
@@ -78,6 +84,22 @@ int	check_extension(char *str)
 	return (1);
 }
 
+void exit_game(t_cube *file)
+{
+	free_game(file);
+	mlx_close_window(file->mlx);
+	mlx_terminate(file->mlx);
+	file = NULL;
+	exit(0);
+}
+void exit_error_game(char*str, int i, t_cube *file)
+{
+	printf("%s", str);
+	free_game_nt(file);
+	file = NULL;
+	exit(i);
+}
+
 
 int main(int argc, char **argv)
 {
@@ -91,9 +113,6 @@ int main(int argc, char **argv)
 	mlx_image_to_window(file.mlx, file.img, 0, 0);
 	mlx_loop_hook(file.mlx, &handle_move, &file);
 	mlx_loop(file.mlx);
-	//mlx_terminate(file.mlx);
-	//free_all(&file);
-	//free_game(&file);
-	//free_split(file.clone_map);
+	exit_game(&file);
 	return 0;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2025/01/28 13:36:59 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2025/01/28 18:24:07 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@
 # include "../MLX42/include/MLX42/MLX42.h"
 
 # define PI 3.14159265
-# define WIDTH 1280
-# define HEIGHT 720
+# define WIDTH 1024
+# define HEIGHT 768
 # define FOV 0.000976562 
 # define WHITE 0x66ffffff
 
@@ -122,7 +122,7 @@ int		fextract_rgb(t_cube *file);
 int		cextract_rgb(t_cube *file);
 int		split_to_rgb(t_cube *file);
 //Check_map
-		
+int		check_extension_png(char *str);	
 int		check_x(t_cube *file);
 int		check_y(t_cube *file);
 int		check_map(t_cube *file);
@@ -137,8 +137,7 @@ int     exit_error(char *str, int i);
 //Frees-------------------------->frees.c
 void	free_split(char **split);
 void	free_game(t_cube *file);
-
-
+void		free_game_nt(t_cube *file);
 void	init_params(t_cube *file);
 // Ray Casting
 void	raycasting(t_cube *file);
@@ -152,20 +151,14 @@ void	init_texture(t_cube	*file);
 void	draw_texture(t_cube *file, int i);
 // Player Movement
 void	handle_move(void *param);
-//Experimento Minimapa
-mlx_texture_t	*load_ground(void);
-mlx_texture_t	*load_wall_texture(void);
-mlx_texture_t	*load_player_texture(void);
 
-
-mlx_texture_t	*load_clean(void);
-void	put_cleaned(void *g, int x, int y);
 int	check_invalid_line(t_cube *file);
 
 void	print_colour(int *example);
 int	broken_map(t_cube *file);
 
-int exit_error_game(char *str, int i, t_cube *file);
+void exit_error_game(char *str, int i, t_cube *file);
+void exit_game(t_cube *file);
 
 
 
