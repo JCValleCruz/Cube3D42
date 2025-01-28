@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2025/01/28 13:31:37 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2025/01/28 13:36:59 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,6 @@ typedef struct s_cube
 	int			*rgbceilingcolour;
 	int			rgb_flag;
 	int			all_params_flag;
-	/// añadido para Ray casting
 	char		orientation;
 	t_point 	position_player;
 	double		alpha;

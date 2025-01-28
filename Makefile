@@ -8,7 +8,7 @@
 
 NAME        := cube3d
 CC        	:= clang
-FLAGS    	:= -Wall -Wextra -Werror -g  #-fsanitize=address
+FLAGS    	:= -Wall -Wextra -Werror -g  -fsanitize=address
 MLX42   	:= MLX42/build/libmlx42.a -ldl -lglfw -pthread -lm 
 LIBMLX		:= MLX42/
 

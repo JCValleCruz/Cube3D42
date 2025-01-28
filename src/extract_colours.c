@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:40:10 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/28 13:16:01 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2025/01/28 13:59:19 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,6 @@ int	extract_rgb(t_cube *file)
 	int flag;
 	
 	flag = 0;
-	file->rgbceilingcolour = (int *)malloc(sizeof(int) * 3);
-		if (!file->rgbceilingcolour)
-    exit_error_game("Error: Failed to allocate memory for ceiling color.\n", 1, file);
-	file->rgbfloorcolour = (int *)malloc(sizeof(int) * 3);
-		if (!file->rgbfloorcolour)
-    exit_error_game("Error: Failed to allocate memory for floor color.\n", 1, file);	
 	if(!fextract_rgb(file))
 		flag = 1;
 	if(!cextract_rgb(file))
@@ -148,5 +142,3 @@ int	split_to_rgb(t_cube *file)
 	}
 	return 0;
 }
-
-

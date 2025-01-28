@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 21:32:03 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/27 12:07:58 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2025/01/28 13:52:55 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,11 @@ void	init_params(t_cube *file)
 	file->textfloorcolour = NULL;
 	file->textceilingcolour = NULL;
 	file->rgbceilingcolour = (int *)malloc(sizeof(int) * 3);
+		if (!file->rgbceilingcolour)
+			 exit_error_game("Error: Failed ceiling color.\n", 1, file);
 	file->rgbfloorcolour = (int *)malloc(sizeof(int) * 3);
+		if (!file->rgbfloorcolour)
+    	exit_error_game("Error: Failed floor color.\n", 1, file);
 	file->map = NULL; //Mandar a init
 	file->dumpsize = dp_count(file->dumpcontent);
 	file->rgb_flag = 0;
@@ -30,11 +34,6 @@ void	init_params(t_cube *file)
 	file->all_params_flag = 0;
 	file->textfloorcolour = NULL;
 	file->textceilingcolour = NULL;
-/* 	file->mmap_background = load_ground();
-	file->mmap_player = load_player_texture();
-	file->mmap_wall = load_wall_texture();
-	file->mmap_player = load_player_texture();
-	file->mmap_cleaned = load_clean(); */
 }
 
 void	init_raycasting(t_cube *file)

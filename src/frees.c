@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:12:33 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/28 12:42:17 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:05:35 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,4 +33,7 @@ void	free_game(t_cube *file)
 	free(file->rgbceilingcolour);
 	free(file->rgbfloorcolour);
 	free_split(file->map);
+	
+	free_split(file->colourceilingsplit);
+	free_split(file->colourfloorsplit);
 }

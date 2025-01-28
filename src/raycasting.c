@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   raycasting.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 09:24:34 by jormoral          #+#    #+#             */
-/*   Updated: 2025/01/23 18:30:34 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:07:21 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,12 +17,12 @@ int min_width(t_cube *file)
 	int min = 0;
 	int x = 0;
 	int y = 0;
-	while (file->clone_map[0][min])
+	while (file->map[0][min])
 		min++;
 	while(y < file->map_height)
 	{
 		x = 0;
-		while(file->clone_map[y][x])
+		while(file->map[y][x])
 			x++;
 		if (min > x)
 			min = x;

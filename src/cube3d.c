@@ -6,7 +6,7 @@
 /*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2025/01/28 12:42:22 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2025/01/28 13:59:00 by jvalle-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,10 @@ void    dump_map(t_cube *file, char **argv)
     file->fdcontent = calloc(10000, 1);
     fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-		return ;
+		exit_error_game("Error:try",1,file);
     readed = read(fd, file->fdcontent, 9999);
 	if (readed < 0)
-		return ;
+		exit_error_game("Error:try",1,file);
 	ft_checkfinal(file);
 }
 
@@ -94,6 +94,6 @@ int main(int argc, char **argv)
 	//mlx_terminate(file.mlx);
 	//free_all(&file);
 	//free_game(&file);
-	free_split(file.clone_map);
+	//free_split(file.clone_map);
 	return 0;
 }
