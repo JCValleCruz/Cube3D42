@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   display_texture.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 09:26:42 by jormoral          #+#    #+#             */
-/*   Updated: 2025/01/27 16:39:37 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:42:15 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ void draw_texture(t_cube *file, int i)
 	while (c < start)
 		mlx_put_pixel(file->img, i, c++, ceiling_color);
 	while (c < end && c < HEIGHT)
-	{	
+	{
 		pixel = 4 * ((int)(212.0 * file->x_img)
 				+ (212 * (int)((c - start) / (2 * file->scale))));
 		ft_memcpy(&color, &file->actual_t->pixels[pixel], 4);
@@ -47,5 +47,5 @@ void draw_texture(t_cube *file, int i)
 		c++;
 	}
 	while (c < HEIGHT)
-		mlx_put_pixel(file->img, i, c++, floor_color );
+		mlx_put_pixel(file->img, i, c++, floor_color);
 }

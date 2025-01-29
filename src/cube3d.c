@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2025/01/29 13:36:02 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:41:44 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ void	purge(t_cube *file)
 		c = 0;
 		file->dumpcontent[1] = ft_checkfinal_str(file->dumpcontent[1]);
 		len = ft_strlen(file->dumpcontent[i]);
-		while (file->dumpcontent[i][c] == ' ' || file->dumpcontent[i][c] == '\t')
+		while (file->dumpcontent[i][c] == ' '
+			|| file->dumpcontent[i][c] == '\t')
 			c++;
 		if (!ft_check_map(file->dumpcontent[i]))
 		{
@@ -38,7 +39,7 @@ void	purge(t_cube *file)
 	}
 }
 
-void    dump_map(t_cube *file, char **argv)
+void	dump_map(t_cube *file, char **argv)
 {
 	int	fd;
 	int	readed;

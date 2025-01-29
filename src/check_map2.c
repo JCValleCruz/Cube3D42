@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/27 11:19:20 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/29 10:33:28 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:40:33 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,11 @@ int	broken_map(t_cube *file)
 	while (str[i] == ' ')
 		i++;
 	char *temp;
+
 	temp = ft_substr(str, i, 3);
-	if (!ft_strncmp(temp, "NO ", 3) || !ft_strncmp(temp, "SO ", 3) 
-			|| !ft_strncmp(temp, "WE ", 3) || !ft_strncmp(temp, "EA ", 3) 
-				|| !ft_strncmp(temp, "F ", 2) || !ft_strncmp(temp, "C ", 2))
-				return (free(temp), 0);
+	if (!ft_strncmp(temp, "NO ", 3) || !ft_strncmp(temp, "SO ", 3)
+		|| !ft_strncmp(temp, "WE ", 3) || !ft_strncmp(temp, "EA ", 3)
+		|| !ft_strncmp(temp, "F ", 2) || !ft_strncmp(temp, "C ", 2))
+		return (free(temp), 0);
 	return (free(temp), 1);
 }
