@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 09:24:34 by jormoral          #+#    #+#             */
-/*   Updated: 2025/01/29 14:09:24 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/29 17:08:29 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,8 @@ void	raycasting(t_cube *file)
 	i = 0;
 	while (i < WIDTH)
 	{
-		file->ray.x = file->v_dir.x - file->v_dir.y * ((WIDTH / 2) - i) * FOV;
-		file->ray.y = file->v_dir.y + file->v_dir.x * ((WIDTH / 2) - i) * FOV;
+		file->ray.x = file->v_dir.x + file->v_dir.y * ((WIDTH / 2) - i) * FOV;
+		file->ray.y = file->v_dir.y - file->v_dir.x * ((WIDTH / 2) - i) * FOV;
 		file->ph.x = file->position_player.x;
 		file->ph.y = file->position_player.y;
 		file->m.x = file->ray.y / file->ray.x;

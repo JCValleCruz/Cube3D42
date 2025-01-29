@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2025/01/29 14:41:44 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/29 17:54:28 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,19 @@ void	purge(t_cube *file)
 	char	*aux;
 
 	i = 0;
-	while (file->dumpcontent[i])
+	while (file->dc[i])
 	{
 		c = 0;
-		file->dumpcontent[1] = ft_checkfinal_str(file->dumpcontent[1]);
-		len = ft_strlen(file->dumpcontent[i]);
-		while (file->dumpcontent[i][c] == ' '
-			|| file->dumpcontent[i][c] == '\t')
+		file->dc[1] = ft_cf_str(file->dc[1]);
+		len = ft_strlen(file->dc[i]);
+		while (file->dc[i][c] == ' '
+			|| file->dc[i][c] == '\t')
 			c++;
-		if (!ft_check_map(file->dumpcontent[i]))
+		if (!ft_check_map(file->dc[i]))
 		{
-			aux = ft_strdup(file->dumpcontent[i]);
-			free(file->dumpcontent[i]);
-			file->dumpcontent[i] = ft_substr(aux, c, len);
+			aux = ft_strdup(file->dc[i]);
+			free(file->dc[i]);
+			file->dc[i] = ft_substr(aux, c, len);
 			free(aux);
 		}
 		i++;
@@ -85,6 +85,16 @@ int	check_extension(char *str)
 	return (1);
 }
 
+void	check_cub_permission(char **argv)
+{
+	if (access(argv[1], R_OK) == -1)
+	{
+		printf("Error: Invalid .cub file permission.");
+		exit (1);
+	}
+	return ;
+}
+
 int	main(int argc, char **argv)
 {
 	t_cube	file;
@@ -92,6 +102,7 @@ int	main(int argc, char **argv)
 	(void) argc;
 	if (argc != 2)
 		exit_error("Error: invalid number of arguments.\n", 1);
+	check_cub_permission(argv);
 	dump_map(&file, argv);
 	all_params(&file);
 	check_map(&file);

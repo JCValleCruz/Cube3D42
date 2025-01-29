@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:50:21 by jormoral          #+#    #+#             */
-/*   Updated: 2025/01/29 13:44:28 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:47:19 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	check_order(t_cube *file)
 
 	line = 0;
 	i = 6;
-	data = file->dumpcontent;
+	data = file->dc;
 	while (data[line] && i--)
 	{
 		str = ft_check_spaces(data[line]);
@@ -69,4 +69,14 @@ int	check_extension_png(char *str)
 		i++;
 	}
 	return (1);
+}
+
+int	search_header(char *temp)
+{
+	if (!ft_strncmp(temp, "NO ", 3) || !ft_strncmp(temp, "SO ", 3)
+		|| !ft_strncmp(temp, "WE ", 3) || !ft_strncmp(temp, "EA ", 3)
+		|| !ft_strncmp(temp, "F ", 2) || !ft_strncmp(temp, "C ", 2))
+		return (0);
+	else
+		return (1);
 }

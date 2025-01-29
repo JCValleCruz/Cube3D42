@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 02:09:50 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/29 13:41:38 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:44:28 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int	check_param_dup(t_cube *file)
 
 	line = -1;
 	count = 0;
-	while (file->dumpcontent[++line])
+	while (file->dc[++line])
 	{
-		str = file->dumpcontent[line];
+		str = file->dc[line];
 		if (!ft_strncmp(str, "NO ", 3) || !ft_strncmp(str, "SO ", 3)
 			|| !ft_strncmp(str, "WE ", 3) || !ft_strncmp(str, "EA ", 3)
 			|| !ft_strncmp(str, "F ", 2) || !ft_strncmp(str, "C ", 2))
@@ -54,12 +54,12 @@ int	all_params(t_cube *file)
 	else
 		file->rgb_flag = 1;
 	if (file->texture_flag == 1 && file->rgb_flag == 1)
-		file->all_params_flag = 1;
+		file->apflag = 1;
 	check_order(file);
 	extract_map(file);
 	clone_map(file);
 	check_player(file);
-	return (file->all_params_flag);
+	return (file->apflag);
 }
 
 int	ft_rgb_atoi(const char *str)

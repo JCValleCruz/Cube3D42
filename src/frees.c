@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:12:33 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/29 13:08:00 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:43:29 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	free_game(t_cube *file)
 	free(file->pathtexturewest);
 	mlx_delete_texture(file->west);
 	free(file->fdcontent);
-	free_split(file->dumpcontent);
+	free_split(file->dc);
 	free(file->rgbceilingcolour);
 	free(file->rgbfloorcolour);
 	free_split(file->map);
@@ -53,7 +53,7 @@ void	free_game_nt(t_cube *file)
 	free(file->pathtexturesouth);
 	free(file->pathtexturewest);
 	free(file->fdcontent);
-	free_split(file->dumpcontent);
+	free_split(file->dc);
 	if (file->rgbceilingcolour)
 		free(file->rgbceilingcolour);
 	if (file->rgbfloorcolour)

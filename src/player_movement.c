@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 09:20:05 by jormoral          #+#    #+#             */
-/*   Updated: 2025/01/29 13:00:44 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/29 17:53:58 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	lateral_move(t_cube *file, double n)
 	double	lateral_dir_x;
 	double	lateral_dir_y;
 
-	lateral_dir_x = -file->v_dir.y;
-	lateral_dir_y = file->v_dir.x;
+	lateral_dir_x = file->v_dir.y;
+	lateral_dir_y = -file->v_dir.x;
 	new_pos_x = file->position_player.x + n * lateral_dir_x;
 	new_pos_y = file->position_player.y + n * lateral_dir_y;
 	if (new_pos_x > 0.0 && new_pos_y > 0.0
@@ -68,16 +68,16 @@ void	handle_move(void *param)
 	if (mlx_is_key_down(file->mlx, MLX_KEY_ESCAPE))
 		exit_game(file);
 	else if (mlx_is_key_down(file->mlx, MLX_KEY_LEFT))
-		rotate_move(file, 0.1745);
+		rotate_move(file, -1 * 0.10);
 	else if (mlx_is_key_down(file->mlx, MLX_KEY_RIGHT))
-		rotate_move(file, -1 * 0.1745);
+		rotate_move(file, 0.10);
 	else if (mlx_is_key_down(file->mlx, MLX_KEY_A))
-		lateral_move(file, 0.1);
+		lateral_move(file, 0.08);
 	else if (mlx_is_key_down(file->mlx, MLX_KEY_D))
-		lateral_move(file, -0.1);
+		lateral_move(file, -0.08);
 	else if (mlx_is_key_down(file->mlx, MLX_KEY_W))
-		frontal_move(file, 0.1);
+		frontal_move(file, 0.08);
 	else if (mlx_is_key_down(file->mlx, MLX_KEY_S))
-		frontal_move(file, -0.1);
+		frontal_move(file, -0.08);
 	raycasting(file);
 }

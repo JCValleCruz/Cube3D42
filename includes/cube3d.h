@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2025/01/29 13:35:18 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:44:28 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,9 @@ typedef struct	s_point
 typedef struct s_cube
 {
     char        *fdcontent;
-    char        **dumpcontent;
+    char        **dc;
 	int			dumpsize;
+	int			mapsize;
 	char		**map;
 	char		**clone_map;
 	int			map_height;
@@ -61,7 +62,7 @@ typedef struct s_cube
 	int			*rgbfloorcolour;
 	int			*rgbceilingcolour;
 	int			rgb_flag;
-	int			all_params_flag;
+	int			apflag;
 	char		orientation;
 	t_point 	position_player;
 	double		alpha;
@@ -73,6 +74,8 @@ typedef struct s_cube
 	double		dify;
 	double		scale;
 	double 		x_img;
+	uint32_t	ceiling_color;
+	uint32_t	floor_color;
 	mlx_t			*mlx;
 	mlx_texture_t	*actual_t;
 	mlx_image_t		*img;
@@ -80,21 +83,18 @@ typedef struct s_cube
 	mlx_texture_t 	*north;
 	mlx_texture_t	*south;
 	mlx_texture_t	*west;
-	mlx_texture_t	*mmap_player;
-	mlx_texture_t	*mmap_wall;
-	mlx_texture_t 	*mmap_background;
-	mlx_texture_t	*mmap_cleaned;
 	mlx_image_t     *player;
 	mlx_image_t		*wall;
 	mlx_image_t		*ground;
 	mlx_image_t		*cleaned;
-	mlx_key_data_t 	*minimap_control;
-	int				minimap_visible;
+	int				i;
+	int				j;
+	int				n;
 }   t_cube;
 
 void    ft_checkfinal (t_cube *file);
 int		check_extension(char *str);
-char    *ft_checkfinal_str(char *str);
+char    *ft_cf_str(char *str);
 char	*ft_check_spaces(char *str);
 int		ft_check_map(char *str);
 int		ft_rgb_atoi(const char *str);
@@ -141,5 +141,5 @@ void	exit_error_game(char *str, int i, t_cube *file);
 void	exit_game(t_cube *file);
 int		check_order(t_cube *file);
 int		check_permission(t_cube *file);
-
+int		search_header(char *temp);
 #endif

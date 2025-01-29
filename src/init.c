@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 21:32:03 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/29 14:13:49 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:44:28 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ void	init_params(t_cube *file)
 	file->pathtexturesouth = NULL;
 	file->pathtexturewest = NULL;
 	file->pathtextureeast = NULL;
-	file->dumpcontent = ft_split(file->fdcontent, '\n');
+	file->dc = ft_split(file->fdcontent, '\n');
 	file->textfloorcolour = NULL;
 	file->textceilingcolour = NULL;
 	file->rgbceilingcolour = (int *)malloc(sizeof(int) * 3);
@@ -28,10 +28,10 @@ void	init_params(t_cube *file)
 	if (!file->rgbfloorcolour)
 		exit_error_game("Error: Failed Floor Color.", 1, file);
 	file->map = NULL;
-	file->dumpsize = dp_count(file->dumpcontent);
+	file->dumpsize = dp_count(file->dc);
 	file->rgb_flag = 0;
 	file->texture_flag = 0;
-	file->all_params_flag = 0;
+	file->apflag = 0;
 	file->textfloorcolour = NULL;
 	file->textceilingcolour = NULL;
 	file->colourceilingsplit = NULL;

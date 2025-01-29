@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 09:48:16 by jormoral          #+#    #+#             */
-/*   Updated: 2025/01/29 14:06:05 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/29 17:12:50 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,13 +58,13 @@ int	player_position(t_cube *file)
 
 double	initial_orientation(t_cube *file)
 {
-	if (file->orientation == 'S')
-		return (file->alpha = PI / 2);
 	if (file->orientation == 'N')
+		return (file->alpha = PI / 2);
+	if (file->orientation == 'S')
 		return (file->alpha = PI * 1.5);
-	if (file->orientation == 'W')
-		return (file->alpha = PI);
 	if (file->orientation == 'E')
+		return (file->alpha = PI);
+	if (file->orientation == 'W')
 		return (file->alpha = PI * 2);
 	return (0);
 }

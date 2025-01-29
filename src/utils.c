@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 21:35:10 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/29 12:23:28 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:58:23 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ft_checkfinal(t_cube *file)
 	file->fdcontent = str;
 }
 
-char	*ft_checkfinal_str(char *str)
+char	*ft_cf_str(char *str)
 {
 	int	i;
 	int	n;
