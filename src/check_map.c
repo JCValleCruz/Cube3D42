@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/26 16:55:20 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/28 19:25:30 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/28 19:42:24 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,7 +96,7 @@ int	check_zero(t_cube *file)
 		i = 1;
 		while (file->map[line][i])
 		{
-			if((file->map[line][i] == '0' && (size_t)i > ft_strlen(file->map[line + 1])) || (file->map[line][i] == '0' && (size_t)i > ft_strlen(file->map[line - 1])))
+			if ((file->map[line][i] == '0' && (size_t)i > ft_strlen(file->map[line + 1])) || (file->map[line][i] == '0' && (size_t)i > ft_strlen(file->map[line - 1])))
 				return (1);
 			if ((file->map[line][i] == '0') && ((file->map[line - 1][i] == ' '
 				|| file->map[line + 1][i] == ' '

@@ -6,36 +6,16 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/12 09:24:34 by jormoral          #+#    #+#             */
-/*   Updated: 2025/01/28 19:13:34 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/29 10:50:46 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube3d.h"
 
-int min_width(t_cube *file)
-{
-	int min = 0;
-	int x = 0;
-	int y = 0;
-	while (file->map[0][min])
-		min++;
-	while(y < file->map_height)
-	{
-		x = 0;
-		while(file->map[y][x])
-			x++;
-		if (min > x)
-			min = x;
-		y++;
-	}
-	return min;
-}
-
 
 int check_collision(t_cube *file)
 {
-	if(file->ph.x < 1.0 || file->ph.x > min_width(file) - 1
-		|| file->ph.y < 1.0 || file->ph.y >  file->map_height - 1) // PH.X/Y no puede superar el tamaño del map
+	if(file->ph.x < 1.0 || file->ph.y < 1.0 || file->ph.y >  file->map_height - 1) // PH.X/Y no puede superar el tamaño del map
 		return(1);
 	if (file->ph.x == ceil(file->ph.x))
 		return (file->map[(int)file->ph.y][(int)file->ph.x - (file->ray.x < 0)] == '1');

@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/28 17:50:21 by jormoral          #+#    #+#             */
-/*   Updated: 2025/01/28 17:56:08 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/28 19:40:01 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_extension_png(char *str)
 	i = 0;
 	if (!str)
 		return (0);
-	if(str[0] == '.')
+	if (str[0] == '.')
 		i++;
 	while (str[i] != '\0')
 	{
@@ -29,10 +29,10 @@ int	check_extension_png(char *str)
 				return (0);
 			if (str[i + 3] != 'g')
 				return (0);
-		 	if (str[i + 4] != '\0')
+			if (str[i + 4] != '\0')
 				return (0);
 		}
-		if(str[i + 1] == '\0' && str[i] != 'g')
+		if (str[i + 1] == '\0' && str[i] != 'g')
 			return (0);
 		i++;
 	}

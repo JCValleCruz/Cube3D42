@@ -6,52 +6,52 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2025/01/28 19:31:42 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/29 10:43:20 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/cube3d.h"
 
-
 void	purge(t_cube *file)
 {
-	int i;
-	int c;
-	int len;
-	char *aux;
+	int		i;
+	int		c;
+	int		len;
+	char	*aux;
 
 	i = 0;
-	while(file->dumpcontent[i])
+	while (file->dumpcontent[i])
 	{
 		c = 0;
 		file->dumpcontent[1] = ft_checkfinal_str(file->dumpcontent[1]);
 		len = ft_strlen(file->dumpcontent[i]);
-		while(file->dumpcontent[i][c] == ' ' || file->dumpcontent[i][c] == '\t')
+		while (file->dumpcontent[i][c] == ' ' || file->dumpcontent[i][c] == '\t')
 			c++;
-		if(!ft_check_map(file->dumpcontent[i]))
+		if (!ft_check_map(file->dumpcontent[i]))
 		{
 			aux = ft_strdup(file->dumpcontent[i]);
 			free(file->dumpcontent[i]);
 			file->dumpcontent[i] = ft_substr(aux, c, len);
 			free(aux);
 		}
-		i++;	
+		i++;
 	}
 }
 
 void    dump_map(t_cube *file, char **argv)
 {
-    int fd;
-    int readed;
-	if(!check_extension(argv[1]))
-        exit_error("Error: cannot load file.\n", 1);
-    file->fdcontent = calloc(10000, 1);
-    fd = open(argv[1], O_RDONLY);
+	int	fd;
+	int	readed;
+
+	if (!check_extension(argv[1]))
+		exit_error("Error: cannot load file.\n", 1);
+	file->fdcontent = calloc(10000, 1);
+	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-		exit_error_game("Error:try",1,file);
-    readed = read(fd, file->fdcontent, 9999);
+		exit_error_game("Error:try", 1, file);
+	readed = read(fd, file->fdcontent, 9999);
 	if (readed < 0)
-		exit_error_game("Error:try",1,file);
+		exit_error_game("Error:try", 1, file);
 	ft_checkfinal(file);
 }
 
@@ -62,7 +62,7 @@ int	check_extension(char *str)
 	i = 0;
 	if (!str)
 		return (0);
-	if(str[0] == '.')
+	if (str[0] == '.')
 		i++;
 	while (str[i] != '\0')
 	{
@@ -74,40 +74,24 @@ int	check_extension(char *str)
 				return (0);
 			if (str[i + 3] != 'b')
 				return (0);
-		 	if (str[i + 4] != '\0')
+			if (str[i + 4] != '\0')
 				return (0);
 		}
-		if(str[i + 1] == '\0' && str[i] != 'b')
+		if (str[i + 1] == '\0' && str[i] != 'b')
 			return (0);
 		i++;
 	}
 	return (1);
 }
 
-void exit_game(t_cube *file)
+int	main(int argc, char **argv)
 {
-	free_game(file);
-	mlx_close_window(file->mlx);
-	mlx_terminate(file->mlx);
-	file = NULL;
-	exit(0);
-}
-void exit_error_game(char*str, int i, t_cube *file)
-{
-	printf("%s", str);
-	free_game_nt(file);
-	file = NULL;
-	exit(i);
-}
+	t_cube	file;
 
-
-int main(int argc, char **argv)
-{
-    t_cube file;
-	(void)argc;
+	(void) argc;
 	if (argc != 2)
 		exit_error("Error: invalid number of arguments.\n", 1);
-    dump_map(&file, argv);
+	dump_map(&file, argv);
 	all_params(&file);
 	check_map(&file);
 	init_raycasting(&file);
@@ -116,5 +100,5 @@ int main(int argc, char **argv)
 	mlx_loop_hook(file.mlx, &handle_move, &file);
 	mlx_loop(file.mlx);
 	exit_game(&file);
-	return 0;
+	return (0);
 }

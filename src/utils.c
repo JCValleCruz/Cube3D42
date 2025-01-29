@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 21:35:10 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/28 13:47:34 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2025/01/29 11:04:48 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void    ft_checkfinal(t_cube *file)
 	str = file->fdcontent;
 	while (str[i] != '\0')
         i++;
-	if(str[i] == '\0')
+	if (str[i] == '\0')
 		return ;
     while (str[i - n] != '1')
     {
@@ -41,7 +41,7 @@ char    *ft_checkfinal_str(char *str)
         str[i - n] = str[i];
         n++;
     }
-    return(str);
+    return (str);
 }
 
 char	*ft_check_spaces(char *str)
@@ -49,7 +49,7 @@ char	*ft_check_spaces(char *str)
 	int 	c;
 	
 	c = 0;
-	while(str[c] == ' ')
+	while (str[c] == ' ')
 		c++;
 	return (str + c);
 }
@@ -59,13 +59,13 @@ int	ft_check_map(char *str)
 	int c;
 
 	c = 0;
-	while(str[c])
+	while (str[c])
 	{
-		if(str[c] == '1')
-			return 1;
+		if (str[c] == '1')
+			return (1);
 		c++;
 	}
-	return 0;
+	return (0);
 }
 
 int	dp_count(char **str)
@@ -73,7 +73,7 @@ int	dp_count(char **str)
 	int line;
 
 	line = 0;
-	while(str[line])
+	while (str[line])
 		line++;
 	return (line);	
 }

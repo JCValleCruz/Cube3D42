@@ -28,6 +28,7 @@ SRCS        :=      src/cube3d.c \
 						  src/utils2.c \
 						  src/utils3.c \
 						  src/init.c \
+						  src/exit.c \
 						  src/check_map.c \
 						  src/check_map2.c \
 						  src/extract_textures.c \

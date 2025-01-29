@@ -6,13 +6,13 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 02:09:50 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/28 17:18:38 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/29 11:03:32 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/cube3d.h"
+#include "../includes/cube3d.h"
 
-int exit_error(char *str, int i)
+int	exit_error(char *str, int i)
 {
 	printf("%s", str);
 	exit(i);
@@ -23,58 +23,58 @@ int	check_param_dup(t_cube *file)
 	char	*str;
 	int		line;
 	int		count;
-	
+
 	line = -1;
 	count = 0;
-	while(file->dumpcontent[++line])
+	while (file->dumpcontent[++line])
 	{
 		str = file->dumpcontent[line];
-		if(!ft_strncmp(str, "NO ", 3) || !ft_strncmp(str, "SO ", 3) 
-			|| !ft_strncmp(str, "WE ", 3) || !ft_strncmp(str, "EA ", 3) 
-				|| !ft_strncmp(str, "F ", 2) || !ft_strncmp(str, "C ", 2))
-			count++;			
+		if (!ft_strncmp(str, "NO ", 3) || !ft_strncmp(str, "SO ", 3)
+			|| !ft_strncmp(str, "WE ", 3) || !ft_strncmp(str, "EA ", 3)
+			|| !ft_strncmp(str, "F ", 2) || !ft_strncmp(str, "C ", 2))
+			count++;
 	}
 	if (count != 6)
-		return 1;
-	return 0;
+		return (1);
+	return (0);
 }
 
-int		all_params(t_cube *file)
+int	all_params(t_cube *file)
 {
 	init_params(file);
 	purge(file);
-	if(check_param_dup(file))
-		exit_error_game("Error: CUB file does not have the correct parameters.\n", 1, file);
-	if(extract_textures(file))
+	if (check_param_dup(file))
+		exit_error_game("Error: Wrong CUB file.\n", 1, file);
+	if (extract_textures(file))
 		exit_error_game("Error: Cannot load path textures.\n", 1, file);
 	else
-		file->texture_flag = 1;		
-	if(extract_rgb(file))
+		file->texture_flag = 1;
+	if (extract_rgb(file))
 		exit_error_game("Error: Cannot load rgb values.\n", 1, file);
 	else
-		file->rgb_flag = 1;	
-	if(file->texture_flag == 1 && file->rgb_flag == 1)
+		file->rgb_flag = 1;
+	if (file->texture_flag == 1 && file->rgb_flag == 1)
 		file->all_params_flag = 1;
 	extract_map(file);
 	clone_map(file);
 	check_player(file);
-	return(file->all_params_flag);		
+	return (file->all_params_flag);
 }
 
 int	ft_rgb_atoi(const char *str)
 {
 	int	result;
 	int	c;
-	
+
 	result = 0;
 	c = 0;
- 	if(!str)
+	if (!str)
 		exit_error("Error: Cannot load rgb values.\n", 1);
-	while(str[c])
+	while (str[c])
 	{
-	 	if(str[c] < '0' || str[c] > '9')
-			return 256;
-		c++;	
+		if (str[c] < '0' || str[c] > '9')
+			return (256);
+		c++;
 	}
 	c = 0;
 	while (*str == ' ' || (*str >= 9 && *str <= 13))

@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:51:09 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/28 17:49:00 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/29 10:58:29 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,59 +30,57 @@ int	dp_count_space(char **dp)
 		{
 			if (str[i] == ' ')
 				spaces++;
-			i++;	
+			i++;
 		}
 		line++;
 	}
 	return (spaces);
 }
 
-void clone_map(t_cube *file)
+void	clone_map(t_cube *file)
 {
 	int		line;
-	int 	size;
+	int		size;
 	int		i;
-	
+
 	size = dp_count(file->map);
 	file->map_height = size;
 	file->clone_map = (char **)malloc(sizeof(char *) * size + 1);
 	line = -1;
-	while(file->map[++line])
+	while (file->map[++line])
 		file->clone_map[line] = ft_strdup(file->map[line]);
 	line = 0;
-	while(file->map[line])
+	while (file->map[line])
 	{
 		i = 0;
-		while(file->clone_map[line][i])
+		while (file->clone_map[line][i])
 		{
-			if(file->clone_map[line][i] == 'N' || file->clone_map[line][i] == 'S' 
-				|| file->clone_map[line][i] == 'W' || file->clone_map[line][i] == 'E')
-			file->clone_map[line][i] = '0';	
+			if (file->clone_map[line][i] == 'N'
+				|| file->clone_map[line][i] == 'S'
+				|| file->clone_map[line][i] == 'W' ||
+					file->clone_map[line][i] == 'E')
+				file->clone_map[line][i] = '0';
 			i++;
 		}
 		line++;
-	}			
+	}
 }
 
 int	ft_strchrplayer(const char *s, int c, t_cube *file)
 {
 	const char	*str;
 	int			i;
-	
+
 	str = s;
 	i = 0;
 	while (str[i])
 	{
 		if (str[i] == (unsigned char)c)
 		{
-			file->orientation = (char)c;	
+			file->orientation = (char)c;
 			return (1);
 		}
 		i++;
 	}
 	return (0);
 }
-
-
-
-
