@@ -59,6 +59,8 @@ int	all_params(t_cube *file)
 	extract_map(file);
 	clone_map(file);
 	check_player(file);
+	if(!check_player_location(file))
+		exit_error_game("Error: Wrong .cub file.", 1, file);
 	return (file->apflag);
 }
 

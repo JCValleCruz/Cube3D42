@@ -84,3 +84,46 @@ int	ft_strchrplayer(const char *s, int c, t_cube *file)
 	}
 	return (0);
 }
+
+char	*ft_cf_str_n(char *str)
+{
+	int	i;
+	int	n;
+
+	n = 1;
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	while (str[i - n] == ' ' || str[i - n] == '\t') 
+	{
+		str[i - n] = str[i];
+		n++;
+	}
+	return (str);
+}
+
+int	check_player_location(t_cube *file)
+{
+	int	line;
+	int	i;
+
+	line = 1;
+	while (line < dp_count(file->map + 1))
+	{
+		i = 1;
+		while (file->map[line][i])
+		{
+			if ((file->map[line][i] == file->orientation) 
+			&& ((file->map[line - 1][i] != '0') || (file->map[line - 1][i] != '1')
+			|| file->map[line + 1][i] != '0' || file->map[line + 1][i] != '1'
+			|| file->map[line][i - 1] != '0' || file->map[line][i - 1] != '1'
+			|| file->map[line][i + 1] != '0' || file->map[line][i + 1] != '1'))
+			{
+				return (1);
+			}
+			i++;
+		}
+		line++;
+	}
+	return (0);
+}

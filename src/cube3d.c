@@ -104,6 +104,7 @@ int	main(int argc, char **argv)
 		exit_error("Error: invalid number of arguments.\n", 1);
 	check_cub_permission(argv);
 	dump_map(&file, argv);
+	ft_cf_str_n(file.fdcontent);
 	all_params(&file);
 	check_map(&file);
 	check_permission(&file);

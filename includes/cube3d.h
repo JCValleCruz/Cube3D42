@@ -147,4 +147,6 @@ void	exit_game(t_cube *file);
 int		check_order(t_cube *file);
 int		check_permission(t_cube *file);
 int		search_header(char *temp);
+char	*ft_cf_str_n(char *str);
+int		check_player_location(t_cube *file);
 #endif
