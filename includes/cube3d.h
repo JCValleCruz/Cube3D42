@@ -6,12 +6,13 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:45:09 by gacel             #+#    #+#             */
-/*   Updated: 2025/01/29 16:44:28 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/29 18:46:02 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUBE3D_H
 # define CUBE3D_H
+
 
 # include <unistd.h>
 # include <stdlib.h>
@@ -21,6 +22,10 @@
 # include <math.h>
 # include "../Lib/libft.h"
 # include "../MLX42/include/MLX42/MLX42.h"
+
+/* # ifndef MALLOC_TEST
+# define malloc(size) 0
+# endif */
 
 # define PI 3.14159265
 # define WIDTH 1024
