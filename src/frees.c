@@ -6,11 +6,11 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:12:33 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/28 17:38:00 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/29 13:08:00 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../includes/cube3d.h"
+#include "../includes/cube3d.h"
 
 void	free_split(char **split)
 {
@@ -30,11 +30,11 @@ void	free_split(char **split)
 void	free_game(t_cube *file)
 {
 	free(file->pathtextureeast);
-	mlx_delete_texture(file->east);	
+	mlx_delete_texture(file->east);
 	free(file->pathtexturenorth);
 	mlx_delete_texture(file->north);
 	free(file->pathtexturesouth);
-	mlx_delete_texture(file->south);	
+	mlx_delete_texture(file->south);
 	free(file->pathtexturewest);
 	mlx_delete_texture(file->west);
 	free(file->fdcontent);
@@ -44,8 +44,8 @@ void	free_game(t_cube *file)
 	free_split(file->map);
 	free_split(file->colourceilingsplit);
 	free_split(file->colourfloorsplit);
-	
 }
+
 void	free_game_nt(t_cube *file)
 {
 	free(file->pathtextureeast);
@@ -63,7 +63,5 @@ void	free_game_nt(t_cube *file)
 	if (file->colourceilingsplit)
 		free_split(file->colourceilingsplit);
 	if (file->colourfloorsplit)
-		free_split(file->colourfloorsplit);		
-	//free_split(file->colourceilingsplit);
-	//free_split(file->colourfloorsplit);	
+		free_split(file->colourfloorsplit);
 }

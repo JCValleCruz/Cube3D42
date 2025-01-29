@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/19 21:32:03 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/28 18:11:26 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:13:49 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,11 +22,11 @@ void	init_params(t_cube *file)
 	file->textfloorcolour = NULL;
 	file->textceilingcolour = NULL;
 	file->rgbceilingcolour = (int *)malloc(sizeof(int) * 3);
-		if (!file->rgbceilingcolour)
-			 exit_error_game("Error: Failed ceiling color.\n", 1, file);
+	if (!file->rgbceilingcolour)
+		exit_error_game("Error: Failed Ceiling Color.", 1, file);
 	file->rgbfloorcolour = (int *)malloc(sizeof(int) * 3);
-		if (!file->rgbfloorcolour)
-    	exit_error_game("Error: Failed floor color.\n", 1, file);
+	if (!file->rgbfloorcolour)
+		exit_error_game("Error: Failed Floor Color.", 1, file);
 	file->map = NULL;
 	file->dumpsize = dp_count(file->dumpcontent);
 	file->rgb_flag = 0;
@@ -42,15 +42,12 @@ void	init_raycasting(t_cube *file)
 {
 	player_position(file);
 	initial_orientation(file);
-	file->alpha = initial_orientation(file); // initial_orientation checkear funcion
 	file->v_dir.x = cos(file->alpha);
 	file->v_dir.y = sin(file->alpha);
 	if (file->v_dir.x < 0.0 && file->orientation != 'W')
-    	file->v_dir.x = -file->v_dir.x;	 
-	if (file->v_dir.y < 0.0 && file->orientation != 'S')
-		file->v_dir.y = -file->v_dir.y; 
-
+		file->v_dir.x = -file->v_dir.x;
 }
+
 void	init_texture(t_cube	*file)
 {
 	(void)file;

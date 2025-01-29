@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 02:09:50 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/29 11:03:32 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/29 13:41:38 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,17 +44,18 @@ int	all_params(t_cube *file)
 	init_params(file);
 	purge(file);
 	if (check_param_dup(file))
-		exit_error_game("Error: Wrong CUB file.\n", 1, file);
+		exit_error_game("Error: Wrong .cub file.", 1, file);
 	if (extract_textures(file))
-		exit_error_game("Error: Cannot load path textures.\n", 1, file);
+		exit_error_game("Error: Wrong .cub file.", 1, file);
 	else
 		file->texture_flag = 1;
 	if (extract_rgb(file))
-		exit_error_game("Error: Cannot load rgb values.\n", 1, file);
+		exit_error_game("Error: Wrong .cub file.", 1, file);
 	else
 		file->rgb_flag = 1;
 	if (file->texture_flag == 1 && file->rgb_flag == 1)
 		file->all_params_flag = 1;
+	check_order(file);
 	extract_map(file);
 	clone_map(file);
 	check_player(file);
@@ -69,7 +70,7 @@ int	ft_rgb_atoi(const char *str)
 	result = 0;
 	c = 0;
 	if (!str)
-		exit_error("Error: Cannot load rgb values.\n", 1);
+		exit_error("Error: Wrong .cub file.", 1);
 	while (str[c])
 	{
 		if (str[c] < '0' || str[c] > '9')

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   extract_colours.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 12:40:10 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/28 13:59:19 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2025/01/29 13:29:43 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,10 +49,10 @@ char	*iscleanrgbtxt(char *str)
 		if(str[i] == ',')
 		{
 			if(str[i + 1] == ',')
-				exit_error("Error: Cannot load rgb values.\n", 1);
+				exit_error("Error: Cannot load rgb values.", 1);
 			count++;
 		if(count > 2)
-			exit_error("Error: Cannot load rgb values.\n", 1);
+			exit_error("Error: Cannot load rgb values.", 1);
 		}
 		i++;		
 	}

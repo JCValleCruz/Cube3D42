@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/16 16:15:59 by gacel             #+#    #+#             */
-/*   Updated: 2025/01/29 10:43:20 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/29 13:36:02 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,14 +44,14 @@ void    dump_map(t_cube *file, char **argv)
 	int	readed;
 
 	if (!check_extension(argv[1]))
-		exit_error("Error: cannot load file.\n", 1);
+		exit_error("Error: cannot load file.", 1);
 	file->fdcontent = calloc(10000, 1);
 	fd = open(argv[1], O_RDONLY);
 	if (fd < 0)
-		exit_error_game("Error:try", 1, file);
+		exit_error_game("Error: infile error.", 1, file);
 	readed = read(fd, file->fdcontent, 9999);
 	if (readed < 0)
-		exit_error_game("Error:try", 1, file);
+		exit_error_game("Error: infile error.", 1, file);
 	ft_checkfinal(file);
 }
 
@@ -94,6 +94,7 @@ int	main(int argc, char **argv)
 	dump_map(&file, argv);
 	all_params(&file);
 	check_map(&file);
+	check_permission(&file);
 	init_raycasting(&file);
 	init_mlx(argv[1], &file);
 	mlx_image_to_window(file.mlx, file.img, 0, 0);

@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/17 13:35:20 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/28 18:04:13 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/29 13:39:40 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@ int		extract_textures(t_cube *file)
 	if(!ea_texture_path(file))
 		flag = 1;
 	if  (!check_extension_png(file->pathtexturenorth) || !check_extension_png(file->pathtexturesouth) || !check_extension_png(file->pathtexturewest) || !check_extension_png(file->pathtextureeast))
-		exit_error_game("Error: Invalid texture.", 1, file);
+		exit_error_game("Error: Invalid texture extension.", 1, file);
 	if (access(file->pathtexturesouth, F_OK) == -1 || access(file->pathtexturenorth, F_OK) == -1 || access(file->pathtexturewest, F_OK) == -1 || access(file->pathtextureeast, F_OK) == -1)
-		exit_error_game("Error: Invalid texture.", 1, file);
+		exit_error_game("Error: Invalid texture permission.", 1, file);
 	return flag;	
 }
 int no_texture_path(t_cube *file)
@@ -52,10 +52,10 @@ int no_texture_path(t_cube *file)
 					if(str[i] == '\0')
 						return 0;
 				}
-            	return file->pathtexturenorth = ft_checkfinal_str(ft_substr(str, i, ft_strlen(str) - i)), 1;	
+            	return file->pathtexturenorth = ft_checkfinal_str
+					(ft_substr(str, i, ft_strlen(str) - i)), 1;	
             }
         }
-		
 	}
     return 0; 
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: jvalle-d <jvalle-d@student.42.fr>          +#+  +:+       +#+        */
+/*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/25 09:48:16 by jormoral          #+#    #+#             */
-/*   Updated: 2025/01/28 13:27:17 by jvalle-d         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:06:05 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int	check_player(t_cube *file)
 
 	x = -1;
 	count = 0;
-	while(file->map[(int)++x])
+	while (file->map[(int)++x])
 	{
 		y = -1;
 		while (file->map[(int)x][(int)++y])
@@ -30,7 +30,7 @@ int	check_player(t_cube *file)
 		}
 	}
 	if (count != 1)
-		exit_error("Error: nº of players was incorrect", 1);
+		exit_error("Error: nº of players was incorrect.", 1);
 	return (0);
 }
 
@@ -40,28 +40,27 @@ int	player_position(t_cube *file)
 	double	y;
 
 	x = -1.0;
-	while(file->map[(int)++x])
+	while (file->map[(int)++x])
 	{
 		y = -1.0;
 		while (file->map[(int)x][(int)++y])
 		{
 			if (ft_strchrplayer("NSWE", file->map[(int)x][(int)y], file))
-			{	
+			{
 				file->position_player.x = y + 0.5;
 				file->position_player.y = x + 0.5;
 				return (0);
 			}
 		}
-	
 	}
-	return(printf("Error: Player not found."), 1);
+	return (printf("Error: Player not found."), 1);
 }
 
 double	initial_orientation(t_cube *file)
 {
-	if (file->orientation == 'N')
-		return (file->alpha = PI / 2);
 	if (file->orientation == 'S')
+		return (file->alpha = PI / 2);
+	if (file->orientation == 'N')
 		return (file->alpha = PI * 1.5);
 	if (file->orientation == 'W')
 		return (file->alpha = PI);

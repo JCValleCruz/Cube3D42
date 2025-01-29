@@ -22,7 +22,6 @@ SRCS        :=      src/cube3d.c \
 						  src/display_texture.c\
 						  src/player_movement.c\
 						  src/player.c \
-                          src/debug.c \
 						  src/frees.c \
 						  src/utils.c \
 						  src/utils2.c \
