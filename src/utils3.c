@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/21 12:51:09 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/29 10:58:29 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/30 10:24:42 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ char	*ft_cf_str_n(char *str)
 	i = 0;
 	while (str[i] != '\0')
 		i++;
-	while (str[i - n] == ' ' || str[i - n] == '\t') 
+	while (str[i - n] == ' ' || str[i - n] == '\t')
 	{
 		str[i - n] = str[i];
 		n++;
@@ -113,8 +113,9 @@ int	check_player_location(t_cube *file)
 		i = 1;
 		while (file->map[line][i])
 		{
-			if ((file->map[line][i] == file->orientation) 
-			&& ((file->map[line - 1][i] != '0') || (file->map[line - 1][i] != '1')
+			if ((file->map[line][i] == file->orientation)
+			&& ((file->map[line - 1][i] != '0')
+			|| (file->map[line - 1][i] != '1')
 			|| file->map[line + 1][i] != '0' || file->map[line + 1][i] != '1'
 			|| file->map[line][i - 1] != '0' || file->map[line][i - 1] != '1'
 			|| file->map[line][i + 1] != '0' || file->map[line][i + 1] != '1'))

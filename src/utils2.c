@@ -6,7 +6,7 @@
 /*   By: jormoral <jormoral@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/18 02:09:50 by jvalle-d          #+#    #+#             */
-/*   Updated: 2025/01/29 16:44:28 by jormoral         ###   ########.fr       */
+/*   Updated: 2025/01/30 10:23:55 by jormoral         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	all_params(t_cube *file)
 	extract_map(file);
 	clone_map(file);
 	check_player(file);
-	if(!check_player_location(file))
+	if (!check_player_location(file))
 		exit_error_game("Error: Wrong .cub file.", 1, file);
 	return (file->apflag);
 }
