@@ -1,0 +1,20 @@
+
+
+SO resources/south.png         
+WE resources/west.png
+
+C 0,255,180
+F 254,100,99
+EA resources/east.png
+NO resources/north.png
+
+
+
+11111111    
+1000W001    
+10000001
+11111111
+
+
+
+
